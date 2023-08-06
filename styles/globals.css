@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Add these styles to your global CSS or import a stylesheet */
 
 .nav-link {
     padding: 8px 16px;
