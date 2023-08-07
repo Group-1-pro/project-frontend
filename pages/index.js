@@ -5,16 +5,17 @@ import Navbar from '@/components/Navbar';
 import Home_page from './home';
 
 
-
 export default function Home() {
   return (
     <>
-      
+
       <Navbar />
+
       <main>
         <Home_page />
       </main>
-      
+
+      <Footer />
     </>
   );
 }
