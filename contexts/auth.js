@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 
 //global
 
-const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+const baseUrl = 'http://127.0.0.1:8000/' ;
 const tokenUrl = baseUrl+"api/token/";
 
 const AuthContext = createContext();
