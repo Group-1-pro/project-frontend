@@ -1,0 +1,62 @@
+.mainDiv {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-bottom: 12%;
+}
+
+
+
+.paragraphAndbtnDiv {
+    padding-right: 1rem;
+    width: 50%;
+    padding-left: 3%;
+    padding-top: 4.5%;
+}
+
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3%;
+    padding-top: 5%;
+    padding-right: 18%;
+}
+
+.firstBtn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    border-width: 1px;
+    border-color: #1D4ED8;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #3B82F6;
+    cursor: pointer;
+}
+
+.secondBtn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    border-width: 1px;
+    border-color: #1D4ED8;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: #3B82F6;
+    cursor: pointer;
+}
+
+.firstBtn:hover,
+.secondBtn:hover {
+    background-color: #1D4ED8;
+}
+
+.orParagraph {
+    display: inline-block;
+    margin: 0.5rem;
+}
+
+.sliderDiv {
+    width: 50%;
+    padding-top: 1%;
+}

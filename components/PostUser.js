@@ -33,6 +33,7 @@ const PostUser = () => {
     fetchPostsData();
   }, []);
 
+
   const handleDeletePost = async (id) => {
     try {
       const response = await fetch(baseUrl + `wanderhands/post/user/${id}`, {
@@ -57,6 +58,7 @@ const PostUser = () => {
   const handleEditPost = (postId) => {
     setEditPostId(postId);
   };
+
 
   return (
     <div>
@@ -104,5 +106,6 @@ const PostUser = () => {
   );
 
 };
+
 
 export default PostUser;
