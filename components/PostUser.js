@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PostForm from './PostForm';
+import { useAuth } from '@/contexts/auth';
 
 const PostUser = () => {
+  const auth = useAuth();
   const [posts, setPosts] = useState([]);
   const router = useRouter();
   const [editPostId, setEditPostId] = useState(null);
@@ -25,6 +27,7 @@ const PostUser = () => {
       console.error('Error fetching posts data:', error);
     }
   };
+
 
   useEffect(() => {
     fetchPostsData();
