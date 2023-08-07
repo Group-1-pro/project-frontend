@@ -7,9 +7,9 @@ export default function FavoritesList() {
   const [fav_posts, favSetPosts] = useState([]);
   const baseUrl = 'http://127.0.0.1:8000/';
 
-  const fetchFavPostsData = async () => {
+  const fetchFavPostsData = async (id) => {
     try {
-      const response = await fetch(baseUrl + 'wanderhands/favorites', {
+      const response = await fetch(baseUrl + `wanderhands/favorites`, {
         headers: {
           Authorization: `Bearer ${tokens?.access}`, // Use the access token from the context
         },

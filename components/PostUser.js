@@ -35,7 +35,7 @@ const PostUser = () => {
 
   const handleDeletePost = async (id) => {
     try {
-      const response = await fetch(baseUrl + `wanderhands/post/${id}`, {
+      const response = await fetch(baseUrl + `wanderhands/post/user/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

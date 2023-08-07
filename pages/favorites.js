@@ -32,7 +32,7 @@ export default function FavoritesPage() {
           <PostUser />
         </main>
       ) : (<LoginForm onSubmit={handleSubmitLoginForm} />)}
-      <Footer />
+      {/* <Footer /> */}
 
     </>
   );
