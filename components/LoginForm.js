@@ -21,8 +21,8 @@ export default function LoginForm({ onSubmit }) {
   };
 
   return (
-    <form className="w-3/4 p-4 mx-auto my-8 bg-green-500 text-green-70" onSubmit={handleSubmit}>
-      <h2 className="text-4xl text-center mb-6 text-green-200">Welcome</h2>
+    <form className="w-3/4 p-4 mx-auto my-8 bg-gray-400 text-black-70" onSubmit={handleSubmit}>
+      <h2 className="text-4xl text-center mb-6 text-black-200">Welcome</h2>
       <div className="flex mb-4">
         <label className="text-lg font-semibold">Username</label>
         <input
@@ -46,7 +46,7 @@ export default function LoginForm({ onSubmit }) {
         />
       </div>
       <div className="flex justify-center"> 
-      <button type="submit" className="px-12 py-5 bg-green-700 text-green-100 hover:bg-green-800 hover:text-white transition-colors">
+      <button type="submit" className="px-12 py-5  text-black-100 hover:bg-white-800 hover:text-white transition-colors">
         Log In
       </button>
      </div>
