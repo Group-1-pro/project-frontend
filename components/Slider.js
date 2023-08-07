@@ -4,8 +4,6 @@ import { RxDotFilled } from 'react-icons/rx';
 import tailwindConfig from '@/tailwind.config';
 
 
-
-
 const Slider = () => {
 
     const slides = [
@@ -44,48 +42,53 @@ const Slider = () => {
     const goToSlide = (slideIndex) => {
         setCurrentIndex(slideIndex);
     };
+
+
+
+
     return (
         <>
 
+
             <div>
+
                 <div className='max-w-[1400px] h-[500px] w-full m-auto py-16 px-4 relative group'>
+
                     <div
                         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-                        className='w-full h-full rounded-2xl bg-center bg-cover duration-500'
-                    ></div>
+                        className='w-full h-full rounded-2xl bg-center bg-cover duration-500'>
+                    </div>
+
                     {/* Left Arrow */}
                     <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
                         <BsChevronCompactLeft onClick={prevSlide} size={30} />
                     </div>
+
+
                     {/* Right Arrow */}
                     <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
                         <BsChevronCompactRight onClick={nextSlide} size={30} />
                     </div>
+
+
                     <div className='flex top-4 justify-center py-2'>
                         {slides.map((slide, slideIndex) => (
                             <div
                                 key={slideIndex}
                                 onClick={() => goToSlide(slideIndex)}
-                                className='text-2xl cursor-pointer'
-                            >
+                                className='text-2xl cursor-pointer'>
+
                                 <RxDotFilled />
                             </div>
+
                         ))}
                     </div>
+
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-
-            <div>
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-                    Explore Opportunities
-                </button>
-                <h5>or</h5>
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
-                    Add new Opportunities
-                </button>
 
             </div>
+
+
         </>
     );
 
