@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PostForm from './PostForm';
+import { useAuth } from '@/contexts/auth';
+
 
 const PostUser = () => {
+
+  const auth = useAuth();
   const [posts, setPosts] = useState([]);
   const router = useRouter();
   const [editPostId, setEditPostId] = useState(null);
@@ -26,9 +30,11 @@ const PostUser = () => {
     }
   };
 
+
   useEffect(() => {
     fetchPostsData();
   }, []);
+
 
   const handleDeletePost = async (id) => {
     try {
@@ -54,6 +60,7 @@ const PostUser = () => {
   const handleEditPost = (postId) => {
     setEditPostId(postId);
   };
+
 
   return (
     <div className="flex flex-wrap">
@@ -96,5 +103,6 @@ const PostUser = () => {
     </div>
   );
 };
+
 
 export default PostUser;

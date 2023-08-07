@@ -5,7 +5,9 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FavoritesList from '@/components/FavoritesList';
 import PostUser from '@/components/PostUser';
-const FavoritesPage = () => {
+
+
+export default function FavoritesPage() {
   return (
     <>
       <Navbar />
@@ -17,6 +19,4 @@ const FavoritesPage = () => {
       <Footer />
     </>
   );
-};
-
-export default FavoritesPage;
+}
