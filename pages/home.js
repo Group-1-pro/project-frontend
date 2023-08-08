@@ -53,6 +53,7 @@ const Home_page = () => {
 
       <div className="homePageSliderDiv">
         <Slider className="w-48" />
+        <Posts />
       </div>
 
 
