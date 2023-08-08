@@ -1,5 +1,5 @@
 import Slider from "@/components/Slider";
-
+import Posts from "@/components/Posts";
 
 const Home_page = () => {
   return (
@@ -53,6 +53,7 @@ const Home_page = () => {
 
       <div className="homePageSliderDiv">
         <Slider className="w-48" />
+        <Posts />
       </div>
 
 
