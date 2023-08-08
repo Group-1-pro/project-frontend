@@ -3,10 +3,8 @@ import { useRouter } from 'next/router';
 import PostForm from './PostForm';
 import { useAuth } from '@/contexts/auth';
 
-
 const PostUser = () => {
-
-  const auth = useAuth();
+  const { tokens, login, user } = useAuth()
   const [posts, setPosts] = useState([]);
   const router = useRouter();
   const [editPostId, setEditPostId] = useState(null);
@@ -16,7 +14,7 @@ const PostUser = () => {
     try {
       const response = await fetch(baseUrl + 'wanderhands/post', {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+          Authorization: `Bearer ${tokens?.access}`,
         },
       });
       if (response.ok) {
@@ -38,7 +36,7 @@ const PostUser = () => {
 
   const handleDeletePost = async (id) => {
     try {
-      const response = await fetch(baseUrl + `wanderhands/post/${id}`, {
+      const response = await fetch(baseUrl + `wanderhands/post/user/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -63,6 +61,8 @@ const PostUser = () => {
 
 
   return (
+    <div>
+    {user ? (
     <div className="flex flex-wrap">
       {posts.map((post) => (
         <div key={post.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
@@ -101,7 +101,10 @@ const PostUser = () => {
         </div>
       )}
     </div>
+    ): ( <LoginForm onLogin={login} />)}
+    </div>
   );
+
 };
 
 

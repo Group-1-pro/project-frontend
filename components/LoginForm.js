@@ -1,24 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+export default function LoginForm({ onSubmit }) {
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+  });
 
-export default function LoginForm({ onLogin }) {
-  // async function handleSubmit(event) {
-  //   event.preventDefault();
-  //   onLogin(event.target.username.value, event.target.password.value);
-  // }
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Pass the form data to the parent component (Home) using the onSubmit prop
+    onSubmit(formData);
+  };
 
   return (
-    <form className="w-8/12 p-6 mx-auto my-8 bg-white-300 rounded-lg shadow-md" >
-      <fieldset className="flex flex-col" autoComplete="off">
-        <label htmlFor="username" className="mt-2">Username</label>
-        <input name="username" className="mt-2 p-2 rounded" placeholder="User Name" />
-        <label htmlFor="password" className="mt-4">Password</label>
-        <input type="password" name="password" className="p-2 rounded" placeholder="Password" />
-        <button className="px-6 py-3 mt-6 font-bold text-white bg-blue-400 rounded-lg shadow-md hover:bg-blue-500" type="submit">
-          Log In
-        </button>
-      </fieldset>
+    <form className="w-3/4 p-4 mx-auto my-8 bg-gray-400 text-black-70" onSubmit={handleSubmit}>
+      <h2 className="text-4xl text-center mb-6 text-black-200">Welcome</h2>
+      <div className="flex mb-4">
+        <label className="text-lg font-semibold">Username</label>
+        <input
+          type="text"
+          name="username"
+          value={formData.username}
+          onChange={handleInputChange}
+          className="flex-auto px-2 py-1 bg-white border border-gray-300 rounded-l"
+          required
+        />
+      </div>
+      <div className="flex mb-4">
+        <label className="text-lg font-semibold">Password</label>
+        <input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleInputChange}
+          className="flex-auto px-2 py-1 bg-white border border-gray-300 rounded-l"
+          required
+        />
+      </div>
+      <div className="flex justify-center"> 
+      <button type="submit" className="px-12 py-5  text-black-100 hover:bg-white-800 hover:text-white transition-colors">
+        Log In
+      </button>
+     </div>
     </form>
   );
 }
-
