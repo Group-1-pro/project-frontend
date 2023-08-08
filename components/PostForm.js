@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PostForm = () => {
+export default function PostForm() {
     const handleSubmit = (event) => {
         event.preventDefault();
         // Add your form submission logic here
@@ -60,6 +60,32 @@ const PostForm = () => {
                     />
                 </div>
             </div>
+            <div className="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label htmlFor="email" className="block mb-2 font-bold text-gray-700">
+                        Email:
+                    </label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        className="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
+                    />
+                </div>
+                <div>
+                    <label htmlFor="phone" className="block mb-2 font-bold text-gray-700">
+                        Phone:
+                    </label>
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        required
+                        className="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
+                    />
+                </div>
+            </div>
             <div className="mb-4">
                 <label htmlFor="description" className="block mb-2 font-bold text-gray-700">
                     Description:
@@ -92,6 +118,6 @@ const PostForm = () => {
             </div>
         </form>
     );
-};
+}
 
-export default PostForm;
+
