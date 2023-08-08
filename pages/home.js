@@ -1,5 +1,5 @@
 import Slider from "@/components/Slider";
-
+import Posts from "@/components/Posts";
 
 const Home_page = () => {
   return (
