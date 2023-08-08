@@ -7,7 +7,7 @@ const Home_page = () => {
     <div className="homePageMainDiv">
 
 
-      <div className="homePageParagraphAndbtnDiv">
+      <div className="homePageParagraphAndBtnDiv">
 
         <p>
 
