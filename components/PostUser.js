@@ -3,7 +3,9 @@ import { useRouter } from 'next/router';
 import PostForm from './PostForm';
 import { useAuth } from '@/contexts/auth';
 
+
 const PostUser = () => {
+
   const { tokens, login, user } = useAuth()
   const [posts, setPosts] = useState([]);
   const router = useRouter();
@@ -55,6 +57,7 @@ const PostUser = () => {
     }
   };
 
+  
   const handleEditPost = (postId) => {
     setEditPostId(postId);
   };
@@ -62,46 +65,43 @@ const PostUser = () => {
 
   return (
     <div>
-    {user ? (
-    <div className="flex flex-wrap">
-      {posts.map((post) => (
-        <div key={post.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <img
-              src={post.image}
-              alt={`Post ${post.id}`}
-              className="w-full h-32 object-cover mb-4 rounded-lg"
-            />
-            <h2 className="text-lg font-semibold mb-2">{post.title}</h2>
-            <p className="text-gray-600">{post.description}</p>
+      {user ? (
+        <div className="flex flex-wrap">
+          {posts.map((post) => (
+            <div key={post.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
+              <div className="bg-white rounded-lg shadow-md p-6">
+                <img
+                  src={post.image}
+                  alt={`Post ${post.id}`}
+                  className="w-full h-32 object-cover mb-4 rounded-lg"/>
+                <h2 className="text-lg font-semibold mb-2">{post.title}</h2>
+                <p className="text-gray-600">{post.description}</p>
 
-            <div className="mt-4 flex justify-between">
-              <button
-                onClick={() => handleDeletePost(post.id)}
-                className="px-4 py-2 bg-red-500 text-white rounded-md"
-              >
-                Delete
-              </button>
-              <button
-                onClick={() => handleEditPost(post.id)}
-                className="px-4 py-2 bg-blue-500 text-white rounded-md"
-              >
-                Edit
-              </button>
+                <div className="mt-4 flex justify-between">
+                  <button
+                    onClick={() => handleDeletePost(post.id)}
+                    className="px-4 py-2 bg-red-500 text-white rounded-md">
+                    Delete
+                  </button>
+                  <button
+                    onClick={() => handleEditPost(post.id)}
+                    className="px-4 py-2 bg-blue-500 text-white rounded-md">
+                    Edit
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
+          {editPostId !== null && (
+            <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 flex items-center justify-center">
+              <PostForm
+                post={posts.find((post) => post.id === editPostId)}
+                onClose={() => setEditPostId(null)}
+              />
+            </div>
+          )}
         </div>
-      ))}
-      {editPostId !== null && (
-        <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <PostForm
-            post={posts.find((post) => post.id === editPostId)}
-            onClose={() => setEditPostId(null)}
-          />
-        </div>
-      )}
-    </div>
-    ): ( <LoginForm onLogin={login} />)}
+      ) : (<LoginForm onLogin={login} />)}
     </div>
   );
 

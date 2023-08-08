@@ -1,10 +1,15 @@
-.homePageMainDiv {
+.homePageMainDiv{
+    margin-top: 2%;
+    margin-bottom: 10%;
+}
+
+
+.homePageFirstDiv {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    margin-bottom: 12%;
+    margin-bottom: 10%;
 }
-
 
 
 .homePageParagraphAndBtnDiv {
@@ -24,6 +29,7 @@
     padding-right: 18%;
 }
 
+
 .homePageFirstBtn {
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
@@ -34,6 +40,7 @@
     background-color: #3B82F6;
     cursor: pointer;
 }
+
 
 .homePageSecondBtn {
     padding: 0.5rem 1rem;
@@ -46,15 +53,18 @@
     cursor: pointer;
 }
 
+
 .homePageFirstBtn:hover,
 .homePageSecondBtn:hover {
     background-color: #1D4ED8;
 }
 
+
 .homePageOrParagraph {
     display: inline-block;
     margin: 0.5rem;
 }
+
 
 .homePageSliderDiv {
     width: 50%;
