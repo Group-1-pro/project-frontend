@@ -3,6 +3,7 @@ import { AuthProvider } from '@/contexts/auth'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/homeStyling.css';
 import '../styles/postStyling.css';
+import '../styles/sliderStyling.css';
 
 
 export default function App({ Component, pageProps }) {
