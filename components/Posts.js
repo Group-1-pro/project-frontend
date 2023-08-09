@@ -40,13 +40,14 @@ const Posts = () => {
 
         <div className='postMainDiv'>
 
-            {/* {groupedData.map((group, index) => (
+            {groupedData.map((group, index) => (
                 <div key={index} className="flex justify-between mb-8">
                     {group.map((post) => (
 
                         <div key={post.id} className="max-w-sm w-full lg:max-w-full lg:flex">
 
-                            <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style={{ backgroundImage: "url('https://glacierridgecalgary.ca/wordpress/wp-content/uploads/2021/10/DSC0127-scaled.jpg')" }} title="posts">
+                            <div className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style={{ backgroundImage: `url(http://127.0.0.1:8000${post.images[0].image})` }}
+                                title="posts">
                             </div>
 
                             <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
@@ -66,9 +67,15 @@ const Posts = () => {
                                 <div className="flex items-center">
                                     <img className="w-10 h-10 rounded-full mr-4" src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" alt="Avatar of Jonathan Reinink" />
                                     <div className="text-sm">
-                                        <p className="text-gray-900 leading-none">Posted by: {post.author}</p>
                                         <p className="text-gray-600">Starting At: {post.start_date}</p>
                                         <p className="text-gray-600">Ending At: {post.end_date}</p>
+                                        <p className="text-gray-900 leading-none">Posted by: {post.author_name}</p>
+                                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                            View More
+                                        </button>
+                                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                            Add to favourits
+                                        </button>
                                     </div>
                                 </div>
 
@@ -77,9 +84,9 @@ const Posts = () => {
                         </div>
                     ))}
                 </div>
-            ))} */}
+            ))}
 
-            {groupedData.map((group, index) => (
+            {/* {groupedData.map((group, index) => (
                 <div key={index} className="flex justify-between mb-8">
                     {group.map((post) => (
 
@@ -96,7 +103,8 @@ const Posts = () => {
                                 <p className='postParagraph'>Posted by: {post.author}</p>
                                 <p className='postParagraph'>Starting At: {post.start_date}</p>
                                 <p className='postParagraph'>Ending At: {post.end_date}</p>
-                                <a className='postBtn' href="">Button</a>
+                                <a className='postBtn' href="">View more</a>
+                                
 
                             </div>
 
@@ -107,7 +115,7 @@ const Posts = () => {
                     ))}
                 </div>
 
-            ))}
+            ))} */}
 
 
         </div>
