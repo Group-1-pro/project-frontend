@@ -69,7 +69,7 @@ const Posts = () => {
                                 <p className='postParagraph'>Starting At: {post.start_date}</p>
                                 <p className='postParagraph'>Ending At: {post.end_date}</p>
 
-                                <a className='postBtn' href="">Button</a>
+                                <a className='postBtn' href={`/post/${post.id}`}>View more</a>
 
                             </div>
 
