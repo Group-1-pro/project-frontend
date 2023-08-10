@@ -29,7 +29,7 @@ const Home_page = () => {
             Our platform connects you with transformative volunteering experiences in different countries, fostering cross-cultural understanding and global citizenship.
             <br></br>
 
-            <br></br>
+            {/* <br></br>
             Whether you're passionate about education, healthcare, environmental conservation, or social development, our range of international volunteering programs allows you to contribute your skills and compassion to meaningful projects.
             <br></br>
 
@@ -37,7 +37,7 @@ const Home_page = () => {
             Join us in this exciting journey of giving back, forging connections, and creating lasting memories as you explore the world through the lens of altruism.
             <br>
             </br>
-            Let's unite to be the change we wish to see in the world, one volunteer adventure at a time!
+            Let's unite to be the change we wish to see in the world, one volunteer adventure at a time! */}
           </p>
           <div className="homePage-button-container">
             <button className="homePageFirstBtn" onClick={handleExploreClick}>
