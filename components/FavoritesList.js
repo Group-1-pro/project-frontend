@@ -9,7 +9,7 @@ export default function FavoritesList() {
 
     const fetchFavPostsData = async () => {
         try {
-            const response = await fetch(baseUrl + `wanderhands/favorites`, {
+            const response = await fetch(baseUrl + `wanderhands/favorites/user/${user.id}`, {
                 headers: {
                     Authorization: `Bearer ${tokens?.access}`, // Use the access token from the context
                 },
@@ -55,7 +55,7 @@ export default function FavoritesList() {
     };
 
 
-
+console.log(user)
     return (
         <div>
             {user ? (
