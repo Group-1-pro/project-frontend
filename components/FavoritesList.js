@@ -54,6 +54,26 @@ export default function FavoritesList() {
         }
     };
 
+    const handleDeletePost = async (postId) => {
+        try {
+            const response = await fetch(baseUrl + `wanderhands/favorites/user/${postId}/`, {
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Bearer ${tokens?.access}`,
+                },
+            });
+    
+            if (response.ok) {
+                // Remove the deleted post from the state
+                favSetPosts(fav_posts.filter(post => post.post.id !== postId));
+            } else {
+                console.error('Failed to delete post:', response.status);
+            }
+        } catch (error) {
+            console.error('Error deleting post:', error);
+        }
+    };
+    
 
 console.log(user)
     return (
@@ -72,9 +92,9 @@ console.log(user)
                                     <h3 className='postHs'>{post.location}</h3>
 
                                     <div className="postIcon">
-                                        <div className="iconA"></div>
+                                    <div className="iconA" onClick={() => handleDeletePost(post.post.id)}></div>
                                         <div className="iconB" onClick={() => handleContactPost(post.post.id)}></div>
-                                        <div className="iconC" onClick={() => handleShare(`http://127.0.0.1:8000/post/${post.id}`)}></div>
+                                        <div className="iconC" onClick={() => handleShare(`http://127.0.0.1:8000/post/${post.post.id}`)}></div>
                                     </div>
 
                                     <p className='postParagraph'>{post.post.description}</p>
