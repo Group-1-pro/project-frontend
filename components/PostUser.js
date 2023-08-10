@@ -68,14 +68,31 @@ const PostUser = () => {
       {user ? (
         <div className="flex flex-wrap">
           {posts.map((post) => (
-            <div key={post.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <img
-                  src={post.image}
-                  alt={`Post ${post.id}`}
-                  className="w-full h-32 object-cover mb-4 rounded-lg"/>
-                <h2 className="text-lg font-semibold mb-2">{post.title}</h2>
-                <p className="text-gray-600">{post.description}</p>
+           <div key={post.id} className="postCard">
+
+           <div className="postImgBox">
+               {/* `url(http://127.0.0.1:8000${post.images[0].image})` */}
+               <img className="postImg" src={`http://127.0.0.1:8000${post.images[0].image}`} width="100%" alt="" />
+           </div>
+
+           <div className="postInfo">
+
+               <h3 className='postHs'>{post.title}</h3>
+
+               <h3 className='postHs'>{post.location}</h3>
+
+               <div className="postIcon">
+                   <div className="iconA"></div>
+                   <div className="iconB"></div>
+                   <div className="iconC"></div>
+               </div>
+
+               <p className='postParagraph'>{post.description}</p>
+               <p className='postParagraph'>Posted by: {post.author_name}</p>
+               <p className='postParagraph'>Starting At: {post.start_date}</p>
+               <p className='postParagraph'>Ending At: {post.end_date}</p>
+
+               <a className='postBtn' href={`/post/${post.id}`}>View more</a>
 
                 <div className="mt-4 flex justify-between">
                   <button
