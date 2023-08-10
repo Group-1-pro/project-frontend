@@ -3,16 +3,20 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AboutUs from '@/components/Aboutus';
+import PostForm from '@/components/PostForm';
+
 
 const AboutPage = () => {
+  
   return (
     <>
       <Navbar />
       <main>
-        <h1 className="text-4xl font-bold text-center mt-8">About Us</h1>
+        <h1 className="mt-8 text-4xl font-bold text-center">About Us</h1>
         <AboutUs />
+        <PostForm />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
