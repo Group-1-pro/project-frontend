@@ -21,12 +21,12 @@ export default function LoginForm({ onSubmit }) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center bg-gray-200">
       <div className="max-w-md w-full p-6 bg-white rounded-lg shadow">
-        <h2 className="text-2xl font-semibold mb-4">Log In</h2>
+        <h2 className="text-2xl font-semibold mb-4 text-gray-800">Log In</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-lg font-semibold mb-1">Username</label>
+            <label className="block text-lg font-semibold mb-1 text-gray-700">Username</label>
             <input
               type="text"
               name="username"
@@ -37,7 +37,7 @@ export default function LoginForm({ onSubmit }) {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-lg font-semibold mb-1">Password</label>
+            <label className="block text-lg font-semibold mb-1 text-gray-700">Password</label>
             <input
               type="password"
               name="password"
