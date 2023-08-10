@@ -14,7 +14,7 @@ const PostUser = () => {
 
   const fetchPostsData = async () => {
     try {
-      const response = await fetch(baseUrl + 'wanderhands/post', {
+      const response = await fetch(baseUrl + `wanderhands/post/user/${user.id}`, {
         headers: {
           Authorization: `Bearer ${tokens?.access}`,
         },
@@ -76,7 +76,7 @@ const PostUser = () => {
               <div className="bg-white rounded-lg shadow-md p-6">
                 <div className="postImgBox">
                   {/* `url(http://127.0.0.1:8000${post.images[0].image})` */}
-                  <img className="postImg" src={`http://127.0.0.1:8000${post.image[0].image}`} width="100%" alt="" />
+                  <img className="postImg" src={`http://127.0.0.1:8000${post.images[0].image}`} width="100%" alt="" />
                 </div>
                 <h2 className="text-lg font-semibold mb-2">{post.title}</h2>
                 <p className="text-gray-600">{post.description}</p>
