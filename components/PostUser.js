@@ -14,7 +14,7 @@ const PostUser = () => {
 
   const fetchPostsData = async () => {
     try {
-      const response = await fetch(baseUrl + 'wanderhands/post', {
+      const response = await fetch(baseUrl + `wanderhands/post/user/${user.id}`, {
         headers: {
           Authorization: `Bearer ${tokens?.access}`,
         },
@@ -22,6 +22,7 @@ const PostUser = () => {
       if (response.ok) {
         const data = await response.json();
         setPosts(data);
+        console.log(data);
       } else {
         console.error('Failed to fetch posts data:', response.status);
       }
@@ -36,19 +37,20 @@ const PostUser = () => {
   }, []);
 
 
-  const handleDeletePost = async (id) => {
+  const handleDeletePost = async (postId) => {
     try {
-      const response = await fetch(baseUrl + `wanderhands/post/user/${id}`, {
+      const response = await fetch(baseUrl + `wanderhands/post/user/${postId}/`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+          Authorization: `Bearer ${tokens?.access}`,
         },
       });
 
       if (response.ok) {
-        setPosts((prevPosts) => prevPosts.filter((post) => post.id !== id));
-        console.log(`Deleted post with ID ${id}`);
+        // Update state to remove the deleted post
+        setPosts(prevPosts => prevPosts.filter(post => post.id !== postId));
+        console.log(`Deleted post with ID ${postId}`);
       } else {
         console.error('Failed to delete post:', response.status);
       }
@@ -57,7 +59,9 @@ const PostUser = () => {
     }
   };
 
-  
+
+
+
   const handleEditPost = (postId) => {
     setEditPostId(postId);
   };
@@ -68,31 +72,14 @@ const PostUser = () => {
       {user ? (
         <div className="flex flex-wrap">
           {posts.map((post) => (
-           <div key={post.id} className="postCard">
-
-           <div className="postImgBox">
-               {/* `url(http://127.0.0.1:8000${post.images[0].image})` */}
-               <img className="postImg" src={`http://127.0.0.1:8000${post.images[0].image}`} width="100%" alt="" />
-           </div>
-
-           <div className="postInfo">
-
-               <h3 className='postHs'>{post.title}</h3>
-
-               <h3 className='postHs'>{post.location}</h3>
-
-               <div className="postIcon">
-                   <div className="iconA"></div>
-                   <div className="iconB"></div>
-                   <div className="iconC"></div>
-               </div>
-
-               <p className='postParagraph'>{post.description}</p>
-               <p className='postParagraph'>Posted by: {post.author_name}</p>
-               <p className='postParagraph'>Starting At: {post.start_date}</p>
-               <p className='postParagraph'>Ending At: {post.end_date}</p>
-
-               <a className='postBtn' href={`/post/${post.id}`}>View more</a>
+            <div key={post.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
+              <div className="bg-white rounded-lg shadow-md p-6">
+                <div className="postImgBox">
+                  {/* `url(http://127.0.0.1:8000${post.images[0].image})` */}
+                  <img className="postImg" src={`http://127.0.0.1:8000${post.images[0].image}`} width="100%" alt="" />
+                </div>
+                <h2 className="text-lg font-semibold mb-2">{post.title}</h2>
+                <p className="text-gray-600">{post.description}</p>
 
                 <div className="mt-4 flex justify-between">
                   <button
