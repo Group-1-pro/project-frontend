@@ -1,27 +1,43 @@
-import React from 'react';
-import Navbar from '@/components/Navbar'; 
-import Footer from '@/components/Footer'; 
-import LoginForm from '@/components/LoginForm'; 
-import { useAuth } from '@/contexts/auth';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useAuth } from '../contexts/auth';
+import LoginForm from '@/components/LoginForm';
 
-const SigninPage = () => {
-  const {login , logout , user } =useAuth();
-  const handleSubmitLoginForm = (formData) => {
-    // Perform any actions with the form data here, like logging in or fetching user data
-    console.log('Submitted login form data:', formData);
-    login(formData.username, formData.password);
+const LoginPage = () => {
+  const auth = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    // Check if there are tokens in cookies
+    if (auth.tokens) {
+      router.push('/');
+    }
+  }, [auth.tokens]);
+
+  // useEffect(() => {
+  //   // If there are tokens in cookies, automatically login the user
+  //   if (!auth.tokens && Cookies.get('tokens')) {
+  //     auth.loginWithStoredTokens(); // Implement this function in your AuthProvider
+  //   }
+  // }, []); // Only run this effect once, on component mount
+
+  const handleLogin = async (formData) => {
+    try {
+      await auth.login(formData.username, formData.password);
+      Cookies.set('tokens', JSON.stringify(auth.tokens)); // Store tokens in cookies
+      router.push('/');
+    } catch (error) {
+      console.error("Login error:", error);
+    }
   };
+
   return (
-    <>
-      <Navbar />
-      <main>
-        <h1 className="text-4xl font-bold text-center mt-8">Log In</h1>
-        <LoginForm onSubmit={handleSubmitLoginForm} />
-      </main>
-      <Footer />
-    </>
+    <div>
+      <h2>Login</h2>
+      {auth.error && <p>{auth.error}</p>}
+      <LoginForm onSubmit={handleLogin} />
+    </div>
   );
 };
 
-export default SigninPage;
-
+export default LoginPage;
