@@ -41,6 +41,11 @@ export function AuthProvider(props) {
         }
     }, [state.tokens]);
 
+    useEffect(() => {
+        console.log("User updated:", state.user);
+    }, [state.user]);
+
+
 
     async function login(username, password) {
         // const response =  axios.post(url,{username,password})
@@ -111,6 +116,7 @@ export function AuthProvider(props) {
             user: null,
         }));
     }
+    
 
     return (
         <AuthContext.Provider value={state}>
