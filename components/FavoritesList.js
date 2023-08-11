@@ -62,7 +62,7 @@ export default function FavoritesList() {
                     Authorization: `Bearer ${tokens?.access}`,
                 },
             });
-    
+
             if (response.ok) {
                 // Remove the deleted post from the state
                 favSetPosts(fav_posts.filter(post => post.post.id !== postId));
@@ -73,15 +73,15 @@ export default function FavoritesList() {
             console.error('Error deleting post:', error);
         }
     };
-    
 
-console.log(user)
+
+    console.log(user)
     return (
         <div>
             {user ? (
                 <div className="flex flex-wrap">
                     {fav_posts.map((post) => (
-                        
+
                         <div key={post.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
                             <div className="bg-white rounded-lg shadow-md p-6">
                                 <img className="postImg" src={`http://127.0.0.1:8000${post.post.images[0].image}`} width="100%" alt="" />
@@ -91,11 +91,13 @@ console.log(user)
 
                                     <h3 className='postHs'>{post.location}</h3>
 
-                                    <div className="postIcon">
-                                    <div className="iconA" onClick={() => handleDeletePost(post.post.id)}></div>
+                                    <div className="postIcon" >
+                                        <div className="iconA" onClick={() => handleDeletePost(post.post.id)}>
+                                        </div>
                                         <div className="iconB" onClick={() => handleContactPost(post.post.id)}></div>
                                         <div className="iconC" onClick={() => handleShare(`http://127.0.0.1:8000/post/${post.post.id}`)}></div>
                                     </div>
+
 
                                     <p className='postParagraph'>{post.post.description}</p>
                                     <p className='postParagraph'>Posted by: {post.post.author_name}</p>
