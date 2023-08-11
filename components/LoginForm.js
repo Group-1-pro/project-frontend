@@ -19,7 +19,7 @@ export default function LoginForm({ onSubmit, onClose  }) {
     // Pass the form data to the parent component (Home) using the onSubmit prop
     onSubmit(formData);
     
-    onClose();
+    // onClose();
   };
 
   return (
