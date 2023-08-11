@@ -56,7 +56,7 @@ export default function FavoritesList() {
 
     const handleDeletePost = async (postId) => {
         try {
-            const response = await fetch(baseUrl + `wanderhands/favorites/user/${postId}/`, {
+            const response = await fetch(baseUrl + `wanderhands/favorites/${postId}/`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${tokens?.access}`,
@@ -87,9 +87,9 @@ export default function FavoritesList() {
                                 <img className="postImg" src={`http://127.0.0.1:8000${post.post.images[0].image}`} width="100%" alt="" />
                                 <div className="postInfo">
 
-                                    <h3 className='postHs'>{post.title}</h3>
+                                    <h3 className='postHs'>{post.post.title}</h3>
 
-                                    <h3 className='postHs'>{post.location}</h3>
+                                    <h3 className='postHs'>{post.post.location}</h3>
 
                                     <div className="postIcon" >
                                         <div className="iconA" onClick={() => handleDeletePost(post.post.id)}>

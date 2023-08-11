@@ -177,7 +177,7 @@ const EditForm = ({ post, onCancel, onSave }) => {
                     <img
                         key={index}
                         className="postImg"
-                        src={`http://127.0.0.1:8000${image.image}`}
+                        // src={`http://127.0.0.1:8000${image.image}`}
                         width="100%"
                         alt=""
                     />
