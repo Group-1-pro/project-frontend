@@ -21,12 +21,13 @@ const Navbar = () => {
         <ul className="main-nav">
           <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
-          <li><a href="/favorites">Favorites</a></li>
           {auth.tokens ? (
             <li>
               <a href="#" onClick={handleLogout}>
                 Logout
               </a>
+              <li><a href="/favorites">Profile</a></li>
+
             </li>
           ) : (
             <>
