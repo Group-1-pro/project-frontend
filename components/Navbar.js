@@ -27,7 +27,6 @@ const Navbar = () => {
                 Logout
               </a>
               <li><a href="/favorites">Profile</a></li>
-
             </li>
           ) : (
             <>
