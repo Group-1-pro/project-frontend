@@ -1,30 +1,27 @@
 import React from 'react';
-import Link from 'next/link';
+
 
 const Navbar = () => {
   return (
-    <nav className="bg-gray-500 py-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-white text-2xl font-bold">WanderHands</h1>
-        <ul className="flex space-x-4 text-white">
-          <li>
-            <Link href="/" className="nav-link">Home</Link>
-          </li>
-          <li>
-            <Link href="/about" className="nav-link">About Us</Link>
-          </li>
-          <li>
-            <Link href="/favorites" className="nav-link">Profile</Link>
-          </li>
-          <li>
-            <Link href="/login" className="nav-link">Login</Link>
-          </li>
-          <li>
-            <Link href="/signup" className="nav-link">Sign Up</Link>
-          </li>
+
+    <div>
+
+      <header class="header">
+
+        <h1 class="headerLogo"><a class="headerTitle" href="/">WanderHands</a></h1>
+
+        <ul class="main-nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/favorites">Favorites</a></li>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/signup">Sign Up</a></li>
         </ul>
-      </div>
-    </nav>
+
+      </header>
+
+    </div>
+
   );
 };
 

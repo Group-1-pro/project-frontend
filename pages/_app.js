@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/homeStyling.css';
 import '../styles/postStyling.css';
 import '../styles/sliderStyling.css';
+import '../styles/footerStyling.css';
+import '../styles/navBarStyling.css';
 
 
 export default function App({ Component, pageProps }) {
