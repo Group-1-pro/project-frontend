@@ -11,10 +11,14 @@ const SignUpPage = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    await auth.signUp(username, email, password);
-    router.push('/login');
+    const result = await auth.signUp(username, email, password);
+    if (result.success) {
+      router.push('/login');
+    } else {
+      // Handle the error, display a message, etc.
+      console.error("Sign-up failed:", result.error);
+    }
   };
-
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="max-w-md w-full p-6 bg-white rounded-lg shadow">

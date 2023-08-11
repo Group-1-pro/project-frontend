@@ -1,6 +1,4 @@
-// favorite page
-
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FavoritesList from '@/components/FavoritesList';
@@ -9,7 +7,12 @@ import { useAuth } from '../contexts/auth';
 import LoginForm from '@/components/LoginForm';
 
 export default function FavoritesPage() {
-  const { login, logout, user } = useAuth();
+  const { login, user } = useAuth();
+  const [loginChecked, setLoginChecked] = useState(false);
+
+  useEffect(() => {
+    setLoginChecked(true);
+  }, []);
 
   const handleSubmitLoginForm = (formData) => {
     // Perform any actions with the form data here, like logging in or fetching user data
@@ -19,21 +22,22 @@ export default function FavoritesPage() {
     login(formData.username, formData.password);
   };
 
-
-
   return (
     <>
       <Navbar />
       {console.log(user)}
-      {user ? (
-        <main>
-          <h1 className="text-4xl font-bold text-center mt-8">Favorites</h1>
-          <FavoritesList />
-          <PostUser />
-        </main>
-      ) : (<LoginForm onSubmit={handleSubmitLoginForm} />)}
+      {loginChecked ? (
+        user ? (
+          <main>
+            <h1 className="text-4xl font-bold text-center mt-8">Favorites</h1>
+            <FavoritesList />
+            <PostUser />
+          </main>
+        ) : (
+          <LoginForm onSubmit={handleSubmitLoginForm} />
+        )
+      ) : null}
       {/* <Footer /> */}
-
     </>
   );
 }

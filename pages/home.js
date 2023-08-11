@@ -25,17 +25,17 @@ const Home_page = () => {
   };
 
 
+
   const handleSubmitLoginForm = async (formData) => {
-
-    login(formData.username, formData.password);
-
     try {
       // Call your login function here passing the formData.username and formData.password
-      
-      await handleLogin(formData);
-  
+      await login(formData.username, formData.password);
+
       // Close the form
       setLogForm(false);
+
+      // Redirect to the home page
+      router.push('/'); // Replace '/' with the actual URL of your home page
     } catch (error) {
       console.error("Login error:", error);
     }

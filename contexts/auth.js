@@ -1,19 +1,17 @@
-import { createContext, useContext, useState } from "react"
-import jwt from 'jsonwebtoken'
-import React, { useEffect } from 'react';
+// auth.js
 
+import { createContext, useContext, useState, useEffect } from "react";
+import jwt from 'jsonwebtoken';
 
-//global
+const AuthContext = createContext();
 
 const baseUrl = 'http://127.0.0.1:8000/';
 const tokenUrl = baseUrl + "api/token/";
 
-const AuthContext = createContext();
-
 export function useAuth() {
-    const auth = useContext(AuthContext)
+    const auth = useContext(AuthContext);
     if (!auth) {
-        return ("Error: auth is empty")
+        throw new Error("useAuth must be used within an AuthProvider");
     }
     return auth;
 }
@@ -29,6 +27,7 @@ export function AuthProvider(props) {
         logout,
         signUp,
     });
+
     useEffect(() => {
         if (state.tokens) {
             const decodedAccess = jwt.decode(state.tokens.access);
@@ -45,45 +44,64 @@ export function AuthProvider(props) {
         console.log("User updated:", state.user);
     }, [state.user]);
 
+    async function refreshTokens(refreshToken) {
+        try {
+            const options = {
+                method: "POST",
+                body: JSON.stringify({ refresh: refreshToken }),
+                headers: { 'Content-Type': 'application/json' }
+            };
 
+            const response = await fetch(tokenUrl + 'refresh/', options);
+            const data = await response.json();
+
+            if (response.ok) {
+                localStorage.setItem('tokens', JSON.stringify(data));
+                setState(prevState => ({ ...prevState, tokens: data }));
+            }
+        } catch (error) {
+            console.error("Token refresh error:", error);
+            // Handle error, possibly logout or show notification
+        }
+    }
 
     async function login(username, password) {
-        // const response =  axios.post(url,{username,password})
         try {
             const options = {
                 method: "POST",
                 body: JSON.stringify({ username, password }),
                 headers: { 'Content-Type': 'application/json' }
+            };
 
-            }
+            const response = await fetch(tokenUrl, options);
+            const data = await response.json();
 
-            const response = await fetch(tokenUrl, options)
-            const data = await response.json()
+            if (response.ok) {
+                const decodedAccess = jwt.decode(data.access);
+                const newState = {
+                    tokens: data,
+                    user: {
+                        username: decodedAccess.username,
+                        email: decodedAccess.email,
+                        id: decodedAccess.user_id
+                    }
+                };
 
+                setState(prevState => ({ ...prevState, ...newState }));
 
-
-            console.log("data", data)
-
-            const decodedAccess = jwt.decode(data.access)
-            console.log("decoded", decodedAccess)
-
-            const newState = {
-                tokens: data,
-                user: {
-                    username: decodedAccess.username,
-                    email: decodedAccess.email,
-                    id: decodedAccess.user_id
+                // If you have a refresh token, attempt to refresh access token
+                if (data.refresh) {
+                    await refreshTokens(data.refresh);
                 }
+            } else {
+                throw new Error("Login failed");
             }
-
-            setState(prevState => ({ ...prevState, ...newState }));
         } catch (error) {
             console.error("Login error:", error);
             setState(prevState => ({ ...prevState, error: error.message }));
         }
-
-
     }
+
     async function signUp(username, email, password) {
         try {
             const options = {
@@ -99,14 +117,20 @@ export function AuthProvider(props) {
                 throw new Error(data.detail || "Sign-up failed");
             }
 
-            // Auto-login the user after successful sign-up
+            // Do not auto-login after successful sign-up
+            // Instead, redirect to the login page
             // await login(username, password);
-        }
-        catch (error) {
+
+            // Return a success message or indication
+            return { success: true };
+        } catch (error) {
             console.error("Sign-up error:", error);
             setState(prevState => ({ ...prevState, error: error.message }));
+            // Return an error message or indication
+            return { success: false, error: error.message };
         }
     }
+
 
     function logout() {
         localStorage.removeItem('tokens');
@@ -116,11 +140,10 @@ export function AuthProvider(props) {
             user: null,
         }));
     }
-    
 
     return (
         <AuthContext.Provider value={state}>
             {props.children}
         </AuthContext.Provider>
-    )
+    );
 }
