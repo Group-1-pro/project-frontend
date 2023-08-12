@@ -54,9 +54,9 @@ const Slider = () => {
 
             <div className="slider">
                 <div className="slider-items">
-                    <img className="slider-item" src="https://picsum.photos/id/652/3840/2160" alt="..." />
-                    <img className="slider-item" src="https://picsum.photos/id/579/3840/2160" alt="..." />
-                    <img className="slider-item" src="https://picsum.photos/id/683/3840/2160" alt="..." />
+                    <img className="slider-item" src="https://c0.wallpaperflare.com/preview/462/963/578/blur-charity-collaboration-community.jpg" alt="..." />
+                    <img className="slider-item" src="https://wallpaperaccess.com/full/2580695.jpg" alt="..." />
+                    <img className="slider-item" src="https://static.vecteezy.com/system/resources/previews/007/102/916/original/high-five-team-work-as-a-team-together-air-hands-bless-the-power-tag-team-multi-ethnic-groups-unity-together-in-the-volunteer-community-cooperation-business-team-success-concept-free-photo.JPG" alt="..." />
                 </div>
 
                 <div className="slider-controls">
@@ -71,9 +71,9 @@ const Slider = () => {
                 </div>
 
                 <div className="slider-content">
-                    <h3 className='sliderH3'>Work in Progress</h3>
-                    <h3 className='sliderH3'>Coming Soon</h3>
-                    <h3 className='sliderH3'>Lorem Ipsum</h3>
+                    <h3 className='sliderH3'>Empower</h3>
+                    <h3 className='sliderH3'>Connect</h3>
+                    <h3 className='sliderH3'>Thrive</h3>
                 </div>
             </div>
 
