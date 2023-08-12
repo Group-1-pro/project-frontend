@@ -22,12 +22,16 @@ const Navbar = () => {
           <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
           {auth.tokens ? (
-            <li>
-              <a href="#" onClick={handleLogout}>
-                Logout
-              </a>
-              <li><a href="/favorites">Profile</a></li>
-            </li>
+            <>
+              <li>
+                <a href="/favorites">Profile</a>
+              </li>
+              <li>
+                <a href="#" onClick={handleLogout}>
+                  Logout
+                </a>
+              </li>
+            </>
           ) : (
             <>
               <li><a href="/login">Login</a></li>
