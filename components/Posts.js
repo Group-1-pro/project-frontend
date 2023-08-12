@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
+
 const Posts = () => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [selectedPost, setSelectedPost] = useState(null); // Define selectedPost here
+    const [selectedPost, setSelectedPost] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,7 +30,6 @@ const Posts = () => {
         return <div>No posts available</div>;
     }
 
-    // Group the data into sets of three posts
     const groupedData = [];
     for (let i = 0; i < data.length; i += 4) {
         groupedData.push(data.slice(i, i + 4));
@@ -48,36 +48,42 @@ const Posts = () => {
         event.preventDefault();
 
         if (navigator.share) {
-            // If the navigator.share() API is supported
             navigator.share({
                 url: url,
             }).catch((error) => {
                 console.error('Error sharing:', error);
             });
         } else {
-            // Fallback: Display the URL for manual copying
             alert('Copy the following URL:\n' + url);
         }
     };
 
+
     return (
+
         <div className='postMainDiv'>
             {groupedData.map((group, index) => (
+
+
                 <div key={index} className="postDiv">
                     {group.map((post) => (
+
+
                         <div key={post.id} className="postCard">
                             <div className="postImgBox">
                                 <img className="postImg" src={`http://127.0.0.1:8000${post.images[0].image}`} width="100%" alt="" />
                             </div>
                             <div className="postInfo">
-                                <h3 className='postHs'>{post.title}</h3>
-                                <h3 className='postHs'>{post.location}</h3>
+                                <h6 className='postHTitle'>{post.title}</h6>
+                                <h6 className='postHLocation'>{post.location}</h6>
                                 <div className="postIcon">
                                     <div className="iconA"></div>
                                     <div className="iconB" onClick={() => handleContactPost(post.id)}></div>
                                     <div className="iconC" onClick={(event) => handleShare(event, `http://127.0.0.1:8000/post/${post.id}`)}></div>
                                 </div>
-                                <p className='postParagraph'>{post.description}</p>
+                                <p className='postDescription'>
+                                    {post.description.split('\n').slice(0, 3).join('\n')}
+                                </p>
                                 <p className='postParagraph'>Posted by: {post.author_name}</p>
                                 <p className='postParagraph'>Starting At: {post.start_date}</p>
                                 <p className='postParagraph'>Ending At: {post.end_date}</p>
@@ -85,6 +91,8 @@ const Posts = () => {
                             </div>
                         </div>
                     ))}
+
+
                     {selectedPost && (
                         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
                             <div className="bg-white rounded-lg shadow-lg p-6 max-w-md backdrop-filter backdrop-blur-lg">
@@ -93,7 +101,6 @@ const Posts = () => {
                                 </h2>
                                 <p className="text-gray-700">Email: {selectedPost.email}</p>
                                 <p className="text-gray-700">Phone: {selectedPost.phone}</p>
-                                {/* Add more contact information here if needed */}
                                 <button
                                     onClick={handleCloseContact}
                                     className="mt-4 px-4 py-2 bg-gray-600 text-white rounded-md"
@@ -103,8 +110,6 @@ const Posts = () => {
                             </div>
                         </div>
                     )}
-
-
                 </div>
             ))}
         </div>
