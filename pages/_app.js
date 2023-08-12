@@ -6,6 +6,7 @@ import '../styles/postStyling.css';
 import '../styles/sliderStyling.css';
 import '../styles/footerStyling.css';
 import '../styles/navBarStyling.css';
+import '../styles/aboutStyling.css';
 
 
 export default function App({ Component, pageProps }) {
