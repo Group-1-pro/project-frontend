@@ -54,9 +54,13 @@ const Home_page = () => {
   };
 
   return (
+
     <div className="homePageMainDiv">
+
       <div className="homePageFirstDiv">
+
         <div className="homePageParagraphAndBtnDiv">
+          
           <p>
             Explore the World Through Volunteering: Make a Global Impact
             <br /><br />
@@ -65,10 +69,6 @@ const Home_page = () => {
             where the spirit of volunteerism transcends borders! Engaging in volunteer work abroad offers a unique and rewarding opportunity to immerse yourself in diverse cultures while making a positive impact on communities worldwide.
             <br />
             Our platform connects you with transformative volunteering experiences in different countries, fostering cross-cultural understanding and global citizenship.
-            <br /><br />
-            Whether you're passionate about education, healthcare, environmental conservation, or social development, our range of international volunteering programs allows you to contribute your skills and compassion to meaningful projects.
-            <br /><br />
-            Join us in this exciting journey of giving back, forging connections, and creating lasting memories as you explore the world through the lens of altruism.
           </p>
 
           <div className="homePage-button-container">
@@ -88,6 +88,7 @@ const Home_page = () => {
           <Slider className="w-48" />
         </div>
       </div>
+
       <div className="homePageSecondDiv">
         {showForm ? (
           <div
