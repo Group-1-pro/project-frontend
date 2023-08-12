@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/auth';
-import LoginForm from '../components/LoginForm';
+import LoginForm from '@/components/LoginForm';
 
 export default function FavoritesList() {
     const { tokens, login, user } = useAuth();

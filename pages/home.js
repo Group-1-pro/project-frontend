@@ -8,7 +8,7 @@ import LoginForm from "@/components/LoginForm";
 
 
 const Home_page = () => {
-  const { login ,user } = useAuth();
+  const { login ,user ,logout} = useAuth();
   const sliderRef = useRef(null);
   const [showForm, setShowForm] = useState(false);
   const [logForm, setLogForm] = useState(false);
@@ -24,7 +24,7 @@ const Home_page = () => {
     }
   };
 
-
+  
 
   const handleSubmitLoginForm = async (formData) => {
     try {

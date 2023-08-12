@@ -1,5 +1,5 @@
 import '@/styles/globals.css'
-import { AuthProvider } from '@/contexts/auth'
+import { AuthProvider } from '@/contexts/auth';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/homeStyling.css';
 import '../styles/postStyling.css';
