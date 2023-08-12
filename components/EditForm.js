@@ -172,7 +172,7 @@ const EditForm = ({ post, onCancel, onSave }) => {
                 />
             </div>
             {/* Display preview of edited images */}
-            <div className="flex">
+            {/* <div className="flex">
                 {post.images.map((image, index) => (
                     <img
                         key={index}
@@ -184,7 +184,7 @@ const EditForm = ({ post, onCancel, onSave }) => {
                 ))}
 
                
-            </div>
+            </div> */}
             <div className="mt-4 flex justify-between">
                 <button onClick={onCancel} className="px-4 py-2 bg-red-500 text-white rounded-md">
                     Close

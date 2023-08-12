@@ -26,10 +26,10 @@ export default function Footer() {
 
             <footer>
 
-                <div class="footerContainer">
+                <div className="footerContainer">
 
 
-                    <div class="sec aboutus">
+                    <div className="sec aboutus">
 
                         <h2>About Us</h2>
 
@@ -53,19 +53,19 @@ export default function Footer() {
                             </li>
                         </ul> */}
                         
-                        <div class="wrapper">
-                            <div class="social-icons">
-                                <a class="social-icon mail" href="mailto:esmailjawabreh@gmail.com" target="_blank" rel="author">
-                                    <i class="fa-sharp fa-solid fa-envelope"></i>
+                        <div className="wrapper">
+                            <div className="social-icons">
+                                <a className="social-icon mail" href="mailto:esmailjawabreh@gmail.com" target="_blank" rel="author">
+                                    <i className="fa-sharp fa-solid fa-envelope"></i>
                                 </a>
 
-                                <a class="social-icon instagram" href="https://www.instagram.com/esmail.sudgi/" target="_blank"
+                                <a className="social-icon instagram" href="https://www.instagram.com/esmail.sudgi/" target="_blank"
                                     rel="author">
-                                    <i class="fab fa-instagram"></i>
+                                    <i className="fab fa-instagram"></i>
                                 </a>
 
-                                <a class="social-icon github" href="https://github.com/Esmail-Jawabreh" target="_blank" rel="author">
-                                    <i class="fab fa-github"></i>
+                                <a className="social-icon github" href="https://github.com/Esmail-Jawabreh" target="_blank" rel="author">
+                                    <i className="fab fa-github"></i>
                                 </a>
                             </div>
                         </div>
@@ -73,7 +73,7 @@ export default function Footer() {
                     </div>
 
 
-                    <div class="sec quickLink">
+                    <div className="sec quickLink">
 
                         <h2>Quick Link</h2>
 
@@ -102,25 +102,25 @@ export default function Footer() {
                     </div> */}
 
 
-                    <div class="sec contact">
+                    <div className="sec contact">
                         <h2>Contact Us</h2>
-                        <ul class="info">
+                        <ul className="info">
                             <li>
                                 <span>
-                                    <i class="fad fa-map-marker-alt"></i>
+                                    <i className="fad fa-map-marker-alt"></i>
                                 </span>
                                 <span>
                                     Amman, Jordan
                                 </span>
                             </li>
                             <li>
-                                <span><i class="fad fa-phone"></i></span>
+                                <span><i className="fad fa-phone"></i></span>
                                 <p>
                                     <a href="tel:+962778503808">+962778503808</a> <br />
                                 </p>
                             </li>
                             <li>
-                                <span><i class="fad fa-envelope"></i></span>
+                                <span><i className="fad fa-envelope"></i></span>
                                 <p>
                                     <a href="esmailjawabreh@gmail.com">Esmailjawabreh@gmail.com</a>
                                 </p>
@@ -133,7 +133,7 @@ export default function Footer() {
             </footer>
 
 
-            <div class="copyrightText">
+            <div className="copyrightText">
                 <p>Copyright &copy; 2023 Wander Hands. All Rights Reserved.</p>
             </div>
 
