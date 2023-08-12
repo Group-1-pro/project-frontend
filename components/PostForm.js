@@ -75,7 +75,7 @@ export default function PostForm({ setShowForm }) {
                         placeholder='Title'
                         type="text"
                         name="title"
-                        className='w-full p-1 px-3 text-gray-500 bg-white border-gray-300 rounded-md outline-none' disabled 
+                        className='w-full p-1 px-3 text-gray-500 bg-white border-gray-300 rounded-md outline-none' 
 
                         required />
                 </div>
