@@ -5,11 +5,11 @@
     --hitam: #000;
     --putih: #fff;
     --color1: #f0f0f0;
-    --color2: #444;
+    --color2: #068DA9;
     --color3: #acacac;
-    --color4: #5995fd;
-    --color5: #4d84e2;
-    --link-size: 48px;
+    --color4: #7E1717;
+    --color5: #068DA9;
+    --link-size: 38px;
     --trans-props: all 0.3s ease;
 }
 
@@ -142,10 +142,10 @@ footer .footerContainer .quickLink li a:hover {
 
 .copyrightText {
     width: 100%;
-    background-color: var(--color2);
+    background-color: #068DA9;
     padding: 8px 100px;
     text-align: center;
-    color: var(--color1);
+    color: #ECF8F9;
 }
 
 @media (max-width: 991px) {
@@ -171,15 +171,23 @@ footer .footerContainer .quickLink li a:hover {
 }
 
 
-.wrapper {
 
-    height: 10vh;
 
+
+
+
+
+
+
+.footerWrapper {
+
+    height: 3.5vh;
+    margin-right: 20%;
     text-align: center;
 
 }
 
-.wrapper,
+.footerWrapper,
 .social-icons {
     display: flex;
     align-items: center;
@@ -200,7 +208,7 @@ footer .footerContainer .quickLink li a:hover {
     margin: 8px;
 
     background-color: #DCD7C9;
-    border-radius: 50%;
+    border-radius: 60%;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12);
 
     text-decoration: none;
@@ -211,8 +219,8 @@ footer .footerContainer .quickLink li a:hover {
 .social-icon i {
     margin: auto;
 
-    font-size: 24px;
-    color: rgb(63, 78, 79);
+    font-size: 21px;
+    color: #7E1717;
     z-index: 1;
 }
 
@@ -255,7 +263,7 @@ footer .footerContainer .quickLink li a:hover {
 
 .social-icon:hover i {
 
-    color: #fff;
+    color: #ECF8F9;
 }
 
 .social-icon:hover:after {
