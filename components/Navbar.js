@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth } from '../contexts/auth'; // Import the useAuth hook
+import { useAuth } from '../contexts/auth';
 
 const Navbar = () => {
   const auth = useAuth(); // Use the useAuth hook
@@ -22,12 +22,16 @@ const Navbar = () => {
           <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
           {auth.tokens ? (
-            <li>
-              <a href="#" onClick={handleLogout}>
-                Logout
-              </a>
-              <li><a href="/favorites">Profile</a></li>
-            </li>
+            <>
+              <li>
+                <a href="/favorites">Profile</a>
+              </li>
+              <li>
+                <a href="#" onClick={handleLogout}>
+                  Logout
+                </a>
+              </li>
+            </>
           ) : (
             <>
               <li><a href="/login">Login</a></li>

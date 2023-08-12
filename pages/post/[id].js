@@ -44,24 +44,24 @@ const PostDetail = () => {
         <>
             <Navbar />
             <div className="">
-                <div class="inline-block mr-4 mt-6">
+                <div className="inline-block mr-4 mt-6">
                     <img
                         src={`http://127.0.0.1:8000${data.images[0].image}`}
-                        class="h-auto max-w-md ml-6 rounded-lg hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+                        className="h-auto max-w-md ml-6 rounded-lg hover:shadow-xl transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
                         alt=""
                     />
                 </div>
-                <div class="inline-block mr-4 mt-6">
+                <div className="inline-block mr-4 mt-6">
                     <img
                         src={`http://127.0.0.1:8000${data.images[1].image}`}
-                        class="h-auto max-w-sm rounded-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+                        className="h-auto max-w-sm rounded-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
                         alt=""
                     />
                 </div>
-                <div class="inline-block mt-6">
+                <div className="inline-block mt-6">
                     <img
                         src={`http://127.0.0.1:8000${data.images[2].image}`}
-                        class="h-auto max-w-md rounded-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
+                        className="h-auto max-w-md rounded-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110"
                         alt=""
                     />
                 </div>
@@ -87,16 +87,16 @@ const PostDetail = () => {
                         <span className="w-12 h-1 my-2 rounded-lg dark:bg-violet-400"></span>
                         <p>{data.author_name}</p>
                     </div>
-                    <div class="flex flex-wrap">
-                        <div class="mb-10 w-full shrink-0 grow-0 basis-auto md:mb-0 md:w-6/12 md:px-3 lg:px-6">
-                            <h2 class="mb-6 text-3xl font-bold">Contact us</h2>
-                            <p class="mb-2 text-neutral-500 dark:text-neutral-300">
+                    <div className="flex flex-wrap">
+                        <div className="mb-10 w-full shrink-0 grow-0 basis-auto md:mb-0 md:w-6/12 md:px-3 lg:px-6">
+                            <h2 className="mb-6 text-3xl font-bold">Contact us</h2>
+                            <p className="mb-2 text-neutral-500 dark:text-neutral-300">
                             <FontAwesomeIcon icon={faLocationDot} /> {data.location}
                             </p>
-                            <p class="mb-2 text-neutral-500 dark:text-neutral-300">
+                            <p className="mb-2 text-neutral-500 dark:text-neutral-300">
                             <FontAwesomeIcon icon={faPhoneVolume} /> {data.phone}
                             </p>
-                            <p class="mb-2 text-neutral-500 dark:text-neutral-300">
+                            <p className="mb-2 text-neutral-500 dark:text-neutral-300">
                             <FontAwesomeIcon icon={faEnvelope} />  {data.email}
                             </p>
                             <p class="mb-2 text-neutral-500 dark:text-neutral-300">

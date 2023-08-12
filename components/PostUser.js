@@ -34,8 +34,7 @@ const PostUser = () => {
 
   useEffect(() => {
     fetchPostsData();
-  }, []);
-
+  }, []); // Fetch posts data only once on component mount
 
   const handleDeletePost = async (postId) => {
     try {
@@ -82,10 +81,6 @@ const PostUser = () => {
       console.error('Error updating post:', error);
     }
   };
-
-  useEffect(() => {
-    fetchPostsData();
-  }, []);
 
   return (
     <div>
@@ -142,4 +137,3 @@ const PostUser = () => {
 };
 
 export default PostUser;
-
