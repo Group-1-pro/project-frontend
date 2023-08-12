@@ -6,30 +6,20 @@ import axios from 'axios';
 export default function PostForm({ setShowForm }) {
     const { user, tokens } = useAuth();
     const [images, setImages] = useState([]);
+    const [fileNames, setFileNames] = useState([]); // New state for file names
     const [uploading, setUploading] = useState(false);
 
     const handleImageChange = (e) => {
-        // // Get the selected files from the input element
-        // const files = event.target.files;
-
-        // // Convert the FileList to an array
-        // const filesArray = Array.from(files);
-
-        // // Update the state with the selected files
-        // setUploadedImages(filesArray);
-        // console.log(filesArray)
-
-
         if (e.target.files) {
-            //convert FileList to File[]
+            // Convert FileList to File[]
             const _files = Array.from(e.target.files);
             setImages(_files);
-        };
-    };
-    const handleClose = () => {
-        setShowForm(false);
-    };
 
+            // Update the file names state
+            const _fileNames = _files.map(file => file.name);
+            setFileNames(_fileNames);
+        }
+    };
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
@@ -45,6 +35,7 @@ export default function PostForm({ setShowForm }) {
         formData.append("email", event.target.email.value);
         formData.append("author_id", user.id);
         formData.append("author_name", user.username);
+        console.log(formData);
 
 
 
@@ -61,6 +52,9 @@ export default function PostForm({ setShowForm }) {
         setShowForm(false);
 
     };
+    const handleClose = () => {
+        setShowForm(false);
+    };
     console.log("User:", user);
 
 
@@ -69,122 +63,127 @@ export default function PostForm({ setShowForm }) {
 
 
     return (
-        <form onSubmit={handleSubmit}
-            className="max-w-lg px-8 py-6 mx-auto bg-white rounded shadow-md" encType="multipart/form-data">
-            <div className="grid grid-cols-2 gap-4 mb-4">
-                <div>
-                    <label htmlFor="title" className="block mb-2 font-bold text-gray-700">
-                        Title:
-                    </label>
+
+        <form onSubmit={handleSubmit} className='flex flex-col items-center justify-center w-1/2 p-8 text-white rounded-lg text-orange-800rder-orange bg-amber-500'>
+            <h1 className='flex justify-start w-full font-bold text-orange-900'> Creat a new form </h1>
+            <div className='grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
+                <div className='flex flex-col'>
+                    <label className='text-sm font-bold text-orange-800 '>Title</label>
                     <input
+                        
+                        placeholder='Title'
                         type="text"
-                        id="title"
                         name="title"
-                        required
-                        className="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
-                    />
+                        className='text-orange-800 placeholder-orange-800 rounded-md bg-amber-200'
+                       
+                        required />
                 </div>
-                <div>
-                    <label htmlFor="location" className="block mb-2 font-bold text-gray-700">
-                        Location:
-                    </label>
+                <div className='flex flex-col '>
+                    <label className='text-sm font-bold text-orange-800'>Country</label>
                     <input
                         type="text"
-                        id="location"
+                        placeholder='Country'
                         name="location"
+                        className='text-orange-800 placeholder-orange-800 rounded-md bg-amber-200'
                         required
-                        className="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
                     />
                 </div>
             </div>
-            <div className="grid grid-cols-2 gap-4 mb-4">
-                <div>
-                    <label htmlFor="email" className="block mb-2 font-bold text-gray-700">
-                        Email:
-                    </label>
+            <div className='grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
+                <div className='flex flex-col'>
+                    <label className='text-sm font-bold text-orange-800'>Email</label>
                     <input
                         type="email"
-                        id="email"
+                        placeholder='Email'
                         name="email"
+                        className='text-orange-800 placeholder-orange-800 rounded-md bg-amber-200'
 
-                        className="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
                     />
                 </div>
-                <div>
-                    <label htmlFor="phone" className="block mb-2 font-bold text-gray-700">
-                        Phone:
-                    </label>
+                <div className='flex flex-col '>
+                    <label className='text-sm font-bold text-orange-800'>Phone</label>
                     <input
+                        className='text-orange-800 placeholder-orange-800 rounded-md bg-amber-200'
                         type="tel"
                         id="phone"
                         name="phone"
-
-                        className="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
+                        placeholder='123-456-7890'
                     />
                 </div>
             </div>
-            <div className="grid grid-cols-2 gap-4 mb-4">
-                <div>
-                    <label htmlFor="start_date" className="block mb-2 font-bold text-gray-700">
-                        Start Date:
-                    </label>
+            <div className='grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
+                <div className='flex flex-col '>
+                    <label className='text-sm font-bold text-orange-800'>Start Date</label>
                     <input
                         type="date"
                         id="start_date"
                         name="start_date"
                         required
-                        className="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
+                        className='text-orange-800 placeholder-orange-800 rounded-md bg-amber-200'
                     />
                 </div>
-                <div>
-                    <label htmlFor="end_date" className="block mb-2 font-bold text-gray-700">
-                        End Date:
-                    </label>
+                <div className='flex flex-col '>
+                    <label className='text-sm font-bold text-orange-800'>End Date</label>
                     <input
                         type="date"
                         id="end_date"
                         name="end_date"
                         required
-                        className="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
-                    />
+                        className='text-orange-800 placeholder-orange-800 rounded-md bg-amber-200'
+                        />
+                   
                 </div>
             </div>
-            <div className="mb-4">
-                <label htmlFor="description" className="block mb-2 font-bold text-gray-700">
-                    Description:
-                </label>
+            <div className='flex flex-col w-full gap-4'>
+                <label className='text-sm font-bold text-orange-800'>Description</label>
                 <textarea
-                    id="description"
                     name="description"
                     required
-                    className="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
-                ></textarea>
+                    className='text-orange-800 placeholder-orange-800 rounded-md bg-amber-200'
+                    />
+                    
             </div>
-            <div className="mb-4">
-                <label className="block mb-2 font-bold text-gray-700">
-                    Images:
+
+            <div className="w-full">
+                <label className="block text-sm font-bold text-orange-800 ">
+                    Image
                 </label>
-                <input
-
-                    htmlFor="images"
-                    type="file"
-                    id="images"
-                    name="image"
-                    accept="image/*"
-                    className="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
-                    multiple
-                    onChange={handleImageChange}
-                />
+                <div className="flex items-center justify-center w-full h-40 px-6 pt-5 pb-6 mt-1 border-2 border-red-900 border-dashed rounded-md h">
+                    <div className="w-full text-center">
+                        <svg className="w-20 h-20 mx-auto text-red-300 " stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <div className="flex items-center">
+                            <label htmlFor="images" className="relative mx-3 font-medium bg-white rounded-md cursor-pointer text-amber-900 h-7 w-30 hover:text-red-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-black">
+                                <span className="font-bold">Upload a file</span>
+                                <input
+                                    id="images"
+                                    type="file"
+                                    name="uploaded_images"
+                                    accept="image/*"
+                                    multiple
+                                    onChange={handleImageChange}
+                                    className="sr-only"
+                                />
+                            </label>
+                            <div className="px-2 py-1 text-lg text-w">
+                                {fileNames.length === 1 ? (
+                                    <div>{fileNames[0]}</div>
+                                ) : (
+                                    <div>{fileNames.length} files selected</div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="flex items-end justify-end">
-                <button type="submit" className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline">
-                    Create Post
-                </button>
-                <button type="button" onClick={handleClose} className="px-4 py-2 font-bold text-gray-700 bg-gray-300 rounded hover:bg-gray-400 focus:outline-none focus:shadow-outline">
-                    Close
-                </button>
-
+            <div className='flex justify-end w-full gap-4 m-3'>
+                <button className="px-3 py-2 text-white bg-orange-500 rounded-md" > Create Post </button>
+                <button className="px-3 py-2 text-white rounded-md bg-slate-500" onClick={handleClose} > Close</button>
             </div>
         </form>
+
+
+
     );
 }
