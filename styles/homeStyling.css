@@ -2,6 +2,21 @@ body {
     background-color: #ECF8F9;
 }
 
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 15px;
+
+}
+
+::-webkit-scrollbar-track {
+    background: #ECF8F9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #7E1717;
+}
+
+
 
 .homePageMainDiv {
     margin-top: 4.5%;
