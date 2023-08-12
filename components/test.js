@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import PostDetail from './PostDetail';
 import Link from 'next/link';
 
 

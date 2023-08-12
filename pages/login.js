@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useAuth } from '../contexts/auth';
+import { useAuth } from '@/contexts/auth';
+import Cookies from 'js-cookie'; // Import the Cookies library
 import LoginForm from '@/components/LoginForm';
 
 const LoginPage = () => {
@@ -14,13 +15,6 @@ const LoginPage = () => {
     }
   }, [auth.tokens]);
 
-  // useEffect(() => {
-  //   // If there are tokens in cookies, automatically login the user
-  //   if (!auth.tokens && Cookies.get('tokens')) {
-  //     auth.loginWithStoredTokens(); // Implement this function in your AuthProvider
-  //   }
-  // }, []); // Only run this effect once, on component mount
-
   const handleLogin = async (formData) => {
     try {
       await auth.login(formData.username, formData.password);
@@ -31,6 +25,7 @@ const LoginPage = () => {
     }
   };
 
+  
   return (
     <div>
       <h2>Login</h2>

@@ -3,7 +3,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FavoritesList from '@/components/FavoritesList';
 import PostUser from '@/components/PostUser';
-import { useAuth } from '../contexts/auth';
+import { useAuth } from 'contexts/auth.js';
 import LoginForm from '@/components/LoginForm';
 
 export default function FavoritesPage() {
