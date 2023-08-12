@@ -119,20 +119,12 @@ const Home_page = () => {
               zIndex: 1000,
             }}
           >
-            <div
-              style={{
-                backgroundColor: "white",
-                padding: "20px",
-                borderRadius: "10px",
-                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-                width: "80%",
-                maxWidth: "600px",
-              }}
-            >
+            
+            
               <PostForm setShowForm={setShowForm} />
 
             </div>
-          </div>
+          
         ) : (
           logForm && ( // Only show the login form if logForm is true
             <div
