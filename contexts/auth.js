@@ -34,8 +34,10 @@ export function AuthProvider(props) {
             const user = {
                 username: decodedAccess.username,
                 email: decodedAccess.email,
-                id: decodedAccess.user_id
+                id: decodedAccess.user_id,
+                
             };
+            
             setState(prevState => ({ ...prevState, user }));
         }
     }, [state.tokens]);

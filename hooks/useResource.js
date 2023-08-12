@@ -4,23 +4,19 @@ import useSWR from 'swr';
 
 export default function useResource() {
 
-    const apiUrl = "http://127.0.0.1:8000/wanderhands/post/";
+    const apiUrl = "http://127.0.0.1:8000/wanderhands/post/<int:pk>/";
     const {tokens, logout} = useAuth(); 
     const {data, error, mutate} = useSWR([apiUrl,tokens],fetchResource)
+    const [country, setCountry] = useState([]);
 
-
-
+    
     async function fetchResource(){
         
-        if (!tokens) {
-            return;
-        }
-
         try {
             const response = await fetch(apiUrl,config())
             const responseJSON = await response.json()
-            console.log(responseJSON)
-            return responseJSON;
+            
+            setCountry(responseJSON);
         }
         catch(err){
             handleError(err);
@@ -83,5 +79,6 @@ export default function useResource() {
         loading : tokens && !error && !data,
         createResource,
         deleteResource,
+        Country : country
     }
 }
