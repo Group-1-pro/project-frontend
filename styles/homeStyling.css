@@ -1,6 +1,11 @@
+body {
+    background-color: #ECF8F9;
+}
+
+
 .homePageMainDiv {
-    margin-top: 2%;
-    margin-bottom: 10%;
+    margin-top: 4.5%;
+    /* margin-bottom: 10%; */
 }
 
 
@@ -16,7 +21,7 @@
     padding-right: 1rem;
     width: 50%;
     padding-left: 3%;
-    padding-top: 3%;
+    padding-top: 4%;
 }
 
 
@@ -25,8 +30,9 @@
     flex-direction: column;
     align-items: center;
     gap: 3%;
-    padding-top: 5%;
+    padding-top: 5;
     padding-right: 18%;
+    margin-top: 11%;
 }
 
 
@@ -34,10 +40,10 @@
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
     border-width: 1px;
-    border-color: #1D4ED8;
+    border-color: #7E1717;
     font-weight: 700;
-    color: #ffffff;
-    background-color: #3B82F6;
+    color: #ECF8F9;
+    background-color: #7E1717;
     cursor: pointer;
 }
 
@@ -46,17 +52,17 @@
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
     border-width: 1px;
-    border-color: #1D4ED8;
+    border-color: #7E1717;
     font-weight: 700;
-    color: #ffffff;
-    background-color: #3B82F6;
+    color: #ECF8F9;
+    background-color: #7E1717;
     cursor: pointer;
 }
 
 
 .homePageFirstBtn:hover,
 .homePageSecondBtn:hover {
-    background-color: #1D4ED8;
+    background-color: #E55807;
 }
 
 

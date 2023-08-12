@@ -52,12 +52,12 @@ export default function Footer() {
                                 <a href="#"><i class="fab fa-youtube"></i></a>
                             </li>
                         </ul> */}
-                        
-                        <div className="wrapper">
-                            <div className="social-icons">
-                                <a className="social-icon mail" href="mailto:esmailjawabreh@gmail.com" target="_blank" rel="author">
-                                    {/* <i className="fa-sharp fa-solid fa-envelope"></i> */}
-                                </a>    
+
+                        <div class="footerWrapper">
+                            <div class="social-icons">
+                                <a class="social-icon mail" href="mailto:esmailjawabreh@gmail.com" target="_blank" rel="author">
+                                    <i class="fa-sharp fa-solid fa-envelope"></i>
+                                </a>
 
                                 <a className="social-icon instagram" href="https://www.instagram.com/esmail.sudgi/" target="_blank"
                                     rel="author">
