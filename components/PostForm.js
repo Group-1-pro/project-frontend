@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from 'axios';
 
 export default function PostForm({ setShowForm }) {
-    const { user, tokens } = useAuth();
+    const { user, tokens  } = useAuth();
     const [images, setImages] = useState([]);
     const [fileNames, setFileNames] = useState([]); // New state for file names
     const [uploading, setUploading] = useState(false);
@@ -20,6 +20,7 @@ export default function PostForm({ setShowForm }) {
             setFileNames(_fileNames);
         }
     };
+    console.log("location", user.Location);
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData();
@@ -45,7 +46,7 @@ export default function PostForm({ setShowForm }) {
                 Authorization: `Bearer ${tokens.access}`,
             },
         };
-        const data = await axios.post("http://127.0.0.1:8000/wanderhands/post/", formData, config)
+        const data = await axios.post("http://127.0.0.1:5000/wanderhands/post/", formData, config)
         console.log(data);
         setUploading(false);
 
@@ -64,33 +65,34 @@ export default function PostForm({ setShowForm }) {
 
     return (
 
-        <form onSubmit={handleSubmit} className='flex flex-col items-center justify-center w-1/2 p-8 text-white rounded-lg text-orange-800rder-orange bg-amber-500'>
-            <h1 className='flex justify-start w-full font-bold text-orange-900'> Creat a new form </h1>
+        <form onSubmit={handleSubmit} className='flex flex-col items-center justify-center w-1/2 p-8 text-white bg-white rounded-lg text-orange-600rder-orange'>
+            <h1 className='flex justify-start w-full font-bold text-orange-700'> Creat a new form </h1>
             <div className='grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
-                <div className='flex flex-col'>
-                    <label className='text-sm font-bold text-orange-800 '>Title</label>
+                <div className='flex flex-col order'>
+                    <label className='text-sm font-bold text-orange-600 '>Title</label>
                     <input
 
                         placeholder='Title'
                         type="text"
                         name="title"
-                        className='text-orange-800 placeholder-orange-800 rounded-md bg-amber-200'
+                        className='w-full p-1 px-3 text-gray-500 bg-white border-gray-300 rounded-md outline-none' disabled 
 
                         required />
                 </div>
                 <div className='flex flex-col'>
-                    <label className='text-sm font-bold text-orange-800'>Country</label>
+                    <label className='text-sm font-bold text-orange-600'>Country</label>
                     <input
                         type="text"
                         name="location"
-                        className='text-orange-800 placeholder-orange-800 rounded-md bg-amber-200'
+                        className='w-full p-1 px-3 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
                         list="country-list"
+                        placeholder='Country'
                         required
                     />
                         <datalist id="country-list">
-                            <option>select country</option>
+                            <option>select-country</option>
                             <option>Afghanistan</option>
-                            <option>Aland Islands</option>
+                            <option>Aland-Islands</option>
                             <option>Albania</option>
                             <option>Algeria</option>
                             <option>American Samoa</option>
@@ -98,7 +100,7 @@ export default function PostForm({ setShowForm }) {
                             <option>Angola</option>
                             <option>Anguilla</option>
                             <option>Antarctica</option>
-                            <option>Antigua and Barbuda</option>
+                            <option>Antigua-and-Barbuda</option>
                             <option>Argentina</option>
                             <option>Armenia</option>
                             <option>Aruba</option>
@@ -116,58 +118,58 @@ export default function PostForm({ setShowForm }) {
                             <option>Bermuda</option>
                             <option>Bhutan</option>
                             <option>Bolivia</option>
-                            <option>Bonaire, Sint Eustatius and Saba</option>
-                            <option>Bosnia and Herzegovina</option>
+                            
+                            <option>Bosnia-and-Herzegovina</option>
                             <option>Botswana</option>
-                            <option>Bouvet Island</option>
+                            <option>Bouvet-Island</option>
                             <option>Brazil</option>
-                            <option>British Indian Ocean Territory</option>
-                            <option>Brunei Darussalam</option>
+                            <option>British-Indian-Ocean-Territory</option>
+                            <option>Brunei-Darussalam</option>
                             <option>Bulgaria</option>
-                            <option>Burkina Faso</option>
+                            <option>Burkina-Faso</option>
                             <option>Burundi</option>
                             <option>Cambodia</option>
                             <option>Cameroon</option>
                             <option>Canada</option>
-                            <option>Cape Verde</option>
-                            <option>Cayman Islands</option>
-                            <option>Central African Republic</option>
+                            <option>Cape-Verde</option>
+                            <option>Cayman-Islands</option>
+                            <option>Central-African-Republic</option>
                             <option>Chad</option>
                             <option>Chile</option>
                             <option>China</option>
-                            <option>Christmas Island</option>
-                            <option>Cocos (Keeling) Islands</option>
+                            <option>Christmas-Island</option>
+                            
                             <option>Colombia</option>
                             <option>Comoros</option>
                             <option>Congo</option>
-                            <option>Congo, Democratic Republic of the Congo</option>
-                            <option>Cook Islands</option>
-                            <option>Costa Rica</option>
-                            <option>Cote D'Ivoire</option>
+                            <option>Congo, Democratic-Republic-of-the-Congo</option>
+                            <option>Cook-Islands</option>
+                            <option>Costa-Rica</option>
+                            <option>Cote-D'Ivoire</option>
                             <option>Croatia</option>
                             <option>Cuba</option>
                             <option>Curacao</option>
                             <option>Cyprus</option>
-                            <option>Czech Republic</option>
+                            <option>Czech-Republic</option>
                             <option>Denmark</option>
                             <option>Djibouti</option>
                             <option>Dominica</option>
                             <option>Dominican Republic</option>
                             <option>Ecuador</option>
                             <option>Egypt</option>
-                            <option>El Salvador</option>
-                            <option>Equatorial Guinea</option>
+                            <option>El-Salvador</option>
+                            <option>Equatorial-Guinea</option>
                             <option>Eritrea</option>
                             <option>Estonia</option>
                             <option>Ethiopia</option>
-                            <option>Falkland Islands (Malvinas)</option>
-                            <option>Faroe Islands</option>
+                            
+                            <option>Faroe-Islands</option>
                             <option>Fiji</option>
                             <option>Finland</option>
                             <option>France</option>
-                            <option>French Guiana</option>
-                            <option>French Polynesia</option>
-                            <option>French Southern Territories</option>
+                            <option>French-Guiana</option>
+                            <option>French-Polynesia</option>
+                            <option>French-Southern-Territories</option>
                             <option>Gabon</option>
                             <option>Gambia</option>
                             <option>Georgia</option>
@@ -185,19 +187,19 @@ export default function PostForm({ setShowForm }) {
                             <option>Guinea-Bissau</option>
                             <option>Guyana</option>
                             <option>Haiti</option>
-                            <option>Heard Island and Mcdonald Islands</option>
-                            <option>Holy See (Vatican City State)</option>
+                            
+                            
                             <option>Honduras</option>
-                            <option>Hong Kong</option>
+                            <option>Hong-Kong</option>
                             <option>Hungary</option>
                             <option>Iceland</option>
                             <option>India</option>
                             <option>Indonesia</option>
-                            <option>Iran, Islamic Republic of</option>
+                            <option>Iran</option>
                             <option>Iraq</option>
                             <option>Ireland</option>
-                            <option>Isle of Man</option>
-                            <option>Israel</option>
+                            
+                            
                             <option>Italy</option>
                             <option>Jamaica</option>
                             <option>Japan</option>
@@ -206,36 +208,36 @@ export default function PostForm({ setShowForm }) {
                             <option>Kazakhstan</option>
                             <option>Kenya</option>
                             <option>Kiribati</option>
-                            <option>Korea, Democratic People's Republic of</option>
-                            <option>Korea, Republic of</option>
+                            <option>Korea</option>
+                            
                             <option>Kosovo</option>
                             <option>Kuwait</option>
                             <option>Kyrgyzstan</option>
-                            <option>Lao People's Democratic Republic</option>
+                            
                             <option>Latvia</option>
                             <option>Lebanon</option>
                             <option>Lesotho</option>
                             <option>Liberia</option>
-                            <option>Libyan Arab Jamahiriya</option>
+                           
                             <option>Liechtenstein</option>
                             <option>Lithuania</option>
                             <option>Luxembourg</option>
                             <option>Macao</option>
-                            <option>Macedonia, the Former Yugoslav Republic of</option>
+                            
                             <option>Madagascar</option>
                             <option>Malawi</option>
                             <option>Malaysia</option>
                             <option>Maldives</option>
                             <option>Mali</option>
                             <option>Malta</option>
-                            <option>Marshall Islands</option>
+                            <option>Marshall-Islands</option>
                             <option>Martinique</option>
                             <option>Mauritania</option>
                             <option>Mauritius</option>
                             <option>Mayotte</option>
                             <option>Mexico</option>
-                            <option>Micronesia, Federated States of</option>
-                            <option>Moldova, Republic of</option>
+                            <option>Micronesia</option>
+                            <option>Moldova</option>
                             <option>Monaco</option>
                             <option>Mongolia</option>
                             <option>Montenegro</option>
@@ -246,21 +248,20 @@ export default function PostForm({ setShowForm }) {
                             <option>Namibia</option>
                             <option>Nauru</option>
                             <option>Nepal</option>
-                            <option>Netherlands</option>
-                            <option>Netherlands Antilles</option>
-                            <option>New Caledonia</option>
-                            <option>New Zealand</option>
+                            <option>Netherlands</option>                            
+                            <option>New-Caledonia</option>
+                            <option>New-Zealand</option>
                             <option>Nicaragua</option>
                             <option>Niger</option>
                             <option>Nigeria</option>
                             <option>Niue</option>
-                            <option>Norfolk Island</option>
-                            <option>Northern Mariana Islands</option>
+                            <option>Norfolk-Island</option>
+                            <option>Northern-Mariana-Islands</option>
                             <option>Norway</option>
                             <option>Oman</option>
                             <option>Pakistan</option>
                             <option>Palau</option>
-                            <option>Palestinian Territory, Occupied</option>
+                            <option>Palestinian</option>
                             <option>Panama</option>
                             <option>Papua New Guinea</option>
                             <option>Paraguay</option>
@@ -269,75 +270,75 @@ export default function PostForm({ setShowForm }) {
                             <option>Pitcairn</option>
                             <option>Poland</option>
                             <option>Portugal</option>
-                            <option>Puerto Rico</option>
+                            <option>Puerto-Rico</option>
                             <option>Qatar</option>
                             <option>Reunion</option>
                             <option>Romania</option>
-                            <option>Russian Federation</option>
+                            <option>Russian-Federation</option>
                             <option>Rwanda</option>
-                            <option>Saint Barthelemy</option>
-                            <option>Saint Helena</option>
-                            <option>Saint Kitts and Nevis</option>
-                            <option>Saint Lucia</option>
-                            <option>Saint Martin</option>
-                            <option>Saint Pierre and Miquelon</option>
-                            <option>Saint Vincent and the Grenadines</option>
+                            <option>Saint-Barthelemy</option>
+                            <option>Saint-Helena</option>
+                            <option>Saint-Kitts and Nevis</option>
+                            <option>Saint-Lucia</option>
+                            <option>Saint-Martin</option>
+                            <option>Saint-Pierre and Miquelon</option>
+                            <option>Saint-Vincent and the Grenadines</option>
                             <option>Samoa</option>
-                            <option>San Marino</option>
-                            <option>Sao Tome and Principe</option>
-                            <option>Saudi Arabia</option>
+                            <option>San-Marino</option>
+                            <option>Sao-Tome and Principe</option>
+                            <option>Saudi-Arabia</option>
                             <option>Senegal</option>
                             <option>Serbia</option>
-                            <option>Serbia and Montenegro</option>
+                            <option>Serbia-and-Montenegro</option>
                             <option>Seychelles</option>
-                            <option>Sierra Leone</option>
+                            <option>Sierra-Leone</option>
                             <option>Singapore</option>
-                            <option>Sint Maarten</option>
+                            <option>Sint-Maarten</option>
                             <option>Slovakia</option>
                             <option>Slovenia</option>
-                            <option>Solomon Islands</option>
+                            <option>Solomon-Islands</option>
                             <option>Somalia</option>
-                            <option>South Africa</option>
-                            <option>South Georgia and the South Sandwich Islands</option>
-                            <option>South Sudan</option>
+                            <option>South-Africa</option>
+                            
+                            <option>South-Sudan</option>
                             <option>Spain</option>
-                            <option>Sri Lanka</option>
+                            <option>Sri-Lanka</option>
                             <option>Sudan</option>
                             <option>Suriname</option>
-                            <option>Svalbard and Jan Mayen</option>
+                            
                             <option>Swaziland</option>
                             <option>Sweden</option>
                             <option>Switzerland</option>
-                            <option>Syrian Arab Republic</option>
-                            <option>Taiwan, Province of China</option>
+                            
+                            <option>Taiwan</option>
                             <option>Tajikistan</option>
-                            <option>Tanzania, United Republic of</option>
+                            <option>Tanzania</option>
                             <option>Thailand</option>
                             <option>Timor-Leste</option>
                             <option>Togo</option>
                             <option>Tokelau</option>
                             <option>Tonga</option>
-                            <option>Trinidad and Tobago</option>
+                            <option>Trinidad-and-Tobago</option>
                             <option>Tunisia</option>
                             <option>Turkey</option>
                             <option>Turkmenistan</option>
-                            <option>Turks and Caicos Islands</option>
+                            
                             <option>Tuvalu</option>
                             <option>Uganda</option>
                             <option>Ukraine</option>
-                            <option>United Arab Emirates</option>
-                            <option>United Kingdom</option>
-                            <option>United States</option>
-                            <option>United States Minor Outlying Islands</option>
+                            <option>United-Arab-Emirates</option>
+                            <option>United-Kingdom</option>
+                            <option>United-States</option>
+                            
                             <option>Uruguay</option>
                             <option>Uzbekistan</option>
                             <option>Vanuatu</option>
                             <option>Venezuela</option>
                             <option>Viet Nam</option>
-                            <option>Virgin Islands, British</option>
-                            <option>Virgin Islands, U.s.</option>
-                            <option>Wallis and Futuna</option>
-                            <option>Western Sahara</option>
+                            <option>British-Virgin-Islands</option>
+                                                        
+                            <option>Wallis-and-Futuna</option>
+                            <option>Western-Sahara</option>
                             <option>Yemen</option>
                             <option>Zambia</option>
                             <option>Zimbabwe</option>
@@ -346,61 +347,61 @@ export default function PostForm({ setShowForm }) {
             </div>
             <div className='grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
                 <div className='flex flex-col'>
-                    <label className='text-sm font-bold text-orange-800'>Email</label>
+                    <label className='text-sm font-bold text-orange-600'>Email</label>
                     <input
                         type="email"
                         placeholder='Email'
                         name="email"
-                        className='text-orange-800 placeholder-orange-800 rounded-md bg-amber-200'
+                        className='w-full p-1 px-3 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
 
                     />
                 </div>
                 <div className='flex flex-col '>
-                    <label className='text-sm font-bold text-orange-800'>Phone</label>
+                    <label className='text-sm font-bold text-orange-600'>Phone</label>
                     <input
-                        className='text-orange-800 placeholder-orange-800 rounded-md bg-amber-200'
                         type="tel"
                         id="phone"
                         name="phone"
                         placeholder='123-456-7890'
+                        className='w-full p-1 px-3 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
                     />
                 </div>
             </div>
             <div className='grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
                 <div className='flex flex-col '>
-                    <label className='text-sm font-bold text-orange-800'>Start Date</label>
+                    <label className='text-sm font-bold text-orange-600'>Start Date</label>
                     <input
                         type="date"
                         id="start_date"
                         name="start_date"
                         required
-                        className='text-orange-800 placeholder-orange-800 rounded-md bg-amber-200'
+                        className='w-full p-1 px-3 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
                     />
                 </div>
                 <div className='flex flex-col '>
-                    <label className='text-sm font-bold text-orange-800'>End Date</label>
+                    <label className='text-sm font-bold text-orange-600'>End Date</label>
                     <input
                         type="date"
                         id="end_date"
                         name="end_date"
                         required
-                        className='text-orange-800 placeholder-orange-800 rounded-md bg-amber-200'
+                        className='w-full p-1 px-3 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
                     />
 
                 </div>
             </div>
             <div className='flex flex-col w-full gap-4'>
-                <label className='text-sm font-bold text-orange-800'>Description</label>
+                <label className='text-sm font-bold text-orange-600'>Description</label>
                 <textarea
                     name="description"
                     required
-                    className='text-orange-800 placeholder-orange-800 rounded-md bg-amber-200'
+                    className='w-full h-20 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
                 />
 
             </div>
 
             <div className="w-full">
-                <label className="block text-sm font-bold text-orange-800 ">
+                <label className="block text-sm font-bold text-orange-600 ">
                     Image
                 </label>
                 <div className="flex items-center justify-center w-full h-40 px-6 pt-5 pb-6 mt-1 border-2 border-red-900 border-dashed rounded-md h">
@@ -409,8 +410,8 @@ export default function PostForm({ setShowForm }) {
                             <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         <div className="flex items-center">
-                            <label htmlFor="images" className="relative mx-3 font-medium bg-white rounded-md cursor-pointer text-amber-900 h-7 w-30 hover:text-red-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-black">
-                                <span className="font-bold">Upload a file</span>
+                            <label htmlFor="images" className="relative w-40 mx-3 font-medium bg-orange-400 border border-orange-600 rounded-md outline-none cursor-pointer text-amber-900 h-7 hover:text-red-600">
+                                <span className="font-bold p -2">Upload a file</span>
                                 <input
                                     id="images"
                                     type="file"
@@ -421,7 +422,7 @@ export default function PostForm({ setShowForm }) {
                                     className="sr-only"
                                 />
                             </label>
-                            <div className="px-2 py-1 text-lg text-w">
+                            <div className="px-2 py-1 text-lg text-black text-w">
                                 {fileNames.length === 1 ? (
                                     <div>{fileNames[0]}</div>
                                 ) : (
@@ -433,7 +434,7 @@ export default function PostForm({ setShowForm }) {
                 </div>
             </div>
             <div className='flex justify-end w-full gap-4 m-3'>
-                <button className="px-3 py-2 text-white bg-orange-500 rounded-md" > Create Post </button>
+                <button className="px-3 py-2 text-white bg-orange-600 rounded-md" > Create Post </button>
                 <button className="px-3 py-2 text-white rounded-md bg-slate-500" onClick={handleClose} > Close</button>
             </div>
         </form>

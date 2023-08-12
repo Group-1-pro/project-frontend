@@ -6,7 +6,7 @@ import AboutUs from '@/components/Aboutus';
 
 
 
-
+ 
 const AboutPage = () => {
   
   return (
