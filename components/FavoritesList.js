@@ -32,7 +32,7 @@ export default function FavoritesList() {
     const [selectedPost, setSelectedPost] = useState(null);
 
     const handleContactPost = (postId) => {
-        const selected = fav_posts.find((post) => post.post.id === postId);
+        const selected = fav_posts.find((post) => post.id === postId);
         setSelectedPost(selected);
     };
 
@@ -65,7 +65,7 @@ export default function FavoritesList() {
 
             if (response.ok) {
                 // Remove the deleted post from the state
-                favSetPosts(fav_posts.filter(post => post.post.id !== postId));
+                favSetPosts(fav_posts.filter(post => post.id !== postId));
             } else {
                 console.error('Failed to delete post:', response.status);
             }
@@ -92,7 +92,7 @@ export default function FavoritesList() {
                                     <h3 className='postHs'>{post.post.location}</h3>
 
                                     <div className="postIcon" >
-                                        <div className="iconA" onClick={() => handleDeletePost(post.post.id)}>
+                                        <div className="iconA" onClick={() => handleDeletePost(post.id)}>
                                         </div>
                                         <div className="iconB" onClick={() => handleContactPost(post.post.id)}></div>
                                         <div className="iconC" onClick={() => handleShare(`http://127.0.0.1:8000/post/${post.post.id}`)}></div>
