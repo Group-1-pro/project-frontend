@@ -6,6 +6,7 @@ const Navbar = () => {
   const auth = useAuth();
   const router = useRouter();
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showAuthDropdown, setShowAuthDropdown] = useState(false);
 
   const handleLogout = async () => {
     await auth.logout();
@@ -18,6 +19,10 @@ const Navbar = () => {
 
   const handleDropdownToggle = () => {
     setShowDropdown(!showDropdown);
+  };
+
+  const handleAuthDropdownToggle = () => {
+    setShowAuthDropdown(!showAuthDropdown);
   };
 
   return (
@@ -52,49 +57,24 @@ const Navbar = () => {
               )}
             </li>
           ) : (
-            <>
-              <li><a href="/login">Login</a></li>
-              <li><a href="/signup">Sign Up</a></li>
-            </>
+            <li className="auth-dropdown">
+              <a href="#" onClick={handleAuthDropdownToggle} className="profile-link">
+                Account {showAuthDropdown ? '▲' : '▼'}
+              </a>
+              {showAuthDropdown && (
+                <ul className="dropdown-menu">
+                  <li>
+                    <a href="/login">Login</a>
+                  </li>
+                  <li>
+                    <a href="/signup">Sign Up</a>
+                  </li>
+                </ul>
+              )}
+            </li>
           )}
         </ul>
       </header>
-      <style jsx>{`
-        .main-nav {
-          list-style: none;
-          display: flex;
-          gap: 20px;
-        }
-
-        .profile-link {
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-        }
-
-        .profile-dropdown {
-          position: relative;
-        }
-
-        .dropdown-menu {
-          position: absolute;
-          top: 100%;
-          right: 0;
-          background-color: #fff;
-          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-          list-style: none;
-          padding: 8px 0;
-          border-radius: 5px;
-          display: flex;
-          flex-direction: column;
-          width: 120px;
-          z-index: 1;
-        }
-
-        .dropdown-menu li {
-          padding: 8px;
-        }
-      `}</style>
     </div>
   );
 };

@@ -89,3 +89,43 @@ ul {
     }
 
 }
+
+
+.main-nav {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+
+  .profile-link {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  .profile-dropdown {
+    position: relative;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #7E1717;
+    border: 1px solid #068DA9;
+    list-style: none;
+    padding: 8px 0;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 120px;
+    z-index: 1;
+  }
+
+  .dropdown-menu li {
+    padding: 8px;
+  }
+
+  .auth-dropdown {
+    position: relative;
+  }
