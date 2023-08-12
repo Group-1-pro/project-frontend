@@ -31,8 +31,8 @@ const Posts = () => {
 
     // Group the data into sets of three posts
     const groupedData = [];
-    for (let i = 0; i < data.length; i += 3) {
-        groupedData.push(data.slice(i, i + 3));
+    for (let i = 0; i < data.length; i += 4) {
+        groupedData.push(data.slice(i, i + 4));
     }
 
     const handleContactPost = (postId) => {
@@ -63,7 +63,7 @@ const Posts = () => {
     return (
         <div className='postMainDiv'>
             {groupedData.map((group, index) => (
-                <div key={index} className="flex justify-between mb-8">
+                <div key={index} className="postDiv">
                     {group.map((post) => (
                         <div key={post.id} className="postCard">
                             <div className="postImgBox">

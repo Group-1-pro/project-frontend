@@ -16,7 +16,7 @@ const Home_page = () => {
 
   const handleExploreClick = () => {
     if (sliderRef.current) {
-      const yOffset = 800;
+      const yOffset = 630; // Adjust this value to scroll even further down
       const topPosition = sliderRef.current.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({ top: topPosition + yOffset, behavior: "smooth" });
     }
@@ -31,6 +31,19 @@ const Home_page = () => {
       console.error("Login error:", error);
     }
   };
+
+
+
+  // const handleSubmitLoginForm = (formData) => {
+  //   // Perform any actions with the form data here, like logging in or fetching user data
+  //   console.log('Submitted login form data:', formData);
+
+  //   // Call your login function here passing the formData.username and formData.password
+  //   login(formData.username, formData.password);
+
+
+
+  // };
 
   const handleAddOpportunityClick = () => {
     if (!user) {
@@ -57,6 +70,7 @@ const Home_page = () => {
             <br /><br />
             Join us in this exciting journey of giving back, forging connections, and creating lasting memories as you explore the world through the lens of altruism.
           </p>
+
           <div className="homePage-button-container">
             <button className="homePageFirstBtn" onClick={handleExploreClick}>
               Explore Opportunities
@@ -66,7 +80,9 @@ const Home_page = () => {
               Add new Opportunities
             </button>
           </div>
+
         </div>
+
         <div className="homePageSliderDiv" ref={sliderRef}>
           <div id="slider-anchor" />
           <Slider className="w-48" />
