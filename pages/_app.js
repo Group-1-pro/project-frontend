@@ -8,7 +8,6 @@ import '../styles/footerStyling.css';
 import '../styles/navBarStyling.css';
 import '../styles/aboutStyling.css';
 
-
 export default function App({ Component, pageProps }) {
 
   return <AuthProvider>
