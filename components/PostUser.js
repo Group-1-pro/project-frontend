@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/contexts/auth';
 import EditForm from '@/components/EditForm';
+import LoginForm from '@/components/LoginForm';
 import {
   Typography,
   Avatar,
@@ -61,7 +62,7 @@ const PostUser = () => {
                <div className="demo-card-wrapper">
                  {posts.map((post, index) => (
                    <div key={post.id} className="mb-4">
-                     <div className="border-b pb-4">
+                     <div className="pb-4 border-b">
                        <div className="flex items-start space-x-4">
                          <Avatar
                            size="sm"
@@ -81,7 +82,7 @@ const PostUser = () => {
                      </div>
                      <div className="mt-2">
                        <hr className="border-gray-300" />
-                       <div className="flex items-center space-x-4 mt-2">
+                       <div className="flex items-center mt-2 space-x-4">
                          <Button
                            onClick={() => handleDeletePost(post.id)}
                            color="red"
@@ -89,7 +90,7 @@ const PostUser = () => {
                            ripple="dark"
                            className="bg-red-500 hover:bg-red-600"
                          >
-                           <i className="material-icons text-white">delete</i>
+                           <i className="text-white material-icons">delete</i>
                          </Button>
                          <Button
                            onClick={() => handleEditPost(post)}
@@ -98,7 +99,7 @@ const PostUser = () => {
                            ripple="dark"
                            className="bg-blue-500 hover:bg-blue-600"
                          >
-                           <i className="material-icons text-white">edit</i>
+                           <i className="text-white material-icons">edit</i>
                          </Button>
                        </div>
                      </div>
@@ -111,11 +112,12 @@ const PostUser = () => {
       )}
 
       {showEditForm && (
-        <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <EditForm
             post={editedPost}
             onCancel={handleEditFormCancel}
             onSave={handleEditFormSave}
+            setShowEditForm={setShowEditForm}
           />
         </div>
       )}
