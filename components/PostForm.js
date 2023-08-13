@@ -69,22 +69,22 @@ export default function PostForm({ setShowForm }) {
             <h1 className='flex justify-start w-full font-bold text-[#7E1717]'> Creat a new form </h1>
             <div className='grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
                 <div className='flex flex-col order'>
-                    <label className='text-sm font-bold text-[#7E1717]'>Title</label>
+                    <label className='text-xl   font-bold text-[#7E1717]'>Title</label>
                     <input
 
                         placeholder='Title'
                         type="text"
                         name="title"
-                        className='w-full p-1 px-3 text-gray-500 bg-white border-gray-300 rounded-md outline-none'
+                        className='w-full p-1 text-gray-500 bg-white border-gray-300 rounded-md outline-none'
 
                         required />
                 </div>
                 <div className='flex flex-col'>
-                    <label className='text-sm font-bold text-[#7E1717]'>Country</label>
+                    <label className='text-xl   font-bold text-[#7E1717]'>Country</label>
                     <input
                         type="text"
                         name="location"
-                        className='w-full p-1 px-3 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
+                        className='w-full p-1 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
                         list="country-list"
                         placeholder='Country'
                         required
@@ -346,51 +346,51 @@ export default function PostForm({ setShowForm }) {
             </div>
             <div className='grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
                 <div className='flex flex-col'>
-                    <label className='text-sm font-bold text-[#7E1717]'>Email</label>
+                    <label className='text-xl   font-bold text-[#7E1717]'>Email</label>
                     <input
                         type="email"
                         placeholder='Email'
                         name="email"
-                        className='w-full p-1 px-3 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
+                        className='w-full p-1 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
 
                     />
                 </div>
                 <div className='flex flex-col '>
-                    <label className='text-sm font-bold text-[#7E1717]'>Phone</label>
+                    <label className='text-xl   font-bold text-[#7E1717]'>Phone</label>
                     <input
                         type="tel"
                         id="phone"
                         name="phone"
                         placeholder='123-456-7890'
-                        className='w-full p-1 px-3 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
+                        className='w-full p-1 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
                     />
                 </div>
             </div>
             <div className='grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
                 <div className='flex flex-col '>
-                    <label className='text-sm font-bold text-[#7E1717]'>Start Date</label>
+                    <label className='text-xl   font-bold text-[#7E1717]'>Start Date</label>
                     <input
                         type="date"
                         id="start_date"
                         name="start_date"
                         required
-                        className='w-full p-1 px-3 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
+                        className='w-full p-1 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
                     />
                 </div>
                 <div className='flex flex-col '>
-                    <label className='text-sm font-bold text-[#7E1717]'>End Date</label>
+                    <label className='text-xl   font-bold text-[#7E1717]'>End Date</label>
                     <input
                         type="date"
                         id="end_date"
                         name="end_date"
                         required
-                        className='w-full p-1 px-3 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
+                        className='w-full p-1 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
                     />
 
                 </div>
             </div>
             <div className='flex flex-col w-full gap-4'>
-                <label className='text-sm font-bold text-[#7E1717]'>Description</label>
+                <label className='text-xl  font-bold text-[#7E1717]'>Description</label>
                 <textarea
                     name="description"
                     required
