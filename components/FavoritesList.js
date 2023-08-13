@@ -1,17 +1,18 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useAuth } from '../contexts/auth';
 import LoginForm from '@/components/LoginForm';
 
 export default function FavoritesList() {
     const { tokens, login, user } = useAuth();
     const [fav_posts, favSetPosts] = useState([]);
+    const cardContainerRef = useRef(null);
     const baseUrl = 'http://127.0.0.1:8000/';
 
     const fetchFavPostsData = async () => {
         try {
             const response = await fetch(baseUrl + `wanderhands/favorites/user/${user.id}`, {
                 headers: {
-                    Authorization: `Bearer ${tokens?.access}`, // Use the access token from the context
+                    Authorization: `Bearer ${tokens?.access}`,
                 },
             });
             if (response.ok) {
@@ -42,14 +43,12 @@ export default function FavoritesList() {
 
     const handleShare = (url) => {
         if (navigator.share) {
-            // If the navigator.share() API is supported
             navigator.share({
                 url: url,
             }).catch((error) => {
                 console.error('Error sharing:', error);
             });
         } else {
-            // Fallback: Display the URL for manual copying
             alert('Copy the following URL:\n' + url);
         }
     };
@@ -64,8 +63,7 @@ export default function FavoritesList() {
             });
 
             if (response.ok) {
-                // Remove the deleted post from the state
-                favSetPosts(fav_posts.filter(post => post.id !== postId));
+                favSetPosts(fav_posts.filter((post) => post.id !== postId));
             } else {
                 console.error('Failed to delete post:', response.status);
             }
@@ -74,42 +72,163 @@ export default function FavoritesList() {
         }
     };
 
+    const scrollLeft = () => {
+        if (cardContainerRef.current) {
+            cardContainerRef.current.scrollBy({
+                left: -300,
+                behavior: 'smooth',
+            });
+        }
+    };
 
-    console.log(user)
+    const scrollRight = () => {
+        if (cardContainerRef.current) {
+            cardContainerRef.current.scrollBy({
+                left: 300,
+                behavior: 'smooth',
+            });
+        }
+    };
+
     return (
         <div>
             {user ? (
-                <div className="flex flex-wrap">
-                    {fav_posts.map((post) => (
-
-                        <div key={post.id} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
-                            <div className="bg-white rounded-lg shadow-md p-6">
-                                <img className="postImg" src={`http://127.0.0.1:8000${post.post.images[0].image}`} width="100%" alt="" />
-                                <div className="postInfo">
-
-                                    <h3 className='postHs'>{post.post.title}</h3>
-
-                                    <h3 className='postHs'>{post.post.location}</h3>
-
-                                    <div className="postIcon" >
-                                        <div className="iconA" onClick={() => handleDeletePost(post.id)}>
+                <div>
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            marginTop: '10px',
+                        }}
+                    >
+                        <button
+                            onClick={scrollLeft}
+                            style={{
+                                padding: '5px 10px',
+                                marginRight: '10px',
+                            }}
+                        >
+                            &lt;
+                        </button>
+                        <button
+                            onClick={scrollRight}
+                            style={{
+                                padding: '5px 10px',
+                            }}
+                        >
+                            &gt;
+                        </button>
+                    </div>
+                    <div
+                        ref={cardContainerRef}
+                        style={{
+                            display: 'flex',
+                            overflowX: 'hidden',
+                            gap: '10px',
+                            padding: '10px 0',
+                        }}
+                    >
+                        {fav_posts.map((post) => (
+                            <div
+                                key={post.id}
+                                style={{
+                                    minWidth: '300px',
+                                    maxWidth: '300px',
+                                    margin: '0',
+                                    borderRadius: '10px',
+                                    boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    justifyContent: 'space-between',
+                                    position: 'relative',
+                                }}
+                            >
+                                <div
+                                    className="postImg"
+                                    style={{
+                                        width: '100%',
+                                        height: '200px',
+                                        overflow: 'hidden',
+                                        borderRadius: '10px 10px 0 0',
+                                    }}
+                                >
+                                    <img
+                                        src={`http://127.0.0.1:8000${post.post.images[0].image}`}
+                                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                        alt=""
+                                    />
+                                </div>
+                                <div className="postInfo" style={{ padding: '10px' }}>
+                                    <h3
+                                        className="postHs"
+                                        style={{
+                                            maxHeight: '3.6em',
+                                            overflow: 'hidden',
+                                            textOverflow: 'ellipsis',
+                                        }}
+                                    >
+                                        {post.post.title}
+                                    </h3>
+                                    <h3 className="postHs">{post.post.location}</h3>
+                                    <p className="postParagraph">
+                                        {post.post.description.length > 150
+                                            ? post.post.description.slice(0, 150) + '...'
+                                            : post.post.description}
+                                    </p>
+                                    {post.post.description.length > 150 && (
+                                        <a className="postBtn" href={`/post/${post.post.id}`}>
+                                            View more
+                                        </a>
+                                    )}
+                                    <div
+                                        style={{
+                                            display: 'flex',
+                                            justifyContent: 'space-between',
+                                            alignItems: 'center',
+                                        }}
+                                    >
+                                        <div className="iconsContainer">
+                                            <div
+                                                className="icon"
+                                                onClick={() => handleDeletePost(post.id)}
+                                            >
+                                                <img
+                                                    src="https://cdn-icons-png.flaticon.com/512/151/151910.png"
+                                                    alt="Delete"
+                                                    style={{ width: '20px', height: '20px' }}
+                                                />
+                                            </div>
+                                            <div
+                                                className="icon"
+                                                onClick={() => handleContactPost(post.post.id)}
+                                            >
+                                                <img
+                                                    src="https://cdn-icons-png.flaticon.com/512/711/711155.png"
+                                                    alt="Contact"
+                                                    style={{ width: '20px', height: '20px' }}
+                                                />
+                                            </div>
+                                            <div
+                                                className="icon"
+                                                onClick={() =>
+                                                    handleShare(
+                                                        `http://127.0.0.1:8000/post/${post.post.id}`
+                                                    )
+                                                }
+                                            >
+                                                <img
+                                                    src="https://cdn-icons-png.flaticon.com/512/929/929610.png"
+                                                    alt="Share"
+                                                    style={{ width: '20px', height: '20px' }}
+                                                />
+                                            </div>
                                         </div>
-                                        <div className="iconB" onClick={() => handleContactPost(post.post.id)}></div>
-                                        <div className="iconC" onClick={() => handleShare(`http://127.0.0.1:8000/post/${post.post.id}`)}></div>
+
                                     </div>
-
-
-                                    <p className='postParagraph'>{post.post.description}</p>
-                                    <p className='postParagraph'>Posted by: {post.post.author_name}</p>
-                                    <p className='postParagraph'>Starting At: {post.post.start_date}</p>
-                                    <p className='postParagraph'>Ending At: {post.post.end_date}</p>
-
-                                    <a className='postBtn' href={`/post/${post.post.id}`}>View more</a>
-
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                     {selectedPost && (
                         <div className="fixed inset-0 flex items-center justify-center z-50 bg-opacity-50 bg-black">
                             <div className="bg-white rounded-lg shadow-lg p-6 max-w-md">
@@ -118,7 +237,6 @@ export default function FavoritesList() {
                                 </h2>
                                 <p className="text-gray-700">Email: {selectedPost.post.email}</p>
                                 <p className="text-gray-700">Phone: {selectedPost.post.phone}</p>
-                                {/* Add more contact information here if needed */}
                                 <button
                                     onClick={handleCloseContact}
                                     className="mt-4 px-4 py-2 bg-gray-600 text-white rounded-md"
