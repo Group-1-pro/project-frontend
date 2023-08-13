@@ -66,10 +66,10 @@ export default function PostForm({ setShowForm }) {
     return (
 
         <form onSubmit={handleSubmit} className='flex flex-col items-center justify-center w-1/2 p-8 text-white bg-white rounded-lg text-orange-600rder-orange'>
-            <h1 className='flex justify-start w-full font-bold text-orange-700'> Creat a new form </h1>
+            <h1 className='flex justify-start w-full font-bold text-[#7E1717]'> Creat a new form </h1>
             <div className='grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
                 <div className='flex flex-col order'>
-                    <label className='text-sm font-bold text-orange-600 '>Title</label>
+                    <label className='text-sm font-bold text-[#7E1717]'>Title</label>
                     <input
 
                         placeholder='Title'
@@ -80,7 +80,7 @@ export default function PostForm({ setShowForm }) {
                         required />
                 </div>
                 <div className='flex flex-col'>
-                    <label className='text-sm font-bold text-orange-600'>Country</label>
+                    <label className='text-sm font-bold text-[#7E1717]'>Country</label>
                     <input
                         type="text"
                         name="location"
@@ -346,7 +346,7 @@ export default function PostForm({ setShowForm }) {
             </div>
             <div className='grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
                 <div className='flex flex-col'>
-                    <label className='text-sm font-bold text-orange-600'>Email</label>
+                    <label className='text-sm font-bold text-[#7E1717]'>Email</label>
                     <input
                         type="email"
                         placeholder='Email'
@@ -356,7 +356,7 @@ export default function PostForm({ setShowForm }) {
                     />
                 </div>
                 <div className='flex flex-col '>
-                    <label className='text-sm font-bold text-orange-600'>Phone</label>
+                    <label className='text-sm font-bold text-[#7E1717]'>Phone</label>
                     <input
                         type="tel"
                         id="phone"
@@ -368,7 +368,7 @@ export default function PostForm({ setShowForm }) {
             </div>
             <div className='grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
                 <div className='flex flex-col '>
-                    <label className='text-sm font-bold text-orange-600'>Start Date</label>
+                    <label className='text-sm font-bold text-[#7E1717]'>Start Date</label>
                     <input
                         type="date"
                         id="start_date"
@@ -378,7 +378,7 @@ export default function PostForm({ setShowForm }) {
                     />
                 </div>
                 <div className='flex flex-col '>
-                    <label className='text-sm font-bold text-orange-600'>End Date</label>
+                    <label className='text-sm font-bold text-[#7E1717]'>End Date</label>
                     <input
                         type="date"
                         id="end_date"
@@ -390,7 +390,7 @@ export default function PostForm({ setShowForm }) {
                 </div>
             </div>
             <div className='flex flex-col w-full gap-4'>
-                <label className='text-sm font-bold text-orange-600'>Description</label>
+                <label className='text-sm font-bold text-[#7E1717]'>Description</label>
                 <textarea
                     name="description"
                     required
@@ -400,7 +400,7 @@ export default function PostForm({ setShowForm }) {
             </div>
 
             <div className="w-full">
-                <label className="block text-sm font-bold text-orange-600 ">
+                <label className="block text-sm font-bold text-[#7E1717] ">
                     Image
                 </label>
                 <div className="flex items-center justify-center w-full h-40 px-6 pt-5 pb-6 mt-1 border-2 border-red-900 border-dashed rounded-md h">
@@ -409,7 +409,7 @@ export default function PostForm({ setShowForm }) {
                             <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         <div className="flex items-center">
-                            <label htmlFor="images" className="text-black bg-orange-500 rounded-md">
+                            <label htmlFor="images" className="flex flex-col justify-center w-40 h-8 bg-[#7E1717] rounded text-slate-200 hover:text-orange-600 hover:bg-red-400">
                                 <span className="font-bold p -2">Upload a file</span>
                                 <input
                                     id="images"
@@ -433,8 +433,8 @@ export default function PostForm({ setShowForm }) {
                 </div>
             </div>
             <div className='flex justify-end w-full gap-4 m-3'>
-                <button className="px-3 py-2 text-white bg-orange-600 rounded-md" > Create Post </button>
-                <button className="px-3 py-2 text-white rounded-md bg-slate-500" onClick={handleClose} > Close</button>
+                <button className="px-3 py-2 text-white bg-[#7E1717] rounded-md" > Create Post </button>
+                <button className="px-3 py-2 text-white rounded-md bg-slate-600" onClick={handleClose} > Close</button>
             </div>
         </form>
 
