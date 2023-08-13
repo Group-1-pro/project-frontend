@@ -38,25 +38,25 @@ export default function Footer() {
                             Our platform connects you with transformative volunteering experiences in different countries, fostering cross-cultural understanding and global citizenship.
                         </p>
 
-                        {/* <ul class="sci">
+                        {/* <ul className="sci">
                             <li>
-                                <a href="#"><i class="fab fa-facebook"></i></a>
+                                <a href="#"><i className="fab fa-facebook"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i className="fab fa-twitter"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i className="fab fa-instagram"></i></a>
                             </li>
                             <li>
-                                <a href="#"><i class="fab fa-youtube"></i></a>
+                                <a href="#"><i className="fab fa-youtube"></i></a>
                             </li>
                         </ul> */}
 
-                        <div class="footerWrapper">
-                            <div class="social-icons">
-                                <a class="social-icon mail" href="mailto:esmailjawabreh@gmail.com" target="_blank" rel="author">
-                                    <i class="fa-sharp fa-solid fa-envelope"></i>
+                        <div className="footerWrapper">
+                            <div className="social-icons">
+                                <a className="social-icon mail" href="mailto:esmailjawabreh@gmail.com" target="_blank" rel="author">
+                                    <i className="fa-sharp fa-solid fa-envelope"></i>
                                 </a>
 
                                 <a className="social-icon instagram" href="https://www.instagram.com/esmail.sudgi/" target="_blank"
@@ -89,7 +89,7 @@ export default function Footer() {
                     </div>
 
 
-                    {/* <div class="sec quicklink">
+                    {/* <div className="sec quicklink">
                         <h2>Shop</h2>
                         <ul>
                             <li><a href="#">Men</a></li>
