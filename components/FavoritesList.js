@@ -101,11 +101,13 @@ export default function FavoritesList() {
                             marginTop: '10px',
                         }}
                     >
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
                         <button
                             onClick={scrollLeft}
                             style={{
                                 padding: '5px 10px',
                                 marginRight: '10px',
+                                fontSize: '40px',
                             }}
                         >
                             &lt;
@@ -114,10 +116,14 @@ export default function FavoritesList() {
                             onClick={scrollRight}
                             style={{
                                 padding: '5px 10px',
+                                marginLeft: '10px',
+                                fontSize: '40px',
                             }}
                         >
                             &gt;
                         </button>
+</div>
+
                     </div>
                     <div
                         ref={cardContainerRef}
@@ -187,9 +193,9 @@ export default function FavoritesList() {
                                             alignItems: 'center',
                                         }}
                                     >
-                                        <div className="iconsContainer">
+                                        <div className=".postIcon">
                                             <div
-                                                className="icon"
+                                                className="iconA"
                                                 onClick={() => handleDeletePost(post.id)}
                                             >
                                                 <img
@@ -199,7 +205,7 @@ export default function FavoritesList() {
                                                 />
                                             </div>
                                             <div
-                                                className="icon"
+                                                className="iconB"
                                                 onClick={() => handleContactPost(post.post.id)}
                                             >
                                                 <img
@@ -209,7 +215,7 @@ export default function FavoritesList() {
                                                 />
                                             </div>
                                             <div
-                                                className="icon"
+                                                className="iconC"
                                                 onClick={() =>
                                                     handleShare(
                                                         `http://127.0.0.1:8000/post/${post.post.id}`
