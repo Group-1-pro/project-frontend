@@ -1,93 +1,82 @@
-import React from 'react';
-import { useAuth } from '@/contexts/auth';
-import { useState } from "react";
-import axios from 'axios';
+import React, { useState } from 'react';
 
-export default function EditForm(props) {
-    const { user, tokens } = useAuth();
-    const [images, setImages] = useState([]);
-    const [fileNames, setFileNames] = useState([]); // New state for file names
-    const [uploading, setUploading] = useState(false);
-    const { setShowEditForm } = props;
+const EditForm = ({ post, onCancel, onSave }) => {
+    const [fileNames, setFileNames] = useState([])
+    const [editedData, setEditedData] = useState({
+        title: post.title,
+        location: post.location,
+        email: post.email,
+        phone: post.phone,
+        start_date: post.start_date,
+        end_date: post.end_date,
+        description: post.description,
+        images: [],
+    });
+
     const handleImageChange = (e) => {
-        if (e.target.files) {
-            // Convert FileList to File[]
-            const _files = Array.from(e.target.files);
-            setImages(_files);
+        const newImages = Array.from(e.target.files);
+        setEditedData({ ...editedData, images: newImages });
+    };
 
-            // Update the file names state
-            const _fileNames = _files.map(file => file.name);
-            setFileNames(_fileNames);
+    const handleSave = async () => {
+        try {
+            const formData = new FormData();
+            for (const key in editedData) {
+                if (key === 'images') {
+                    editedData.images.forEach((image) => {
+                        formData.append('uploaded_images', image);
+                    });
+                } else {
+                    formData.append(key, editedData[key]);
+                }
+            }
+
+            const response = await fetch(`http://127.0.0.1:8000/wanderhands/post/${post.id}/`, {
+                method: 'PUT',
+                body: formData,
+            });
+
+            if (response.ok) {
+                const updatedPost = await response.json();
+                onSave(updatedPost); // Update the edited post in the parent component
+            } else {
+                console.error('Failed to update post:', response.status);
+            }
+        } catch (error) {
+            console.error('Error updating post:', error);
         }
     };
-    console.log("location", user.Location);
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const formData = new FormData();
-        images.forEach((image, i) => {
-            formData.append("uploaded_images", image);
-        });
-        formData.append("title", event.target.title.value);
-        formData.append("location", event.target.location.value);
-        formData.append("start_date", event.target.start_date.value);
-        formData.append("end_date", event.target.end_date.value);
-        formData.append("description", event.target.description.value);
-        formData.append("phone", event.target.phone.value);
-        formData.append("email", event.target.email.value);
-        formData.append("author_id", user.id);
-        formData.append("author_name", user.username);
-        console.log(formData);
-
-
-
-        setUploading(true);
-        const config = {
-            headers: {
-                Authorization: `Bearer ${tokens.access}`,
-            },
-        };
-        const data = await axios.put(`http://127.0.0.1:8000/wanderhands/post/${props.post.id}/`, formData, config)
-        console.log(data);
-        setUploading(false);
-
-        setShowEditForm(false);
-
-    };
-    const handleClose = () => {
-        setShowEditForm(false);
-    };
-    console.log("User:", user);
-
-
-
-
-
 
     return (
-
-        <form onSubmit={handleSubmit} className='flex flex-col items-center justify-center w-1/2 p-8 text-white bg-white rounded-lg text-orange-600rder-orange'>
-            <h1 className='flex justify-start w-full font-bold text-[#7E1717]'> Creat a new form </h1>
+        <form onSubmit={handleSave} className='flex flex-col items-center justify-center w-1/2 p-8 text-white bg-white rounded-lg text-orange-600 border-orange'>
+            <h1 className='flex justify-start w-full font-bold text-[#7E1717]'> Edit Form </h1>
             <div className='grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
                 <div className='flex flex-col order'>
                     <label className='text-sm font-bold text-[#7E1717]'>Title</label>
-                    <input
-
-                        placeholder='Title'
+                    
+                        <input
                         type="text"
+                        id="title"
                         name="title"
+                        required
+                        value={editedData.title}
+                        onChange={(e) => setEditedData({ ...editedData, title: e.target.value })}
                         className='w-full p-1 px-3 text-gray-500 bg-white border-gray-300 rounded-md outline-none'
-
-                        required />
+                    />
                 </div>
                 <div className='flex flex-col'>
                     <label className='text-sm font-bold text-[#7E1717]'>Country</label>
+                    
                     <input
                         type="text"
+                        id="location"
                         name="location"
-                        className='w-full p-1 px-3 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
                         list="country-list"
                         placeholder='Country'
                         required
+                        value={editedData.location}
+                        onChange={(e) => setEditedData({ ...editedData, location: e.target.value })}
+                        className='w-full p-1 px-3 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
                     />
                     <datalist id="country-list">
                         <option>select-country</option>
@@ -347,21 +336,25 @@ export default function EditForm(props) {
             <div className='grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
                 <div className='flex flex-col'>
                     <label className='text-sm font-bold text-[#7E1717]'>Email</label>
+                   
                     <input
                         type="email"
-                        placeholder='Email'
+                        id="email"
                         name="email"
+                        value={editedData.email}
+                        onChange={(e) => setEditedData({ ...editedData, email: e.target.value })}
                         className='w-full p-1 px-3 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
-
                     />
                 </div>
                 <div className='flex flex-col '>
                     <label className='text-sm font-bold text-[#7E1717]'>Phone</label>
+                  
                     <input
                         type="tel"
                         id="phone"
                         name="phone"
-                        placeholder='123-456-7890'
+                        value={editedData.phone}
+                        onChange={(e) => setEditedData({ ...editedData, phone: e.target.value })}
                         className='w-full p-1 px-3 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
                     />
                 </div>
@@ -369,21 +362,27 @@ export default function EditForm(props) {
             <div className='grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
                 <div className='flex flex-col '>
                     <label className='text-sm font-bold text-[#7E1717]'>Start Date</label>
+                   
                     <input
                         type="date"
                         id="start_date"
                         name="start_date"
                         required
+                        value={editedData.start_date}
+                        onChange={(e) => setEditedData({ ...editedData, start_date: e.target.value })}
                         className='w-full p-1 px-3 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
                     />
                 </div>
                 <div className='flex flex-col '>
                     <label className='text-sm font-bold text-[#7E1717]'>End Date</label>
+                    
                     <input
                         type="date"
                         id="end_date"
                         name="end_date"
                         required
+                        value={editedData.end_date}
+                        onChange={(e) => setEditedData({ ...editedData, end_date: e.target.value })}
                         className='w-full p-1 px-3 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
                     />
 
@@ -391,9 +390,13 @@ export default function EditForm(props) {
             </div>
             <div className='flex flex-col w-full gap-4'>
                 <label className='text-sm font-bold text-[#7E1717]'>Description</label>
+                
                 <textarea
+                    id="description"
                     name="description"
                     required
+                    value={editedData.description}
+                    onChange={(e) => setEditedData({ ...editedData, description: e.target.value })}
                     className='w-full h-20 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
                 />
 
@@ -411,15 +414,16 @@ export default function EditForm(props) {
                         <div className="flex items-center">
                             <label htmlFor="images" className="flex flex-col justify-center w-40 h-8 bg-[#7E1717] rounded text-slate-200 hover:text-orange-600 hover:bg-red-400">
                                 <span className="font-bold p -2">Upload a file</span>
+                               
                                 <input
-                                    id="images"
-                                    type="file"
-                                    name="uploaded_images"
-                                    accept="image/*"
-                                    multiple
-                                    onChange={handleImageChange}
-                                    className="sr-only"
-                                />
+                    type="file"
+                    id="images"
+                    name="image"
+                    accept="image/*"
+                    className="sr-only"
+                    multiple
+                    onChange={handleImageChange}
+                />
                             </label>
                             <div className="px-2 py-1 text-lg text-black text-w">
                                 {fileNames.length === 1 ? (
@@ -432,13 +436,219 @@ export default function EditForm(props) {
                     </div>
                 </div>
             </div>
-            <div className='flex justify-end w-full gap-4 m-3'>
-                <button className="px-3 py-2 text-white bg-[#7E1717] rounded-md" > Update Post </button>
-                <button className="px-3 py-2 text-white rounded-md bg-slate-600" onClick={handleClose} > Close</button>
+            <div className='mt-4 flex justify-between'>
+               
+                <button onClick={onCancel} className="px-3 py-2 text-white bg-[#7E1717] rounded-md">
+                    Close
+                 </button>
+                 <button onClick={handleSave} className="px-3 py-2 text-white rounded-md bg-blue-500">
+                     Save
+                 </button>
+                
             </div>
         </form>
-
-
-
     );
-}
+};
+
+export default EditForm;
+
+// import React, { useState } from 'react';
+
+// const EditForm = ({ post, onCancel, onSave }) => {
+//     const [editedData, setEditedData] = useState({
+//         title: post.title,
+//         location: post.location,
+//         email: post.email,
+//         phone: post.phone,
+//         start_date: post.start_date,
+//         end_date: post.end_date,
+//         description: post.description,
+//         images: [],
+//     });
+
+
+
+//     const baseUrl = 'http://127.0.0.1:8000/';
+
+//     const handleImageChange = (e) => {
+//         const newImages = Array.from(e.target.files);
+//         setEditedData({ ...editedData, images: newImages });
+//     };
+
+//     const handleSave = async () => {
+//         try {
+//             const formData = new FormData();
+//             for (const key in editedData) {
+//                 if (key === 'images') {
+//                     editedData.images.forEach((image) => {
+//                         formData.append('uploaded_images', image);
+//                     });
+//                 } else {
+//                     formData.append(key, editedData[key]);
+//                 }
+//             }
+
+//             const response = await fetch(baseUrl + `wanderhands/post/${post.id}/`, {
+//                 method: 'PUT',
+//                 body: formData,
+//             });
+
+//             if (response.ok) {
+//                 const updatedPost = await response.json();
+//                 onSave(updatedPost); // Update the edited post in the parent component
+//             } else {
+//                 console.error('Failed to update post:', response.status);
+//             }
+//         } catch (error) {
+//             console.error('Error updating post:', error);
+//         }
+//     };
+
+
+
+
+//     return (
+//         <div className="bg-white rounded-lg shadow-md p-6">
+//             <h2 className="text-lg font-semibold mb-2">Edit Post</h2>
+//             <div className="grid grid-cols-2 gap-4 mb-4">
+//                 <div>
+//                     <label htmlFor="title" className="block mb-2 font-bold text-gray-700">
+//                         Title:
+//                     </label>
+//                     <input
+//                         type="text"
+//                         id="title"
+//                         name="title"
+//                         required
+//                         value={editedData.title}
+//                         onChange={(e) => setEditedData({ ...editedData, title: e.target.value })}
+//                         className="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
+//                     />
+//                 </div>
+//                 <div>
+//                     <label htmlFor="location" className="block mb-2 font-bold text-gray-700">
+//                         Location:
+//                     </label>
+//                     <input
+//                         type="text"
+//                         id="location"
+//                         name="location"
+//                         required
+//                         value={editedData.location}
+//                         onChange={(e) => setEditedData({ ...editedData, location: e.target.value })}
+//                         className="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
+//                     />
+//                 </div>
+//             </div>
+//             <div className="grid grid-cols-2 gap-4 mb-4">
+//                 <div>
+//                     <label htmlFor="email" className="block mb-2 font-bold text-gray-700">
+//                         Email:
+//                     </label>
+//                     <input
+//                         type="email"
+//                         id="email"
+//                         name="email"
+//                         value={editedData.email}
+//                         onChange={(e) => setEditedData({ ...editedData, email: e.target.value })}
+//                         className="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
+//                     />
+//                 </div>
+//                 <div>
+//                     <label htmlFor="phone" className="block mb-2 font-bold text-gray-700">
+//                         Phone:
+//                     </label>
+//                     <input
+//                         type="tel"
+//                         id="phone"
+//                         name="phone"
+//                         value={editedData.phone}
+//                         onChange={(e) => setEditedData({ ...editedData, phone: e.target.value })}
+//                         className="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
+//                     />
+//                 </div>
+//             </div>
+//             <div className="grid grid-cols-2 gap-4 mb-4">
+//                 <div>
+//                     <label htmlFor="start_date" className="block mb-2 font-bold text-gray-700">
+//                         Start Date:
+//                     </label>
+//                     <input
+//                         type="date"
+//                         id="start_date"
+//                         name="start_date"
+//                         required
+//                         value={editedData.start_date}
+//                         onChange={(e) => setEditedData({ ...editedData, start_date: e.target.value })}
+//                         className="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
+//                     />
+//                 </div>
+//                 <div>
+//                     <label htmlFor="end_date" className="block mb-2 font-bold text-gray-700">
+//                         End Date:
+//                     </label>
+//                     <input
+//                         type="date"
+//                         id="end_date"
+//                         name="end_date"
+//                         required
+//                         value={editedData.end_date}
+//                         onChange={(e) => setEditedData({ ...editedData, end_date: e.target.value })}
+//                         className="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
+//                     />
+//                 </div>
+//             </div>
+//             <div className="mb-4">
+//                 <label htmlFor="description" className="block mb-2 font-bold text-gray-700">
+//                     Description:
+//                 </label>
+//                 <textarea
+//                     id="description"
+//                     name="description"
+//                     required
+//                     value={editedData.description}
+//                     onChange={(e) => setEditedData({ ...editedData, description: e.target.value })}
+//                     className="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
+//                 />
+//             </div>
+//             <div className="mb-4">
+//                 <label className="block mb-2 font-bold text-gray-700">
+//                     Images:
+//                 </label>
+//                 <input
+//                     type="file"
+//                     id="images"
+//                     name="image"
+//                     accept="image/*"
+//                     className="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none focus:shadow-outline"
+//                     multiple
+//                     onChange={handleImageChange}
+//                 />
+//             </div>
+//             {/* Display preview of edited images */}
+//             {/* <div className="flex">
+//                 {post.images.map((image, index) => (
+//                     <img
+//                         key={index}
+//                         className="postImg"
+//                         // src={`http://127.0.0.1:8000${image.image}`}
+//                         width="100%"
+//                         alt=""
+//                     />
+//                 ))}
+
+               
+//             </div> */}
+//             <div className="mt-4 flex justify-between">
+//                 <button onClick={onCancel} className="px-4 py-2 bg-red-500 text-white rounded-md">
+//                     Close
+//                 </button>
+//                 <button onClick={handleSave} className="px-4 py-2 bg-blue-500 text-white rounded-md">
+//                     Save
+//                 </button>
+//             </div>
+//         </div>
+//     );
+// };
+
+// export default EditForm;
