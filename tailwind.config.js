@@ -15,6 +15,7 @@ module.exports = {
       },
       height: {
         'coustom-h':'130px',
+        'newRead' : "#7E1717"
       },
     },
   },
