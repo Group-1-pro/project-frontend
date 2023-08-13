@@ -11,7 +11,7 @@ const VisaDb = (distination) => {
 
             <iframe
                 src={`https://visadb.io/visawidget/journey/Jordan/${distination.distination.location}`}
-                className="w-full h-[600px]"
+                className="w-full h-[600px] flex items-center justify-center"
                 allow="geolocation; encrypted-media"
                 referrerpolicy="origin"
                 title="VisaDB Widget"
