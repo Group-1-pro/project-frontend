@@ -107,7 +107,7 @@ export default function FavoritesList() {
                             style={{
                                 padding: '5px 10px',
                                 marginRight: '10px',
-                                fontSize: '40px',
+                                fontSize: '30px',
                             }}
                         >
                             &lt;
@@ -117,7 +117,7 @@ export default function FavoritesList() {
                             style={{
                                 padding: '5px 10px',
                                 marginLeft: '10px',
-                                fontSize: '40px',
+                                fontSize: '30px',
                             }}
                         >
                             &gt;
