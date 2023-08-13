@@ -185,14 +185,3 @@ const PostUser = () => {
 };
 
 export default PostUser;
-
-{/* <div className="flex flex-wrap mt-2 space-x-2">
-                  {post.images.map((image, index) => (
-                    <img
-                      key={index}
-                      src={`http://127.0.0.1:8000${image.image}`}
-                      alt={`Image ${index}`}
-                      className="inline-block w-24 h-24 object-cover rounded"
-                    />
-                  ))}
-                </div> */}
