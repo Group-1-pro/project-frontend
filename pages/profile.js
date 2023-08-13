@@ -5,6 +5,8 @@ import FavoritesList from '@/components/FavoritesList';
 import PostUser from '@/components/PostUser';
 import { useAuth } from 'contexts/auth.js';
 import LoginForm from '@/components/LoginForm';
+import { Typography, Divider } from '@material-ui/core';
+
 
 export default function FavoritesPage() {
   const { login, user } = useAuth();
@@ -29,10 +31,22 @@ export default function FavoritesPage() {
       {loginChecked ? (
         user ? (
           <main>
-            <h1 className="text-4xl font-bold text-center mt-8">Favorites</h1>
-            <FavoritesList />
+          <div className="section">
+            <Typography variant="h4" color="primary" gutterBottom className="section-title">
+              Your Posts
+            </Typography>
+            <Divider className="divider" />
             <PostUser />
-          </main>
+          </div>
+    
+          <div className="section">
+            <Typography variant="h4" color="primary" gutterBottom className="section-title">
+              Favorites
+            </Typography>
+            <Divider className="divider" />
+            <FavoritesList />
+          </div>
+        </main>
         ) : (
           <LoginForm onSubmit={handleSubmitLoginForm} />
         )

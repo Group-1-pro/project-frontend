@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Avatar, Typography, Button } from "@material-ui/core";
 import { useAuth } from '@/contexts/auth';
 import EditForm from '@/components/EditForm';
-import { Typography, Avatar, Button } from "@material-tailwind/react";
 import { useRouter } from 'next/router';
 
 const PostUser = () => {
@@ -35,7 +35,7 @@ const PostUser = () => {
 
   useEffect(() => {
     fetchPostsData();
-  }, []); // Fetch posts data only once on component mount
+  }, []);
 
   const handleDeletePost = async (postId) => {
     try {
@@ -48,7 +48,6 @@ const PostUser = () => {
       });
 
       if (response.ok) {
-        // Update state to remove the deleted post
         setPosts(prevPosts => prevPosts.filter(post => post.id !== postId));
         console.log(`Deleted post with ID ${postId}`);
       } else {
@@ -59,11 +58,9 @@ const PostUser = () => {
     }
   };
 
-
   const handleViewDetails = (postId) => {
     router.push(`/post/${postId}`);
   };
-
 
   const handleEditPost = (post) => {
     setShowEditForm(true);
@@ -87,13 +84,11 @@ const PostUser = () => {
       });
 
       if (response.ok) {
-        // Update the post in the state with the updated data
         const updatedPosts = posts.map((post) =>
           post.id === updatedPost.id ? updatedPost : post
         );
         setPosts(updatedPosts);
 
-        // Close the edit form
         setShowEditForm(false);
         setEditedPost(null);
       } else {
@@ -108,64 +103,58 @@ const PostUser = () => {
     <div>
       {user ? (
         <section id="timeline">
-          <div className="demo-card-wrapper">
-            {posts.map((post, index) => (
-              <div key={post.id} className="mb-4 p-4 border-b">
-                <div className="flex items-start space-x-4">
-                  <Avatar
-                    size="sm"
-                    src={`http://127.0.0.1:8000${post.images[0].image}`}
-                    alt="user"
-                    withBorder
-                  />
-                  <div>
-                    <Typography variant="h5" color="blue-gray">
-                      {post.title}
-                    </Typography>
-                    <Typography color="gray" className="text-gray-600">
-                      {post.description}
-                    </Typography>
-                  </div>
-                </div>
-                
-                <div className="mt-2">
-                  <hr className="border-gray-300" />
-                  <div className="flex items-center mt-2 space-x-4">
-                    {/* Edit Button */}
-                    <Button
-                      onClick={() => handleEditPost(post)}
-                      color="blue"
-                      size="sm"
-                      ripple="dark"
-                      className="bg-blue-500 hover:bg-blue-600"
-                    >
-                      Edit
-                    </Button>
-                    {/* Delete Button */}
-                    <Button
-                      onClick={() => handleDeletePost(post.id)}
-                      color="red"
-                      size="sm"
-                      ripple="dark"
-                      className="bg-red-500 hover:bg-red-600"
-                    >
-                      Delete
-                    </Button>
-                    <Button
-                      onClick={() => handleViewDetails(post.id)}
-                      color="green"
-                      size="sm"
-                      ripple="dark"
-                      className="bg-green-500 hover:bg-green-600"
-                    >
-                      View More
-                    </Button>
-                  </div>
+        <div className="demo-card-wrapper">
+          {posts.map((post) => (
+            <div key={post.id} className="mb-4 p-4 border-b">
+              <div className="flex items-start space-x-4">
+                <Avatar
+                  alt="user"
+                  src={`http://127.0.0.1:8000${post.images[0].image}`}
+                  style={{ width: '200px', height: '200px' }} 
+                />
+                <div>
+                  <Typography variant="h5" color="textPrimary">
+                    {post.title}
+                  </Typography>
+                  <Typography color="textSecondary" className="text-gray-600">
+                    {post.description}
+                  </Typography>
                 </div>
               </div>
-            ))}
-          </div>
-        </section>
+
+              <div className="mt-2">
+                <div className="flex items-center justify-center mt-2 space-x-4">
+                  <Button
+                    onClick={() => handleEditPost(post)}
+                    color="primary"
+                    size="small"
+                    variant="contained"
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    onClick={() => handleViewDetails(post.id)}
+                    color="success"
+                    size="small"
+                    variant="contained"
+                  >
+                    View More
+                  </Button>
+                  <Button
+                    onClick={() => handleDeletePost(post.id)}
+                    color="secondary"
+                    size="small"
+                    variant="contained"
+                  >
+                    Delete
+                  </Button>
+                  
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
       ) : (
         <LoginForm onLogin={login} />
       )}
