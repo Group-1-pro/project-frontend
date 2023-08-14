@@ -36,6 +36,7 @@ const Navbar = () => {
         <ul className="main-nav">
           <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
+          <li><a href="/blogs">Blogs</a></li>
           {auth.user ? (
             <li className="profile-dropdown">
               <a href="#" onClick={handleDropdownToggle} className="profile-link">
