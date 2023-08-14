@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '@/contexts/auth';
+import LoginForm from './LoginForm';
 
 
 
 const Posts = () => {
+    const { user, tokens, login } = useAuth();
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [selectedPost, setSelectedPost] = useState(null);
+    const [favPost, setFavPost] = useState([]);
+    
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,6 +29,25 @@ const Posts = () => {
         };
         fetchData();
     }, []);
+
+    useEffect(() => {
+        const getFavData = async () => {
+            try {
+                if (!user) {
+                    return;
+                }
+                const response = await fetch(`http://127.0.0.1:8000/wanderhands/favorites/user/${user.id}/`);
+                const favData = await response.json();
+                setFavPost(favData);
+                setLoading(false);
+                console.log(favData);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                setLoading(false);
+            }
+        };
+        getFavData();
+    }, [user]);
 
     if (loading) {
         return <div>Loading posts...</div>;
@@ -59,16 +84,13 @@ const Posts = () => {
             alert('Copy the following URL:\n' + url);
         }
     };
-    const { tokens, login, user } = useAuth(); // Use the useAuth hook to get user information
+    
+
+    
 
     const handleAddToFavorites = async (postId) => {
-        if (!user) {
-            alert('Please login to add a post to favorites.');
-            return;
-        }
-
         try {
-            // Fetch the user's favorites
+         
             const response = await fetch(`http://127.0.0.1:8000/wanderhands/favorites/`, {
                 method: 'POST',
                 headers: {
@@ -82,17 +104,22 @@ const Posts = () => {
             });
 
             if (response.ok) {
-                alert('Post added to favorites!');
-                // You can update the UI or take any other action here
+                
+                setFavPost([...favPost, { id: postId }]);
+                
             } else {
-                // console.error('Error adding post to favorites:', response.statusText);
-                alert('post is already in favorites')
+                alert('You have already added this post to favorites!');
             }
         } catch (error) {
             console.error('Error adding post to favorites:', error);
         }
     };
 
+    const isPostInFavorites = (postId) => {
+        return favPost?.some((post) => post.id === postId);
+    };
+    
+    
     return (
 
         <div className='postMainDiv'>
@@ -111,7 +138,22 @@ const Posts = () => {
                                 <h6 className='postHTitle'>{post.title}</h6>
                                 <h6 className='postHLocation'>{post.location}</h6>
                                 <div className="postIcon">
-                                    <div className="iconA" onClick={() => handleAddToFavorites(post.id)}></div>
+                                    {tokens?.access ? (
+                                        isPostInFavorites(post.id) ? (
+                                            <FontAwesomeIcon
+                                                icon={faHeart}
+                                                style={{ color: "#ff0000" }}
+                                                
+                                            />
+                                        ) : (
+                                            <FontAwesomeIcon
+                                                icon={faHeart}
+                                                onClick={() => handleAddToFavorites(post.id)}
+                                            />
+                                        )
+                                    ) : (
+                                        <p>Please log in to add to favorites</p>
+                                    )}
                                     <div className="iconB" onClick={() => handleContactPost(post.id)}></div>
                                     <div className="iconC" onClick={(event) => handleShare(event, `http://127.0.0.1:8000/post/${post.id}`)}></div>
                                 </div>
@@ -128,16 +170,16 @@ const Posts = () => {
 
 
                     {selectedPost && (
-                        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-                            <div className="bg-white rounded-lg shadow-lg p-6 max-w-md backdrop-filter backdrop-blur-lg">
-                                <h2 className="text-xl font-semibold mb-2">
+                        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+                            <div className="max-w-md p-6 bg-white rounded-lg shadow-lg backdrop-filter backdrop-blur-lg">
+                                <h2 className="mb-2 text-xl font-semibold">
                                     Contact Information for "{selectedPost.title}"
                                 </h2>
                                 <p className="text-gray-700">Email: {selectedPost.email}</p>
                                 <p className="text-gray-700">Phone: {selectedPost.phone}</p>
                                 <button
                                     onClick={handleCloseContact}
-                                    className="mt-4 px-4 py-2 bg-gray-600 text-white rounded-md"
+                                    className="px-4 py-2 mt-4 text-white bg-gray-600 rounded-md"
                                 >
                                     Close
                                 </button>
