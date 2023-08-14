@@ -36,7 +36,7 @@ ul {
 }
 
 .main-nav a:hover {
-    color: #068DA9;
+    color: #06a94f;
 }
 
 
@@ -44,8 +44,8 @@ ul {
 .header {
     padding-top: .5em;
     padding-bottom: .5em;
-    border: 1px solid #068DA9;
-    background-color: #7E1717;
+    border: 1px solid #056d31;
+    background-color: #156937;
     -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
@@ -111,8 +111,8 @@ ul {
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: #7E1717;
-    border: 1px solid #068DA9;
+    background-color: #006627;
+    border: 1px solid #06a96b9f;
     list-style: none;
     padding: 8px 0;
     border-radius: 5px;

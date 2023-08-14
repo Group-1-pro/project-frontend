@@ -39,7 +39,7 @@ export default function FavoritesPage() {
   };
 
   const handleScrollUp = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth'});
   };
 
   return (
@@ -58,22 +58,23 @@ export default function FavoritesPage() {
       {loginChecked ? (
         user ? (
           <main>
-            <div className="section">
-              <Typography variant="h4" color="primary" gutterBottom className="section-title">
-                My Posts
-              </Typography>
-              <Divider className="divider" />
-              <PostUser />
-            </div>
+          <div className="section">
+            <Typography variant="h4" color="green" gutterBottom className="section-title">
+              My Posts
+            </Typography>
+            <Divider className="divider" />
+            <PostUser />
+          </div>
+    
+          <div className="section">
+            <Typography variant="h4" color="green" gutterBottom className="section-title">
+              Favorites
+            </Typography>
+            <Divider className="divider" />
+            <FavoritesList />
+          </div>
+        </main>
 
-            <div className="section" ref={favoritesListRef}>
-              <Typography variant="h4" color="primary" gutterBottom className="section-title">
-                Favorites
-              </Typography>
-              <Divider className="divider" />
-              <FavoritesList />
-            </div>
-          </main>
         ) : (
           <LoginForm onSubmit={handleSubmitLoginForm} />
         )
