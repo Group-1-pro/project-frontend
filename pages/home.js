@@ -32,19 +32,6 @@ const Home_page = () => {
     }
   };
 
-
-
-  // const handleSubmitLoginForm = (formData) => {
-  //   // Perform any actions with the form data here, like logging in or fetching user data
-  //   console.log('Submitted login form data:', formData);
-
-  //   // Call your login function here passing the formData.username and formData.password
-  //   login(formData.username, formData.password);
-
-
-
-  // };
-
   const handleAddOpportunityClick = () => {
     if (!user) {
       setLogForm(true);

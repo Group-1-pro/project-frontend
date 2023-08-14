@@ -38,20 +38,6 @@ export default function Footer() {
                             Our platform connects you with transformative volunteering experiences in different countries, fostering cross-cultural understanding and global citizenship.
                         </p>
 
-                        {/* <ul className="sci">
-                            <li>
-                                <a href="#"><i className="fab fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i className="fab fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i className="fab fa-instagram"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i className="fab fa-youtube"></i></a>
-                            </li>
-                        </ul> */}
 
                         <div className="footerWrapper">
                             <div className="social-icons">
@@ -87,19 +73,6 @@ export default function Footer() {
                         </ul>
 
                     </div>
-
-
-                    {/* <div className="sec quicklink">
-                        <h2>Shop</h2>
-                        <ul>
-                            <li><a href="#">Men</a></li>
-                            <li><a href="#">Women</a></li>
-                            <li><a href="#">Children</a></li>
-                            <li><a href="#">Shoes</a></li>
-                            <li><a href="#">Clothing</a></li>
-                            <li><a href="#">Watch</a></li>
-                        </ul>
-                    </div> */}
 
 
                     <div className="sec contact">
