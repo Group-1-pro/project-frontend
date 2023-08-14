@@ -11,13 +11,16 @@ export default function FavoritesPage() {
   const { login, user } = useAuth();
   const [loginChecked, setLoginChecked] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState(false);
+  const [activeTab, setActiveTab] = useState('myPosts');
   const favoritesListRef = useRef(null);
+  const postUserRef = useRef(null);
 
   useEffect(() => {
     setLoginChecked(true);
 
     const handleScroll = () => {
       setShowScrollButton(window.scrollY > 0);
+      setActiveTab(null); // Disable click effect when scrolling up
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -32,10 +35,13 @@ export default function FavoritesPage() {
     login(formData.username, formData.password);
   };
 
-  const handleFavoritesClick = () => {
-    if (favoritesListRef.current) {
-      favoritesListRef.current.scrollIntoView({ behavior: 'smooth' });
+  const handleTabClick = (tab) => {
+    if (tab === 'myFavorites' && favoritesListRef.current) {
+      favoritesListRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (tab === 'myPosts' && postUserRef.current) {
+      postUserRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+    setActiveTab(tab); // Update active tab
   };
 
   const handleScrollUp = () => {
@@ -44,44 +50,81 @@ export default function FavoritesPage() {
 
   return (
     <>
+      
+
       <Navbar />
-      <div className="relative"></div>
-      <ul className="list-reset flex font-bold">
-        <li className="cursor-pointer px-4 border-l text-grey-darkest">
+      <div className="relative" style={{ padding: '4rem 0' }}>
+        <div>
+      <div style={{ display: 'flex', position: 'relative', backgroundColor: '#fff', boxShadow: '0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15)', padding: '0.75rem', borderRadius: '99px' }}>
+        <span
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '54px',
+            width: '200px',
+            fontSize: '1.25rem',
+            fontWeight: 500,
+            borderRadius: '99px',
+            cursor: 'pointer',
+            transition: 'color 0.15s ease-in',
+            color: activeTab === 'myPosts' ? '#185ee0' : '',
+          }}
+          onClick={() => handleTabClick('myPosts')}
+        >
           My Posts
-        </li>
-        <li className="cursor-pointer px-4 border-l text-blue" onClick={handleFavoritesClick}>
+        </span>
+        <span
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '54px',
+            width: '200px',
+            fontSize: '1.25rem',
+            fontWeight: 500,
+            borderRadius: '99px',
+            cursor: 'pointer',
+            transition: 'color 0.15s ease-in',
+            color: activeTab === 'myFavorites' ? '#185ee0' : '',
+          }}
+          onClick={() => handleTabClick('myFavorites')}
+        >
           My Favorites
-        </li>
-      </ul>
-      {console.log(user)}
+        </span>
+      </div>
+    </div>
+
+        
+        
+      </div>
+
       {loginChecked ? (
         user ? (
           <main>
-          <div className="section">
-            <Typography variant="h4" color="green" gutterBottom className="section-title">
-              My Posts
-            </Typography>
-            <Divider className="divider" />
-            <PostUser />
-          </div>
-    
-          <div className="section">
-            <Typography variant="h4" color="green" gutterBottom className="section-title">
-              Favorites
-            </Typography>
-            <Divider className="divider" />
-            <FavoritesList />
-          </div>
-        </main>
+            <div className="section">
+              <Typography variant="h4" color="primary" gutterBottom className="section-title">
+                My Posts
+              </Typography>
+              <Divider className="divider" />
+              <PostUser />
+            </div>
 
+            <div className="section" ref={favoritesListRef}>
+              <Typography variant="h4" color="primary" gutterBottom className="section-title">
+                Favorites
+              </Typography>
+              <Divider className="divider" />
+              <FavoritesList />
+            </div>
+          </main>
         ) : (
           <LoginForm onSubmit={handleSubmitLoginForm} />
         )
       ) : null}
-      {showScrollButton && ( // Conditionally render the scroll-up button
+      {showScrollButton && (
         <Fab
-          color="primary"
+          color="green"
           size="small"
           className="scroll-up-button"
           onClick={handleScrollUp}
@@ -92,10 +135,11 @@ export default function FavoritesPage() {
             zIndex: 1000,
           }}
         >
-          ↑ 
+          ↑
         </Fab>
       )}
-      <Footer/>  
+      <Footer />
     </>
   );
 }
+
