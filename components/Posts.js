@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faAddressCard, faShareNodes } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '@/contexts/auth';
 import LoginForm from './LoginForm';
 
@@ -12,7 +12,7 @@ const Posts = () => {
     const [loading, setLoading] = useState(true);
     const [selectedPost, setSelectedPost] = useState(null);
     const [favPost, setFavPost] = useState([]);
-    
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -84,13 +84,13 @@ const Posts = () => {
             alert('Copy the following URL:\n' + url);
         }
     };
-    
 
-    
+
+
 
     const handleAddToFavorites = async (postId) => {
         try {
-         
+
             const response = await fetch(`http://127.0.0.1:8000/wanderhands/favorites/`, {
                 method: 'POST',
                 headers: {
@@ -104,9 +104,9 @@ const Posts = () => {
             });
 
             if (response.ok) {
-                
+
                 setFavPost([...favPost, { id: postId }]);
-                
+
             } else {
                 alert('You have already added this post to favorites!');
             }
@@ -118,8 +118,8 @@ const Posts = () => {
     const isPostInFavorites = (postId) => {
         return favPost?.some((post) => post.id === postId);
     };
-    
-    
+
+
     return (
 
         <div className='postMainDiv'>
@@ -143,19 +143,29 @@ const Posts = () => {
                                             <FontAwesomeIcon
                                                 icon={faHeart}
                                                 style={{ color: "#ff0000" }}
-                                                
+                                                className="hover:cursor-pointer"
                                             />
                                         ) : (
                                             <FontAwesomeIcon
                                                 icon={faHeart}
                                                 onClick={() => handleAddToFavorites(post.id)}
+                                                className="hover:cursor-pointer"
                                             />
                                         )
                                     ) : (
                                         <p>Please log in to add to favorites</p>
                                     )}
-                                    <div className="iconB" onClick={() => handleContactPost(post.id)}></div>
-                                    <div className="iconC" onClick={(event) => handleShare(event, `http://127.0.0.1:8000/post/${post.id}`)}></div>
+                                    <FontAwesomeIcon
+                                        icon={faAddressCard}
+                                        onClick={() => handleContactPost(post.id)}
+                                        className="hover:cursor-pointer"
+                                    />
+                                    <FontAwesomeIcon
+                                        icon={faShareNodes}
+                                        onClick={(event) => handleShare(event, `http://127.0.0.1:8000/post/${post.id}`)}
+                                        className="hover:cursor-pointer"
+                                    />
+
                                 </div>
                                 <p className='postDescription'>
                                     {post.description.split('\n').slice(0, 3).join('\n')}
