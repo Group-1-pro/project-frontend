@@ -1,6 +1,18 @@
 body {
     background-color: #ECF8F9;
+    /* background: URL("../assets2") no-repeat; */
+
 }
+
+
+.bodyContainer {
+    background-image: url('../assets2/compass-travel-hand-focus-sucrs3gyylhk9xi6.webp');
+    background-size: cover;
+    background-position: center;
+    height: 285vh;
+
+}
+
 
 /* scrollbar */
 ::-webkit-scrollbar {
@@ -13,7 +25,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #074818;
+    background: #5E0A0A;
 }
 
 
@@ -55,10 +67,10 @@ body {
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
     border-width: 1px;
-    border-color: #105b34;
+    border-color: #5CA0D3;
     font-weight: 700;
     color: #ECF8F9;
-    background-color: #0d724ff3;
+    background-color: #5E0A0A;
     cursor: pointer;
 }
 
@@ -67,17 +79,17 @@ body {
     padding: 0.5rem 1rem;
     border-radius: 0.25rem;
     border-width: 1px;
-    border-color: #105b34;
+    border-color: #5CA0D3;
     font-weight: 700;
     color: #ECF8F9;
-    background-color: #0d724ff3;
+    background-color: #5E0A0A;
     cursor: pointer;
 }
 
 
 .homePageFirstBtn:hover,
 .homePageSecondBtn:hover {
-    background-color: #149f68d5;
+    background-color: #5CA0D3;
 }
 
 

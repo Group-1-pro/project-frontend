@@ -1,3 +1,19 @@
+.aboutParagraph{
+    color: #C8E6F5;       
+    text-align: center;  
+    padding: 20px; 
+    margin-top: 3.5%;
+}
+
+
+.aboutH{
+    color: #C8E6F5;       
+    text-align: center;
+    margin-top: 3%;
+    margin-bottom: -4%;  
+}
+
+
 .container1 {
     height: auto;
     width: auto;
@@ -10,6 +26,7 @@
     align-items: center;
     margin: 0 auto;
 }
+
 
 .container2 {
     height: auto;
@@ -26,26 +43,6 @@
 }
 
 
-.card1-border,
-.border {
-    height: 369px;
-    width: 290px;
-    background: transparent;
-    border-radius: 10px;
-    transition: border 1s;
-    position: relative;
-}
-
-.card1-border:hover,
-.border:hover {
-    border: 1px solid #fff;
-}
-
-.card1-border {
-    height: 440px;
-}
-
-.big-card,
 .card {
     height: 379px;
     width: 300px;
@@ -61,64 +58,12 @@
     position: relative;
 }
 
-.card0 {
-    background: URL("https://upload.wikimedia.org/wikipedia/commons/1/19/Visit_of_Bill_Gates%2C_Chairman_of_Breakthrough_Energy_Ventures%2C_to_the_European_Commission_5_%28cropped%29_%28cropped%29.jpg") center center no-repeat;
-    background-size: 350px;
+
+.fa {
+    opacity: 0;
+    transition: opacity 1s;
 }
 
-.card0:hover {
-    background: URL("https://upload.wikimedia.org/wikipedia/commons/1/19/Visit_of_Bill_Gates%2C_Chairman_of_Breakthrough_Energy_Ventures%2C_to_the_European_Commission_5_%28cropped%29_%28cropped%29.jpg") left center no-repeat;
-    background-size: 600px;
-}
-
-.card0:hover h2 {
-    opacity: 1;
-}
-
-.card0:hover .fa {
-    opacity: 1;
-}
-
-.big-card {
-    height: 450px;
-    width: 300px;
-}
-
-.card1 {
-    background: url("https://i.pinimg.com/564x/fc/f4/f1/fcf4f129bad7002ce6cc3e736425544d.jpg") center center no-repeat;
-    background-size: 300px;
-}
-
-.card1:hover {
-    background: url("https://i.pinimg.com/564x/fc/f4/f1/fcf4f129bad7002ce6cc3e736425544d.jpg") left center no-repeat;
-    background-size: 600px;
-}
-
-.card1:hover h2 {
-    opacity: 1;
-}
-
-.card1:hover .fa {
-    opacity: 1;
-}
-
-.card2 {
-    background: url("https://i.pinimg.com/564x/5b/a9/9a/5ba99a3fd59ca8a98d24f36debda382a.jpg") center center no-repeat;
-    background-size: 300px;
-}
-
-.card2:hover {
-    background: url("https://i.pinimg.com/564x/5b/a9/9a/5ba99a3fd59ca8a98d24f36debda382a.jpg") left center no-repeat;
-    background-size: 600px;
-}
-
-.card2:hover h2 {
-    opacity: 1;
-}
-
-.card2:hover .fa {
-    opacity: 1;
-}
 
 .cardName {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -128,12 +73,7 @@
     transition: opacity 1s;
 }
 
-.fa {
-    opacity: 0;
-    transition: opacity 1s;
-}
 
-.card1-icons,
 .icons {
     position: absolute;
     fill: #fff;
@@ -147,12 +87,159 @@
     justify-content: space-around;
 }
 
-.card1-icons {
-    top: 295px;
-}
 
-.card1-icons:hover .fa,
 .icons:hover .fa {
     transform: scale(1.025s);
     transition: 1s;
+}
+
+
+.border {
+    height: 369px;
+    width: 290px;
+    background: transparent;
+    border-radius: 10px;
+    transition: border 1s;
+    position: relative;
+}
+
+
+.border:hover {
+    border: 1px solid #5E0A0A;
+}
+
+
+.link {
+    color: #fff;
+  }
+
+/*******************************************************************************************/
+
+
+.EsmailCard {
+    background: URL("../assets/Esmail.jpg") center center no-repeat;
+    background-size: 305px;
+}
+
+.EsmailCard:hover {
+    background: URL("../assets/Esmail.jpg") left center no-repeat;
+    background-size: 330px;
+}
+
+.EsmailCard:hover h2 {
+    opacity: 1;
+}
+
+.EsmailCard:hover .fa {
+    opacity: 1;
+}
+
+
+/*******************************************************************************************/
+
+
+.ShareefCard {
+    background: URL("https://upload.wikimedia.org/wikipedia/commons/1/19/Visit_of_Bill_Gates%2C_Chairman_of_Breakthrough_Energy_Ventures%2C_to_the_European_Commission_5_%28cropped%29_%28cropped%29.jpg") center center no-repeat;
+    background-size: 350px;
+}
+
+.ShareefCard:hover {
+    background: URL("https://upload.wikimedia.org/wikipedia/commons/1/19/Visit_of_Bill_Gates%2C_Chairman_of_Breakthrough_Energy_Ventures%2C_to_the_European_Commission_5_%28cropped%29_%28cropped%29.jpg") left center no-repeat;
+    background-size: 600px;
+}
+
+.ShareefCard:hover h2 {
+    opacity: 1;
+}
+
+.ShareefCard:hover .fa {
+    opacity: 1;
+}
+
+
+/*******************************************************************************************/
+
+
+.SaifCard {
+    background: URL("../assets/Saif.jpg") center center no-repeat;
+    background-size: 300px;
+}
+
+.SaifCard:hover {
+    background: URL("../assets/Saif.jpg") left center no-repeat;
+    background-size: 340px;
+}
+
+.SaifCard:hover h2 {
+    opacity: 1;
+}
+
+.SaifCard:hover .fa {
+    opacity: 1;
+}
+
+
+/*******************************************************************************************/
+
+
+.ShahinCard {
+    background: URL("../assets/Shahin.jpg") center center no-repeat;
+    background-size: 280px;
+}
+
+.ShahinCard:hover {
+    background: URL("../assets/Shahin.jpg") left center no-repeat;
+    background-size: 320px;
+}
+
+.ShahinCard:hover h2 {
+    opacity: 1;
+}
+
+.ShahinCard:hover .fa {
+    opacity: 1;
+}
+
+
+/*******************************************************************************************/
+
+
+.TalaCard {
+    background: URL("https://upload.wikimedia.org/wikipedia/commons/1/19/Visit_of_Bill_Gates%2C_Chairman_of_Breakthrough_Energy_Ventures%2C_to_the_European_Commission_5_%28cropped%29_%28cropped%29.jpg") center center no-repeat;
+    background-size: 350px;
+}
+
+.TalaCard:hover {
+    background: URL("https://upload.wikimedia.org/wikipedia/commons/1/19/Visit_of_Bill_Gates%2C_Chairman_of_Breakthrough_Energy_Ventures%2C_to_the_European_Commission_5_%28cropped%29_%28cropped%29.jpg") left center no-repeat;
+    background-size: 600px;
+}
+
+.TalaCard:hover h2 {
+    opacity: 1;
+}
+
+.TalaCard:hover .fa {
+    opacity: 1;
+}
+
+
+/*******************************************************************************************/
+
+
+.SaraCard {
+    background: URL("https://upload.wikimedia.org/wikipedia/commons/1/19/Visit_of_Bill_Gates%2C_Chairman_of_Breakthrough_Energy_Ventures%2C_to_the_European_Commission_5_%28cropped%29_%28cropped%29.jpg") center center no-repeat;
+    background-size: 350px;
+}
+
+.SaraCard:hover {
+    background: URL("https://upload.wikimedia.org/wikipedia/commons/1/19/Visit_of_Bill_Gates%2C_Chairman_of_Breakthrough_Energy_Ventures%2C_to_the_European_Commission_5_%28cropped%29_%28cropped%29.jpg") left center no-repeat;
+    background-size: 600px;
+}
+
+.SaraCard:hover h2 {
+    opacity: 1;
+}
+
+.SaraCard:hover .fa {
+    opacity: 1;
 }

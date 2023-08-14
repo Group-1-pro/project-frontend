@@ -32,6 +32,7 @@ const Home_page = () => {
     }
   };
 
+
   const handleAddOpportunityClick = () => {
     if (!user) {
       setLogForm(true);
