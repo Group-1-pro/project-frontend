@@ -5,10 +5,10 @@
     --hitam: #000;
     --putih: #fff;
     --color1: #f0f0f0;
-    --color2: #068DA9;
+    --color2: #187f54;
     --color3: #acacac;
-    --color4: #7E1717;
-    --color5: #068DA9;
+    --color4: #177138;
+    --color5: #509e69;
     --link-size: 38px;
     --trans-props: all 0.3s ease;
 }
@@ -142,7 +142,7 @@ footer .footerContainer .quickLink li a:hover {
 
 .copyrightText {
     width: 100%;
-    background-color: #068DA9;
+    background-color: #0a7d36d2;
     padding: 8px 100px;
     text-align: center;
     color: #ECF8F9;
@@ -212,7 +212,7 @@ footer .footerContainer .quickLink li a:hover {
     margin: auto;
 
     font-size: 21px;
-    color: #7E1717;
+    color: #075622;
     z-index: 1;
 }
 

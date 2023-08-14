@@ -32,7 +32,7 @@ export default function FavoritesPage() {
         user ? (
           <main>
           <div className="section">
-            <Typography variant="h4" color="primary" gutterBottom className="section-title">
+            <Typography variant="h4" color="green" gutterBottom className="section-title">
               Your Posts
             </Typography>
             <Divider className="divider" />
@@ -40,7 +40,7 @@ export default function FavoritesPage() {
           </div>
     
           <div className="section">
-            <Typography variant="h4" color="primary" gutterBottom className="section-title">
+            <Typography variant="h4" color="green" gutterBottom className="section-title">
               Favorites
             </Typography>
             <Divider className="divider" />
