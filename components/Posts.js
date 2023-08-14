@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useAuth } from '@/contexts/auth';
+
 
 
 const Posts = () => {
@@ -57,7 +59,39 @@ const Posts = () => {
             alert('Copy the following URL:\n' + url);
         }
     };
+    const { tokens, login, user } = useAuth(); // Use the useAuth hook to get user information
 
+    const handleAddToFavorites = async (postId) => {
+        if (!user) {
+            alert('Please login to add a post to favorites.');
+            return;
+        }
+
+        try {
+            // Fetch the user's favorites
+            const response = await fetch(`http://127.0.0.1:8000/wanderhands/favorites/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${tokens?.access}`,
+                },
+                body: JSON.stringify({
+                    post: postId,
+                    user: user.id,
+                }),
+            });
+
+            if (response.ok) {
+                alert('Post added to favorites!');
+                // You can update the UI or take any other action here
+            } else {
+                // console.error('Error adding post to favorites:', response.statusText);
+                alert('post is already in favorites')
+            }
+        } catch (error) {
+            console.error('Error adding post to favorites:', error);
+        }
+    };
 
     return (
 
@@ -77,7 +111,7 @@ const Posts = () => {
                                 <h6 className='postHTitle'>{post.title}</h6>
                                 <h6 className='postHLocation'>{post.location}</h6>
                                 <div className="postIcon">
-                                    <div className="iconA"></div>
+                                    <div className="iconA" onClick={() => handleAddToFavorites(post.id)}></div>
                                     <div className="iconB" onClick={() => handleContactPost(post.id)}></div>
                                     <div className="iconC" onClick={(event) => handleShare(event, `http://127.0.0.1:8000/post/${post.id}`)}></div>
                                 </div>
