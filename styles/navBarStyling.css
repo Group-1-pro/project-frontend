@@ -6,7 +6,7 @@ ul {
 
 .headerTitle {
     font-family: 'Montserrat', sans-serif;
-    color: #ECF8F9;
+    color: #5E0A0A;
     text-decoration: none;
 }
 
@@ -30,13 +30,13 @@ ul {
 }
 
 .main-nav a {
-    color: #ECF8F9;
+    color: #5E0A0A;
     font-size: .99em;
     text-decoration: none;
 }
 
 .main-nav a:hover {
-    color: #06a94f;
+    color: #5CA0D3;
 }
 
 
@@ -44,8 +44,8 @@ ul {
 .header {
     padding-top: .5em;
     padding-bottom: .5em;
-    border: 1px solid #056d31;
-    background-color: #156937;
+    border: 1px solid #5E0A0A;
+    background-color: #C8E6F5;
     -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
@@ -108,8 +108,8 @@ ul {
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: #006627;
-    border: 1px solid #06a96b9f;
+    background-color: #C8E6F5;
+    border: 1px solid #5E0A0A;
     list-style: none;
     padding: 8px 0;
     border-radius: 5px;

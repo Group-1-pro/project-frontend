@@ -1,22 +1,21 @@
 .section {
-    margin-bottom: 2rem;
-    padding: 1rem;
-    background-color: #f9f9f9;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .divider {
-    margin: 0.5rem 0;
-  }
-  
-  .section-title {
-    display: inline-block;
-    margin-bottom: 0.5rem;
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-bottom: 2px solid #0f8217;
-    padding-bottom: 0.2rem;
-  }
-  
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.divider {
+  margin: 0.5rem 0;
+}
+
+.section-title {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 2px solid #5E0A0A;
+  padding-bottom: 0.2rem;
+}
