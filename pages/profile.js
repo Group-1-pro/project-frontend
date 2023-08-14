@@ -50,72 +50,67 @@ export default function FavoritesPage() {
 
   return (
     <>
-      
-
       <Navbar />
-      <div className="relative" style={{ padding: '4rem 0' }}>
+      <div className="relative mx-[21px]" style={{ padding: '2rem 0' }}>
         <div>
-      <div style={{ display: 'flex', position: 'relative', backgroundColor: '#fff', boxShadow: '0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15)', padding: '0.75rem', borderRadius: '99px' }}>
-        <span
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '54px',
-            width: '200px',
-            fontSize: '1.25rem',
-            fontWeight: 500,
-            borderRadius: '99px',
-            cursor: 'pointer',
-            transition: 'color 0.15s ease-in',
-            color: activeTab === 'myPosts' ? '#185ee0' : '',
-          }}
-          onClick={() => handleTabClick('myPosts')}
-        >
-          My Posts
-        </span>
-        <span
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '54px',
-            width: '200px',
-            fontSize: '1.25rem',
-            fontWeight: 500,
-            borderRadius: '99px',
-            cursor: 'pointer',
-            transition: 'color 0.15s ease-in',
-            color: activeTab === 'myFavorites' ? '#185ee0' : '',
-          }}
-          onClick={() => handleTabClick('myFavorites')}
-        >
-          My Favorites
-        </span>
-      </div>
-    </div>
-
-        
-        
+          <div style={{ display: 'flex', position: 'relative', backgroundColor: '#fff', boxShadow: '0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15)', padding: '0.75rem', borderRadius: '99px' }}>
+            <span
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '54px',
+                width: '200px',
+                fontSize: '1.25rem',
+                fontWeight: 500,
+                borderRadius: '99px',
+                cursor: 'pointer',
+                transition: 'color 0.15s ease-in',
+                color: activeTab === 'myPosts' ? '#185ee0' : 'inherit',
+              }}
+              onClick={() => handleTabClick('myPosts')}
+            >
+              My Posts
+            </span>
+            <span
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '54px',
+                width: '200px',
+                fontSize: '1.25rem',
+                fontWeight: 500,
+                borderRadius: '99px',
+                cursor: 'pointer',
+                transition: 'color 0.15s ease-in',
+                color: activeTab === 'myFavorites' ? '#185ee0' : 'inherit',
+              }}
+              onClick={() => handleTabClick('myFavorites')}
+            >
+              My Favorites
+            </span>
+          </div>
+        </div>
       </div>
 
       {loginChecked ? (
         user ? (
           <main>
-            <div className="section" ref={postUserRef}>
-              <Typography variant="h4" color="green" gutterBottom className="section-title">
+            <div className="section mx-[21px] bg-white" ref={postUserRef} style={{ boxShadow: '0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15)', borderRadius: '50px' }}>
+              <Typography variant="h4" color="initial" gutterBottom className="section-title">
                 My Posts
               </Typography>
               <Divider className="divider" />
               <PostUser />
             </div>
 
-            <div className="section" ref={favoritesListRef}>
-              <Typography variant="h4" color="green" gutterBottom className="section-title">
+            <div className="section mx-[21px] bg-white" ref={favoritesListRef} style={{ boxShadow: '0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15)', borderRadius: '50px' }}>
+              <Typography variant="h4" color="initial" gutterBottom className="section-title">
                 Favorites
               </Typography>
               <Divider className="divider" />
-              <div >
+              <div>
                 <FavoritesList />
               </div>
             </div>
@@ -126,7 +121,7 @@ export default function FavoritesPage() {
       ) : null}
       {showScrollButton && (
         <Fab
-          color="green"
+          color="default"
           size="small"
           className="scroll-up-button"
           onClick={handleScrollUp}
@@ -144,4 +139,3 @@ export default function FavoritesPage() {
     </>
   );
 }
-

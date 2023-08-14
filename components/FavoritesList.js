@@ -201,31 +201,28 @@ export default function FavoritesList() {
                                                 <img
                                                     src="https://cdn-icons-png.flaticon.com/512/151/151910.png"
                                                     alt="Delete"
-                                                    style={{ width: '20px', height: '20px' }}
                                                 />
                                             </div>
                                             <div
                                                 className="iconB"
-                                                onClick={() => handleContactPost(post.post.id)}
+                                                onClick={() => handleContactPost(post.id)}
                                             >
                                                 <img
                                                     src="https://cdn-icons-png.flaticon.com/512/711/711155.png"
                                                     alt="Contact"
-                                                    style={{ width: '20px', height: '20px' }}
                                                 />
                                             </div>
                                             <div
                                                 className="iconC"
                                                 onClick={() =>
                                                     handleShare(
-                                                        `http://127.0.0.1:8000/post/${post.post.id}`
+                                                        `http://127.0.0.1:8000/post/${post.id}`
                                                     )
                                                 }
                                             >
                                                 <img
                                                     src="https://cdn-icons-png.flaticon.com/512/929/929610.png"
                                                     alt="Share"
-                                                    style={{ width: '20px', height: '20px' }}
                                                 />
                                             </div>
                                         </div>

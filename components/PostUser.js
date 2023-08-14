@@ -101,92 +101,9 @@ const PostUser = () => {
     }
   };
 
-  return (
-    <div className="py-24">
-      {user ? (
-        <section id="timeline" >
-          <div className="demo-card-wrapper">
-            {posts.map((post) => (
-              <div key={post.id} className="mb-4 p-4 border-b">
-                <div className="flex items-start space-x-4">
-                  <img
-                    alt="user"
-                    src={`http://127.0.0.1:8000${post.images[0].image}`}
-                    style={{ width: '150px', height: '250px' }}
-                  />
-                  <div>
-                    <Typography variant="h5" color="textPrimary">
-                      {post.title}
-                    </Typography>
-                    <Typography color="textSecondary" className="text-gray-600">
-                      {post.description}
-                    </Typography>
-                  </div>
-                </div>
+    
 
-                <div className="mt-2">
-                  <div className="flex items-center justify-center mt-2 space-x-4">
-                    <Button
-                      onClick={() => handleEditPost(post)}
-                      color="default"  // Set color to gray
-                      size="small"
-                      variant="contained"
-                      style={{
-                        width: '40px',
-                        height: '40px',
-                        borderRadius: '50%',  // Make button circular
-                      }}
-                    >
-                      <FontAwesomeIcon icon={faEdit} />
-                    </Button>
-                    <Button
-                      onClick={() => handleViewDetails(post.id)}
-                      color="default"  // Set color to gray
-                      size="small"
-                      variant="contained"
-                      style={{
-                        width: '40px',
-                        height: '40px',
-                        borderRadius: '50%',  // Make button circular
-                      }}
-                    >
-                      <FontAwesomeIcon icon={faEye} />
-                    </Button>
-                    <Button
-                      onClick={() => handleDeletePost(post.id)}
-                      color="default"  // Set color to gray
-                      size="small"
-                      variant="contained"
-                      style={{
-                        width: '40px',
-                        height: '40px',
-                        borderRadius: '50%',  // Make button circular
-                      }}
-                    >
-                      <FontAwesomeIcon icon={faTrash} />
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-      ) : (
-        <LoginForm onLogin={login} />
-      )}
 
-      {showEditForm && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <EditForm
-            post={editedPost}
-            onCancel={handleEditFormCancel}
-            onSave={handleEditFormSave}
-            setShowEditForm={setShowEditForm}
-          />
-        </div>
-      )}
-    </div>
-  );
 };
 
 export default PostUser;
