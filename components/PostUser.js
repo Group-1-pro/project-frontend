@@ -102,9 +102,9 @@ const PostUser = () => {
   };
 
   return (
-    <div>
+    <div className="py-24">
       {user ? (
-        <section id="timeline">
+        <section id="timeline" >
           <div className="demo-card-wrapper">
             {posts.map((post) => (
               <div key={post.id} className="mb-4 p-4 border-b">
