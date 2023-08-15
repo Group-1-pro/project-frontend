@@ -65,26 +65,26 @@ export default function PostForm({ setShowForm }) {
 
     return (
 
-        <form onSubmit={handleSubmit} className='flex flex-col items-center justify-center w-1/2 p-8 text-white bg-white rounded-lg text-orange-600rder-orange'>
-            <h1 className='flex justify-start w-full font-bold text-[#7E1717]'> Creat a new form </h1>
+        <form onSubmit={handleSubmit} className='flex flex-col items-center justify-center w-1/2 p-8 text-white bg-white rounded-sm text-orange-600rder-orange'>
+            <h1 className='flex justify-start w-full font-bold text-[#5E0A0A]'> Create an opportunity </h1>
             <div className='grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
                 <div className='flex flex-col order'>
-                    <label className='text-xl   font-bold text-[#7E1717]'>Title</label>
+                    <label className='text-xl   font-bold text-[#5E0A0A]'>Title</label>
                     <input
 
                         placeholder='Title'
                         type="text"
                         name="title"
-                        className='w-full p-1 text-gray-500 bg-white border-gray-300 rounded-md outline-none'
+                        className='w-full p-1 text-gray-500 bg-white border-gray-300 rounded-sm outline-none'
 
                         required />
                 </div>
                 <div className='flex flex-col'>
-                    <label className='text-xl   font-bold text-[#7E1717]'>Country</label>
+                    <label className='text-xl   font-bold text-[#5E0A0A]'>Country</label>
                     <input
                         type="text"
                         name="location"
-                        className='w-full p-1 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
+                        className='w-full p-1 text-gray-500 border-gray-300 rounded-sm outline-none appearance-none'
                         list="country-list"
                         placeholder='Country'
                         required
@@ -346,71 +346,69 @@ export default function PostForm({ setShowForm }) {
             </div>
             <div className='grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
                 <div className='flex flex-col'>
-                    <label className='text-xl   font-bold text-[#7E1717]'>Email</label>
+                    <label className='text-xl   font-bold text-[#5E0A0A]'>Email</label>
                     <input
                         type="email"
                         placeholder='Email'
                         name="email"
-                        className='w-full p-1 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
+                        className='w-full p-1 text-gray-500 border-gray-300 rounded-sm outline-none appearance-none'
 
                     />
                 </div>
                 <div className='flex flex-col '>
-                    <label className='text-xl   font-bold text-[#7E1717]'>Phone</label>
+                    <label className='text-xl   font-bold text-[#5E0A0A]'>Phone</label>
                     <input
                         type="tel"
                         id="phone"
                         name="phone"
                         placeholder='123-456-7890'
-                        className='w-full p-1 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
+                        className='w-full p-1 text-gray-500 border-gray-300 rounded-sm outline-none appearance-none'
                     />
                 </div>
             </div>
             <div className='grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
                 <div className='flex flex-col '>
-                    <label className='text-xl   font-bold text-[#7E1717]'>Start Date</label>
+                    <label className='text-xl   font-bold text-[#5E0A0A]'>Start Date</label>
                     <input
                         type="date"
                         id="start_date"
                         name="start_date"
                         required
-                        className='w-full p-1 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
+                        className='w-full p-1 text-gray-500 border-gray-300 rounded-sm outline-none appearance-none'
                     />
                 </div>
                 <div className='flex flex-col '>
-                    <label className='text-xl   font-bold text-[#7E1717]'>End Date</label>
+                    <label className='text-xl   font-bold text-[#5E0A0A]'>End Date</label>
                     <input
                         type="date"
                         id="end_date"
                         name="end_date"
                         required
-                        className='w-full p-1 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
+                        className='w-full p-1 text-gray-500 border-gray-300 rounded-sm outline-none appearance-none'
                     />
 
                 </div>
             </div>
-            <div className='flex flex-col w-full gap-4'>
-                <label className='text-xl  font-bold text-[#7E1717]'>Description</label>
+            <div className='flex flex-col w-full gap-2'>
+                <label className='text-xl font-bold text-[#5E0A0A]'>Description</label>
                 <textarea
                     name="description"
                     required
-                    className='w-full h-20 text-gray-500 border-gray-300 rounded-md outline-none appearance-none'
+                    className='w-full h-20 text-gray-500 border-gray-300 rounded-sm outline-none appearance-none'
                 />
 
             </div>
 
             <div className="w-full">
-                <label className="block text-sm font-bold text-[#7E1717] ">
-                    Image
-                </label>
-                <div className="flex items-center justify-center w-full h-40 px-6 pt-5 pb-6 mt-1 border-2 border-red-900 border-dashed rounded-md h">
+                
+                {/* <div className="flex items-center justify-center w-full h-40 px-6 pt-5 pb-6 mt-1 border-2 border-red-900 border-dashed rounded-sm-md h"> */}
                     <div className="w-full text-center">
-                        <svg className="w-20 h-20 mx-auto text-red-300 " stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                        {/* <svg className="w-20 h-20 mx-auto text-red-300 " stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
                             <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
+                        </svg> */}
                         <div className="flex items-center">
-                            <label htmlFor="images" className="flex flex-col justify-center w-40 h-8 bg-[#7E1717] rounded text-slate-200 hover:text-orange-600 hover:bg-red-400">
-                                <span className="font-bold p -2">Upload a file</span>
+                            <label htmlFor="images" className=" flex flex-col justify-center w-40 h-8 my-8 bg-[#5E0A0A] rounded-sm text-slate-200 hover:text-[#5E0A0A] hover:bg-[#C8E6F5]">
+                                <span className="font-bold p-2 ">Upload Images</span>
                                 <input
                                     id="images"
                                     type="file"
@@ -418,7 +416,7 @@ export default function PostForm({ setShowForm }) {
                                     accept="image/*"
                                     multiple
                                     onChange={handleImageChange}
-                                    className="sr-only"
+                                    className="sr-only "
                                 />
                             </label>
                             <div className="px-2 py-1 text-lg text-black text-w">
@@ -430,11 +428,12 @@ export default function PostForm({ setShowForm }) {
                             </div>
                         </div>
                     </div>
-                </div>
+                {/* </div> */}
             </div>
-            <div className='flex justify-end w-full gap-4 m-3'>
-                <button className="px-3 py-2 text-white bg-[#7E1717] rounded-md" > Create Post </button>
-                <button className="px-3 py-2 text-white rounded-md bg-slate-600" onClick={handleClose} > Close</button>
+            <div className='flex justify-end w-full gap-3 m-1'>
+                
+                <button className="px-3 py-2 text-[#5E0A0A] rounded-sm hover:shadow-md bg-[#C8E6F5] " onClick={handleClose} > Close</button>
+                <button className="px-3 py-2 text-white bg-[#5E0A0A] hover:shadow-md rounded-sm" > Post </button>
             </div>
         </form>
 

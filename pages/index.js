@@ -13,7 +13,7 @@ export default function Home() {
       <Head>
        
         <title>Wanderhands</title>
-        <link rel="icon" href={icon} />
+        <img rel="icon" href={icon} />
       </Head>
 
       <Navbar />
