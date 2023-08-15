@@ -29,7 +29,8 @@ export default function LoginForm({ onSubmit }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        minHeight: 'calc(100vh - 80px)', // Adjust to leave some space at the top
+        minHeight: 'calc(100vh - 80px)',
+        width: '90%', // Adjust to leave some space at the top
       }}
     >
       <div
@@ -96,6 +97,9 @@ export default function LoginForm({ onSubmit }) {
                   paddingLeft: '0.5rem',
                   outline: 'none',
                   border: 'none',
+                  width: '-webkit-fill-available',
+                  borderRadius: '0.5rem',
+
                 }}
                 type="text"
                 id="username"
@@ -111,7 +115,7 @@ export default function LoginForm({ onSubmit }) {
             style={{
               display: 'flex',
               flexDirection: 'column',
-              marginBottom: '1.5rem', // Increase margin
+              marginBottom: '1.5rem',
             }}
           >
             <label
@@ -148,6 +152,9 @@ export default function LoginForm({ onSubmit }) {
                   paddingLeft: '0.5rem',
                   outline: 'none',
                   border: 'none',
+                  width: '-webkit-fill-available',
+                  borderRadius: '0.5rem',
+
                 }}
                 type="password"
                 id="password"
@@ -169,6 +176,7 @@ export default function LoginForm({ onSubmit }) {
               fontWeight: 'bold',
               marginBottom: '1rem',
               cursor: 'pointer',
+              marginLeft: '175px',
             }}
           >
             Login

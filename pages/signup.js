@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '@/components/Navbar'; 
 import SignUpPage from '@/components/SignupForm'; 
+import Footer from '@/components/Footer';
 
 const SignupPage = () => {
   return (
@@ -8,6 +9,7 @@ const SignupPage = () => {
       <main>
         <SignUpPage />
       </main>
+      <Footer />
     </>
   );
 };

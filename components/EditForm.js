@@ -48,7 +48,7 @@ const EditForm = ({ post, onCancel, onSave }) => {
     };
 
     return (
-        <form onSubmit={handleSave} className='flex flex-col items-center justify-center w-1/2 p-8 text-white bg-white rounded-lg text-orange-600 border-orange'>
+        <form onSubmit={handleSave} className='flex flex-col items-center justify-center w-1/2 p-8  bg-white rounded-lg text-orange-600 border-orange'>
             <h1 className='flex justify-start w-full font-bold text-[#7E1717]'> Edit Form </h1>
             <div className='grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
                 <div className='flex flex-col order'>
