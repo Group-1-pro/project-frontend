@@ -3,15 +3,17 @@ import Head from 'next/head';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import Home_page from './home';
-import Image from 'next/image';
+import icon from '../public/icon.png';
+
 
 
 export default function Home() {
   return (
     <>
       <Head>
-       <link href="../public/logo.png" sizes="100%" />
+       
         <title>Wanderhands</title>
+        <link rel="icon" href={icon} />
       </Head>
 
       <Navbar />
