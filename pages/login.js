@@ -30,7 +30,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: '#edf2f7', position: 'relative' }}>
+    <div style={{ display: 'flex', minHeight: '100vh',  position: 'relative' }}>
       
 
       {/* Home icon */}
@@ -73,7 +73,6 @@ const LoginPage = () => {
           justifyContent: 'center',
           padding: '2rem',
           alignItems: 'center',
-          backgroundColor: 'white',
         }}
       >
         {auth.error && <p>{auth.error}</p>}

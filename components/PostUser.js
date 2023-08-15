@@ -101,7 +101,112 @@ const PostUser = () => {
     }
   };
 
-    
+  return (
+    <div className="py-24" style={{ paddingTop: '0rem', paddingBottom: '0rem' }}>
+      {user ? (
+        <section id="timeline">
+          <div className="demo-card-wrapper">
+            {posts.map((post) => (
+              <div
+                key={post.id}
+                className="mb-4 p-4 border-b flex items-start space-x-4"
+              >
+                <img
+                  alt="user"
+                  src={`http://127.0.0.1:8000${post.images[0].image}`}
+                  style={{ width: '300px', height: '300px', objectFit: 'cover' }}
+                />
+                <div className="flex-grow ">
+                  <Typography
+                    variant="h5"
+                    color="textPrimary"
+                    style={{ fontSize: '1.25rem', fontWeight: '600', margin: 'revert' }}
+                  >
+                    {post.title}
+                  </Typography>
+                  <Typography
+                    color="textSecondary"
+                    className="text-gray-600"
+                    style={{
+                      fontSize: '1rem',
+                      textAlign: 'center',
+                      margin: '0 auto', // Centering the description paragraph
+                    }}
+                  >
+                    {post.description}
+                  </Typography>
+                </div>
+
+                <div className="mt-2 flex items-center flex-col space-y-2 pt-inherit">
+                  <Button
+                    onClick={() => handleEditPost(post)}
+                    color="default"
+                    size="small"
+                    variant="contained"
+                    style={{
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '50%',
+                      backgroundColor: '#ccc', // Set color to gray
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faEdit} />
+                  </Button>
+                  <Button
+                    onClick={() => handleViewDetails(post.id)}
+                    color="default"
+                    size="small"
+                    variant="contained"
+                    style={{
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '50%',
+                      backgroundColor: '#ccc', // Set color to gray
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faEye} />
+                  </Button>
+                  <Button
+                    onClick={() => handleDeletePost(post.id)}
+                    color="default"
+                    size="small"
+                    variant="contained"
+                    style={{
+                      width: '40px',
+                      height: '40px',
+                      borderRadius: '50%',
+                      backgroundColor: '#ccc', // Set color to gray
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faTrash} />
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : (
+        <LoginForm onLogin={login} />
+      )}
+
+      {showEditForm && (
+        <div
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
+        >
+          <EditForm
+            post={editedPost}
+            onCancel={handleEditFormCancel}
+            onSave={handleEditFormSave}
+            setShowEditForm={setShowEditForm}
+          />
+        </div>
+      )}
+    </div>
+  );
+
+
+
 
 
 };
