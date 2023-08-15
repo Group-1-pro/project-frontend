@@ -118,69 +118,61 @@ const PostUser = () => {
                 />
                 <div className="flex-grow ">
                   <Typography
-                    variant="h5"
+                    variant="h4"
                     color="textPrimary"
-                    style={{ fontSize: '1.25rem', fontWeight: '600', margin: 'revert' }}
+                    style={{ fontSize: '1.5rem', fontWeight: '800', margin: 'revert' }}
                   >
                     {post.title}
                   </Typography>
                   <Typography
-                    color="textSecondary"
-                    className="text-gray-600"
-                    style={{
-                      fontSize: '1rem',
-                      textAlign: 'center',
-                      margin: '0 auto', // Centering the description paragraph
-                    }}
+                    color="black"
+                    className="text-black-600"
+                    
                   >
                     {post.description}
                   </Typography>
                 </div>
-
                 <div className="mt-2 flex items-center flex-col space-y-2 pt-inherit">
                   <Button
                     onClick={() => handleEditPost(post)}
-                    color="default"
+                    color="primary" // Change color to "primary" (blue color)
                     size="small"
-                    variant="contained"
                     style={{
                       width: '40px',
                       height: '40px',
                       borderRadius: '50%',
-                      backgroundColor: '#ccc', // Set color to gray
                     }}
                   >
-                    <FontAwesomeIcon icon={faEdit} />
+                    <FontAwesomeIcon icon={faEdit} style={{ fontSize: '1.5rem', color:'navy' }}/>
                   </Button>
                   <Button
                     onClick={() => handleViewDetails(post.id)}
                     color="default"
                     size="small"
-                    variant="contained"
                     style={{
                       width: '40px',
                       height: '40px',
                       borderRadius: '50%',
-                      backgroundColor: '#ccc', // Set color to gray
                     }}
                   >
-                    <FontAwesomeIcon icon={faEye} />
+                    <FontAwesomeIcon icon={faEye} style={{ fontSize: '1.5rem' }} />
                   </Button>
                   <Button
                     onClick={() => handleDeletePost(post.id)}
-                    color="default"
+                    color="secondary" 
                     size="small"
-                    variant="contained"
                     style={{
                       width: '40px',
                       height: '40px',
                       borderRadius: '50%',
-                      backgroundColor: '#ccc', // Set color to gray
+                      color: 'red',
                     }}
                   >
-                    <FontAwesomeIcon icon={faTrash} />
+                    <FontAwesomeIcon icon={faTrash} style={{ fontSize: '1.5rem' , color:'darkred'}} />
                   </Button>
                 </div>
+
+
               </div>
             ))}
           </div>

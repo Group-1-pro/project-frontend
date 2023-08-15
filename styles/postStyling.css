@@ -107,7 +107,7 @@
 
 
 .postParagraph {
-    padding: 0rem 1.8rem;
+    /* padding: 0rem 1.8rem; */
     font-size: smaller;
     line-height: 1.2;
 }
@@ -135,8 +135,8 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
-    padding: 0rem 1.8rem;
+    /* padding: 0rem 1.8rem; */
     font-size: smaller;
     line-height: 1.2;
-    margin-top: 5%;
+    /* margin-top: 5%; */
 }
