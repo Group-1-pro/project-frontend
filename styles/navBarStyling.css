@@ -126,3 +126,7 @@ ul {
 .auth-dropdown {
     position: relative;
 }
+
+.headerImgLogo {
+    width: 45%;
+}
