@@ -1,16 +1,16 @@
-.aboutParagraph{
-    color: #C8E6F5;       
-    text-align: center;  
-    padding: 20px; 
+.aboutParagraph {
+    color: #C8E6F5;
+    text-align: center;
+    padding: 20px;
     margin-top: 3.5%;
 }
 
 
-.aboutH{
-    color: #C8E6F5;       
+.aboutH {
+    color: #C8E6F5;
     text-align: center;
     margin-top: 3%;
-    margin-bottom: -4%;  
+    margin-bottom: -4%;
 }
 
 
@@ -111,7 +111,7 @@
 
 .link {
     color: #fff;
-  }
+}
 
 /*******************************************************************************************/
 
@@ -205,13 +205,13 @@
 
 
 .TalaCard {
-    background: URL("https://upload.wikimedia.org/wikipedia/commons/1/19/Visit_of_Bill_Gates%2C_Chairman_of_Breakthrough_Energy_Ventures%2C_to_the_European_Commission_5_%28cropped%29_%28cropped%29.jpg") center center no-repeat;
-    background-size: 350px;
+    background: URL("../assets/Tala.jpg") center center no-repeat;
+    background-size: 440px;
 }
 
 .TalaCard:hover {
-    background: URL("https://upload.wikimedia.org/wikipedia/commons/1/19/Visit_of_Bill_Gates%2C_Chairman_of_Breakthrough_Energy_Ventures%2C_to_the_European_Commission_5_%28cropped%29_%28cropped%29.jpg") left center no-repeat;
-    background-size: 600px;
+    background: URL("../assets/Tala.jpg") left center no-repeat;
+    background-size: 440px;
 }
 
 .TalaCard:hover h2 {

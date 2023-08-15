@@ -96,10 +96,10 @@ const Posts = () => {
     if (filteredData.length > 0) {
         post_data = filteredData;
     }
-    else if ((searchQuery.length > 0) && (filteredData.length === 0)){
+    else if ((searchQuery.length > 0) && (filteredData.length === 0)) {
         post_data = [];
     }
-    else if (searchQuery === ''){
+    else if (searchQuery === '') {
         post_data = data;
     }
 
@@ -144,12 +144,12 @@ const Posts = () => {
     return (
 
         <div className='postMainDiv'>
-      <SearchBar onSearch={setSearchQuery} />
+            <SearchBar onSearch={setSearchQuery} />
 
             {groupedData.map((group, index) => (
 
 
-                <div key={index} className="postDiv" id = 'posts'>
+                <div key={index} className="postDiv" id='posts'>
                     {group.map((post) => (
 
 
