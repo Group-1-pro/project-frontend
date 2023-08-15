@@ -118,6 +118,8 @@ const Home_page = () => {
                   boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
                   width: "80%",
                   maxWidth: "600px",
+                  backgroundColor: "white"
+
                 }}
               >
                 <button
