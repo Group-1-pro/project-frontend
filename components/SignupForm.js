@@ -27,10 +27,13 @@ const SignUpPage = () => {
 
   return (
     <div className="md:flex md:h-screen">
-      <div className="md:w-1/2 bg-gradient-to-tr">
+      <div className="flex items-center justify-center py-10 md:w-1/2">
         {/* Your logo elements and styling can go here */}
+        <a  href="/" >
+            <img src="/lesspading-removebg-preview.png"  />
+          </a>
       </div>
-      <div className="flex items-center justify-center py-10 bg-white md:w-1/2">
+      <div className="flex items-center justify-center py-10 md:w-1/2">
         <form className="w-full max-w-md p-6 bg-white rounded-lg shadow">
           <h1 className="mb-1 text-2xl font-bold text-gray-800">Sign Up</h1>
           <p className="text-sm font-normal text-gray-600 mb-7">
@@ -43,9 +46,17 @@ const SignUpPage = () => {
                 clipRule="evenodd" />
             </svg>
             <input className="pl-2 font-semibold text-gray-600 border-none outline-none"
-              type="text" name="" id="" placeholder="Username" 
+              type="text" name="" id="" placeholder="Username"
               value={username}
-              onChange={(e) => setUsername(e.target.value)} />
+              onChange={(e) => setUsername(e.target.value)}
+              style={{
+                paddingLeft: '0.5rem',
+                outline: 'none',
+                border: 'none',
+                width: '-webkit-fill-available',
+                borderRadius: '0.5rem',
+
+              }} />
           </div>
           <div className="flex items-center px-3 py-2 mb-4 border-2 rounded-2xl">
             <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-gray-400" fill="none"
@@ -54,9 +65,17 @@ const SignUpPage = () => {
                 d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
             </svg>
             <input className="pl-2 font-semibold text-gray-600 border-none outline-none"
-              type="text" name="" id="" placeholder="Email Address" 
+              type="text" name="" id="" placeholder="Email Address"
               value={email}
-              onChange={(e) => setEmail(e.target.value)} />
+              onChange={(e) => setEmail(e.target.value)} 
+              style={{
+                paddingLeft: '0.5rem',
+                outline: 'none',
+                border: 'none',
+                width: '-webkit-fill-available',
+                borderRadius: '0.5rem',
+
+              }}/>
           </div>
           <div className="flex items-center px-3 py-2 border-2 rounded-2xl">
             <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-gray-400" viewBox="0 0 20 20"
@@ -65,14 +84,22 @@ const SignUpPage = () => {
                 clipRule="evenodd" />
             </svg>
             <input className="pl-2 font-semibold text-gray-600 border-none outline-none"
-              type="password" name="" id="" placeholder="Password" 
+              type="password" name="" id="" placeholder="Password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)} />
+              onChange={(e) => setPassword(e.target.value)}
+              style={{
+                paddingLeft: '0.5rem',
+                outline: 'none',
+                border: 'none',
+                width: '-webkit-fill-available',
+                borderRadius: '0.5rem',
+
+              }} />
           </div>
           <button
             onClick={handleSignUp}
             type="submit"
-            className="block w-full py-2 mt-4 mb-2 font-semibold text-white bg-indigo-600 rounded-2xl"
+            className="block w-full py-2 mt-4 mb-2 font-semibold text-white bg-[#7E1717] rounded-2xl"
           >
             Sign Up
           </button>

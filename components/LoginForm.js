@@ -24,185 +24,69 @@ export default function LoginForm({ onSubmit }) {
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        minHeight: 'calc(100vh - 80px)',
-        width: '90%', // Adjust to leave some space at the top
-      }}
-    >
-      <div
-        style={{
-          backgroundColor: 'white',
-          padding: '2rem',
-          borderRadius: '0.5rem',
-          boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-          width: '100%',
-          maxWidth: '500px', // Increase the maximum width
-        }}
-      >
-        <h1
-          style={{
-            color: '#374151',
-            fontWeight: 'bold',
-            fontSize: '1.8rem', // Increase font size
-            marginBottom: '1rem',
-            textAlign: 'center',
-          }}
-        >
-          LOGIN
-        </h1>
+    <div className="md:flex md:h-screen">
+      <div className="flex items-center justify-center py-10 md:w-1/2">
+        <a href="/" className="mx-auto">
+          <img src="/lesspading-removebg-preview.png" alt="Logo" className="w-32 h-auto" />
+        </a>
+      </div>
+      <div className="flex items-center justify-center py-10 md:w-1/2">
+        <div className="flex items-center justify-center min-h-[calc(100vh-80px)] w-90">
+          <div className="bg-white p-8 rounded-2xl shadow w-full max-w-[500px]">
+            <h1 className="text-2xl font-bold text-gray-800 text-center mb-4">LOGIN</h1>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="flex flex-col space-y-2">
+                <label htmlFor="username" className="text-gray-600">Username</label>
+                <div className="flex items-center border-2 rounded-2xl">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                  </svg>
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    value={formData.username}
+                    onChange={handleInputChange}
+                    placeholder="Username"
+                    className="pl-2 font-semibold text-gray-600 border-none outline-none w-full"
+                  />
+                </div>
+              </div>
 
-        <form onSubmit={handleSubmit}>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              marginBottom: '1.5rem', // Increase margin
-            }}
-          >
-            <label
-              htmlFor="username"
-              style={{
-                marginBottom: '0.5rem',
-                color: '#4A5568',
-              }}
-            >
-              Username
-            </label>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                border: '2px solid #E5E7EB',
-                borderRadius: '1rem',
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-gray-400"
-                viewBox="0 0 20 20"
-                fill="currentColor"
+              <div className="flex flex-col space-y-2">
+                <label htmlFor="password" className="text-gray-600">Password</label>
+                <div className="flex items-center border-2 rounded-2xl">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                  </svg>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    placeholder="Password"
+                    className="pl-2 font-semibold text-gray-600 border-none outline-none w-full"
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                className="block w-full py-2 mt-4 font-semibold text-white bg-[#7E1717] rounded-2xl"
               >
-                <path
-                  fillRule="evenodd"
-                  d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <input
-                style={{
-                  paddingLeft: '0.5rem',
-                  outline: 'none',
-                  border: 'none',
-                  width: '-webkit-fill-available',
-                  borderRadius: '0.5rem',
+                Login
+              </button>
 
-                }}
-                type="text"
-                id="username"
-                name="username"
-                value={formData.username}
-                onChange={handleInputChange}
-                placeholder="Username"
-              />
-            </div>
+              <p className="text-center text-gray-700">
+                Don't have an account?{' '}
+                <Link href="/signup" className="text-blue-500 underline cursor-pointer">
+                  Sign Up
+                </Link>
+              </p>
+            </form>
           </div>
-
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              marginBottom: '1.5rem',
-            }}
-          >
-            <label
-              htmlFor="password"
-              style={{
-                marginBottom: '0.5rem',
-                color: '#4A5568',
-              }}
-            >
-              Password
-            </label>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                border: '2px solid #E5E7EB',
-                borderRadius: '1rem',
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-gray-400"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <input
-                style={{
-                  paddingLeft: '0.5rem',
-                  outline: 'none',
-                  border: 'none',
-                  width: '-webkit-fill-available',
-                  borderRadius: '0.5rem',
-
-                }}
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleInputChange}
-                placeholder="Password"
-              />
-            </div>
-          </div>
-
-          <button
-            type="submit"
-            style={{
-              background: '#4F46E5',
-              padding: '0.75rem 1.5rem', // Increase padding
-              borderRadius: '1rem',
-              color: 'white',
-              fontWeight: 'bold',
-              marginBottom: '1rem',
-              cursor: 'pointer',
-              marginLeft: '175px',
-            }}
-          >
-            Login
-          </button>
-
-          <p
-            style={{
-              marginTop: '1.5rem', // Increase margin
-              textAlign: 'center',
-              color: '#718096',
-            }}
-          >
-            Don't have an account?{' '}
-            <Link href="/signup">
-              <span
-                style={{
-                  color: '#4A90E2',
-                  textDecoration: 'underline',
-                  cursor: 'pointer',
-                }}
-              >
-                Sign Up
-              </span>
-            </Link>
-          </p>
-        </form>
+        </div>
       </div>
     </div>
   );
