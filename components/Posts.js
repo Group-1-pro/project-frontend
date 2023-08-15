@@ -12,6 +12,8 @@ const Posts = () => {
     const [loading, setLoading] = useState(true);
     const [selectedPost, setSelectedPost] = useState(null);
     const [favPost, setFavPost] = useState([]);
+    const [showForm, setShowForm] = useState(false);
+    const [logForm, setLogForm] = useState(false);
 
 
     useEffect(() => {
@@ -118,6 +120,9 @@ const Posts = () => {
     const isPostInFavorites = (postId) => {
         return favPost?.some((post) => post.id === postId);
     };
+    const handleAddOpportunityClick = () => {
+        alert('Please login to add this post to favorites!');
+      };
 
 
     return (
@@ -153,7 +158,11 @@ const Posts = () => {
                                             />
                                         )
                                     ) : (
-                                        <p>Please log in to add to favorites</p>
+                                        <FontAwesomeIcon
+                                        icon={faHeart}
+                                        className="hover:cursor-pointer"
+                                        onClick={handleAddOpportunityClick}
+                                    />
                                     )}
                                     <FontAwesomeIcon
                                         icon={faAddressCard}
