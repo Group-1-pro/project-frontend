@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '@/contexts/auth';
 import { useRouter } from 'next/router';
+import logo from '../public/logo.png';
+import Image from 'next/image';
 
 const Navbar = () => {
   const auth = useAuth();
@@ -29,8 +31,14 @@ const Navbar = () => {
     <div>
       <header className="header">
         <h1 className="headerLogo">
-          <a className="headerTitle" href="/">
-            WanderHands
+          <a className="headerTitle" href="/" >
+          <Image
+          src="/logo.png"
+          alt="logo"
+          width={150}
+          height={15}
+          priority
+        />
           </a>
         </h1>
         <ul className="main-nav">
