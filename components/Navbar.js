@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '@/contexts/auth';
 import { useRouter } from 'next/router';
-import logo from '../public/logo.png';
+
 import Image from 'next/image';
 
 const Navbar = () => {
@@ -33,10 +33,10 @@ const Navbar = () => {
         <h1 className="headerLogo">
           <a className="headerTitle" href="/" >
           <Image
-          src="/logo.png"
+          src="/lesspading-removebg-preview.png"
           alt="logo"
-          width={150}
-          height={15}
+          width={110}
+          height={50}
           priority
         />
           </a>
