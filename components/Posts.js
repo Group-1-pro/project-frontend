@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faAddressCard, faShareNodes } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '@/contexts/auth';
 import LoginForm from './LoginForm';
-
+import SearchBar from './SearchBar';
 
 
 const Posts = () => {
@@ -12,8 +12,10 @@ const Posts = () => {
     const [loading, setLoading] = useState(true);
     const [selectedPost, setSelectedPost] = useState(null);
     const [favPost, setFavPost] = useState([]);
-    const [showForm, setShowForm] = useState(false);
-    const [logForm, setLogForm] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+
+
+
 
 
     useEffect(() => {
@@ -59,10 +61,6 @@ const Posts = () => {
         return <div>No posts available</div>;
     }
 
-    const groupedData = [];
-    for (let i = 0; i < data.length; i += 4) {
-        groupedData.push(data.slice(i, i + 4));
-    }
 
     const handleContactPost = (postId) => {
         const selected = data.find((post) => post.id === postId);
@@ -88,6 +86,27 @@ const Posts = () => {
     };
 
 
+    const filteredData = data.filter(post =>
+        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.description.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    let post_data = [];
+    if (filteredData.length > 0) {
+        post_data = filteredData;
+    }
+    else if ((searchQuery.length > 0) && (filteredData.length === 0)){
+        post_data = [];
+    }
+    else if (searchQuery === ''){
+        post_data = data;
+    }
+
+    const groupedData = [];
+    for (let i = 0; i < post_data.length; i += 4) {
+        groupedData.push(post_data.slice(i, i + 4));
+    }
 
 
     const handleAddToFavorites = async (postId) => {
@@ -120,18 +139,17 @@ const Posts = () => {
     const isPostInFavorites = (postId) => {
         return favPost?.some((post) => post.id === postId);
     };
-    const handleAddOpportunityClick = () => {
-        alert('Please login to add this post to favorites!');
-      };
 
 
     return (
 
         <div className='postMainDiv'>
+      <SearchBar onSearch={setSearchQuery} />
+
             {groupedData.map((group, index) => (
 
 
-                <div key={index} className="postDiv">
+                <div key={index} className="postDiv" id = 'posts'>
                     {group.map((post) => (
 
 
@@ -158,11 +176,7 @@ const Posts = () => {
                                             />
                                         )
                                     ) : (
-                                        <FontAwesomeIcon
-                                        icon={faHeart}
-                                        className="hover:cursor-pointer"
-                                        onClick={handleAddOpportunityClick}
-                                    />
+                                        <p>Please log in to add to favorites</p>
                                     )}
                                     <FontAwesomeIcon
                                         icon={faAddressCard}

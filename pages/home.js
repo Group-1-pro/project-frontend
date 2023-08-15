@@ -16,7 +16,7 @@ const Home_page = () => {
 
   const handleExploreClick = () => {
     if (sliderRef.current) {
-      const yOffset = 630; // Adjust this value to scroll even further down
+      const yOffset = 610; // Adjust this value to scroll even further down
       const topPosition = sliderRef.current.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({ top: topPosition + yOffset, behavior: "smooth" });
     }
@@ -134,7 +134,7 @@ const Home_page = () => {
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
+                    className="w-6 h-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
