@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useAuth } from '../contexts/auth';
 import LoginForm from '@/components/LoginForm';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart, faAddressCard, faShare, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 export default function FavoritesList() {
     const { tokens, login, user } = useAuth();
@@ -102,27 +104,27 @@ export default function FavoritesList() {
                         }}
                     >
                         <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <button
-                            onClick={scrollLeft}
-                            style={{
-                                padding: '5px 10px',
-                                marginRight: '10px',
-                                fontSize: '30px',
-                            }}
-                        >
-                            &lt;
-                        </button>
-                        <button
-                            onClick={scrollRight}
-                            style={{
-                                padding: '5px 10px',
-                                marginLeft: '10px',
-                                fontSize: '30px',
-                            }}
-                        >
-                            &gt;
-                        </button>
-</div>
+                            <button
+                                onClick={scrollLeft}
+                                style={{
+                                    padding: '5px 10px',
+                                    marginRight: '10px',
+                                    fontSize: '30px',
+                                }}
+                            >
+                                &lt;
+                            </button>
+                            <button
+                                onClick={scrollRight}
+                                style={{
+                                    padding: '5px 10px',
+                                    marginLeft: '10px',
+                                    fontSize: '30px',
+                                }}
+                            >
+                                &gt;
+                            </button>
+                        </div>
 
                     </div>
                     <div
@@ -137,6 +139,7 @@ export default function FavoritesList() {
                         {fav_posts.map((post) => (
                             <div
                                 key={post.id}
+                                className="post-card"
                                 style={{
                                     minWidth: '300px',
                                     maxWidth: '300px',
@@ -149,33 +152,22 @@ export default function FavoritesList() {
                                     position: 'relative',
                                 }}
                             >
-                                <div
-                                    className="postImg"
-                                    style={{
-                                        width: '100%',
-                                        height: '200px',
-                                        overflow: 'hidden',
-                                        borderRadius: '10px 10px 0 0',
-                                    }}
-                                >
+                                <div className="post-img">
                                     <img
                                         src={`http://127.0.0.1:8000${post.post.images[0].image}`}
-                                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                                        style={{ width: '100%', height: '200px', objectFit: 'cover' }}
                                         alt=""
                                     />
                                 </div>
-                                <div className="postInfo" style={{ padding: '10px' }}>
-                                    <h3
-                                        className="postHs"
-                                        style={{
-                                            maxHeight: '3.6em',
-                                            overflow: 'hidden',
-                                            textOverflow: 'ellipsis',
-                                        }}
-                                    >
-                                        {post.post.title}
-                                    </h3>
-                                    <h3 className="postHs">{post.post.location}</h3>
+                                <div className="post-info">
+                                    <h3> {post.post.title}</h3>
+                                    <div className="post-location">
+                                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                                            <FontAwesomeIcon icon={faLocationDot} style={{ color: "#520000", fontSize: '18px', marginRight: '10px' }} />
+                                            <h2 style={{ margin: '0', fontSize: '22px' }}>{post.post.location}</h2>
+                                        </div>
+                                    </div>
+
                                     <p className="postParagraph">
                                         {post.post.description.length > 150
                                             ? post.post.description.slice(0, 150) + '...'
@@ -186,48 +178,37 @@ export default function FavoritesList() {
                                             View more
                                         </a>
                                     )}
-                                    <div
-                                        style={{
-                                            display: 'flex',
-                                            justifyContent: 'space-between',
-                                            alignItems: 'center',
-                                        }}
-                                    >
-                                        <div className=".postIcon">
-                                            <div
-                                                className="iconA"
+                                    <div className="post-icons">
+                                        <div className="icon-container">
+                                            <FontAwesomeIcon
+                                                icon={faHeart}
+                                                className="hover:cursor-pointer text-red-500"
+                                                style={{ color: "#520000", fontSize: '30px', marginBottom: '10px' }}
                                                 onClick={() => handleDeletePost(post.id)}
-                                            >
-                                                <img
-                                                    src="https://cdn-icons-png.flaticon.com/512/151/151910.png"
-                                                    alt="Delete"
-                                                />
-                                            </div>
-                                            <div
-                                                className="iconB"
+                                            />
+                                        </div>
+                                        <div className="icon-container">
+                                            <FontAwesomeIcon
+                                                icon={faAddressCard}
+                                                style={{ color: "#520000", fontSize: '30px', marginBottom: '10px' }}
                                                 onClick={() => handleContactPost(post.id)}
-                                            >
-                                                <img
-                                                    src="https://cdn-icons-png.flaticon.com/512/711/711155.png"
-                                                    alt="Contact"
-                                                />
-                                            </div>
-                                            <div
-                                                className="iconC"
+                                                className="hover:cursor-pointer text-blue-500"
+                                            />
+                                        </div>
+                                        <div className="icon-container">
+                                            <FontAwesomeIcon
+                                                icon={faShare}
+                                                style={{ color: "#520000", fontSize: '30px', marginBottom: '10px' }}
                                                 onClick={() =>
                                                     handleShare(
                                                         `http://127.0.0.1:8000/post/${post.id}`
                                                     )
                                                 }
-                                            >
-                                                <img
-                                                    src="https://cdn-icons-png.flaticon.com/512/929/929610.png"
-                                                    alt="Share"
-                                                />
-                                            </div>
+                                                className="hover:cursor-pointer text-green-500"
+                                            />
                                         </div>
-
                                     </div>
+
                                 </div>
                             </div>
                         ))}
