@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useAuth } from '@/contexts/auth';
 import { useRouter } from 'next/router';
 
-import Image from 'next/image';
 
 const Navbar = () => {
   const auth = useAuth();
@@ -32,13 +31,7 @@ const Navbar = () => {
       <header className="header">
         <h1 className="headerLogo">
           <a className="headerTitle" href="/" >
-          <Image
-          src="/lesspading-removebg-preview.png"
-          alt="logo"
-          width={110}
-          height={50}
-          priority
-        />
+            <img src="/lesspading-removebg-preview.png" className="headerImgLogo" />
           </a>
         </h1>
         <ul className="main-nav">
