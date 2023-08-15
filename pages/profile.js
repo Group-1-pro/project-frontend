@@ -66,6 +66,7 @@ export default function FavoritesPage() {
                 cursor: 'pointer',
                 transition: 'color 0.15s ease-in',
                 color: activeTab === 'myPosts' ? '#185ee0' : 'inherit',
+                borderBottom: activeTab === 'myPosts' ? '3px solid #185ee0' : 'none',
               }}
               onClick={() => handleTabClick('myPosts')}
             >
@@ -83,6 +84,7 @@ export default function FavoritesPage() {
                 cursor: 'pointer',
                 transition: 'color 0.15s ease-in',
                 color: activeTab === 'myFavorites' ? '#185ee0' : 'inherit',
+                borderBottom: activeTab === 'myFavorites' ? '3px solid #185ee0' : 'none',
               }}
               onClick={() => handleTabClick('myFavorites')}
             >
@@ -95,24 +97,25 @@ export default function FavoritesPage() {
       {loginChecked ? (
         user ? (
           <main>
-            <div className="section mx-[21px] bg-white" ref={postUserRef} style={{ boxShadow: '0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15)' }}>
-              <Typography variant="h4" color="initial" gutterBottom className="section-title">
-                My Posts
-              </Typography>
-              <Divider className="divider" />
-              <PostUser />
+          <div className="section mx-[21px] bg-white" ref={postUserRef} style={{ boxShadow: '0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15)' }}>
+            <Typography variant="h4" color="textPrimary" gutterBottom className="section-title" style={{ fontWeight: 'bold', color: 'darkred', textDecorationColor: 'darkred' }}>
+              My Posts
+            </Typography>
+            <Divider className="divider" />
+            <PostUser />
+          </div>
+        
+          <div className="section mx-[21px] bg-white" ref={favoritesListRef} style={{ boxShadow: '0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15)' }}>
+            <Typography variant="h4" color="textPrimary" gutterBottom className="section-title" style={{ fontWeight: 'bold', color: 'darkred', textDecorationColor: 'darkred' }}>
+              Favorites
+            </Typography>
+            <Divider className="divider" />
+            <div>
+              <FavoritesList />
             </div>
-
-            <div className="section mx-[21px] bg-white" ref={favoritesListRef} style={{ boxShadow: '0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15)' }}>
-              <Typography variant="h4" color="initial" gutterBottom className="section-title">
-                Favorites
-              </Typography>
-              <Divider className="divider" />
-              <div>
-                <FavoritesList />
-              </div>
-            </div>
-          </main>
+          </div>
+        </main>
+        
         ) : (
           <LoginForm onSubmit={handleSubmitLoginForm} />
         )
