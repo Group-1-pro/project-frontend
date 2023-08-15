@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faAddressCard, faShareNodes } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '@/contexts/auth';
 import LoginForm from './LoginForm';
+import Loading from './Loading';
 
 
 
@@ -52,11 +53,7 @@ const Posts = () => {
     }, [user]);
 
     if (loading) {
-        return <div className="flex items-center justify-center space-x-2">
-        <div className="w-4 h-4 rounded-full animate-pulse dark:bg-red-800"></div>
-        <div className="w-4 h-4 rounded-full animate-pulse dark:bg-red-800"></div>
-        <div className="w-4 h-4 rounded-full animate-pulse dark:bg-red-800"></div>
-    </div>;
+        return <Loading />;
     }
 
     if (!data || !Array.isArray(data)) {
