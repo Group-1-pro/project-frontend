@@ -8,6 +8,8 @@ import '../styles/footerStyling.css';
 import '../styles/navBarStyling.css';
 import '../styles/aboutStyling.css';
 import '../styles/proStyling.css';
+import '../styles/blogsStyling.css';
+
 
 export default function App({ Component, pageProps }) {
 
