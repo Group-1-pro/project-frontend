@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useAuth } from '@/contexts/auth';
 import { useRouter } from 'next/router';
 
-import Image from 'next/image';
 
 const Navbar = () => {
   const auth = useAuth();
