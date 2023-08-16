@@ -3,3 +3,11 @@
     height: 1.25rem;
     color: #5E0A0A;
 }
+
+.blogsMainDiv{
+    /* background-color: #5E0A0A; */
+        background-image: url('../assets2/compass-travel-hand-focus-sucrs3gyylhk9xi6.webp');
+    background-size: cover;
+    background-position: center;
+    height: 435vh;
+}
