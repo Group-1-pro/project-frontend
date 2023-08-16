@@ -13,7 +13,10 @@ const Posts = () => {
     const [selectedPost, setSelectedPost] = useState(null);
     const [favPost, setFavPost] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
-    const fetchData = async () => {
+
+
+    useEffect(() => {
+        const fetchData = async () => {
             try {
                 const response = await fetch('http://127.0.0.1:8000/wanderhands/post/');
                 const data = await response.json();
@@ -25,8 +28,6 @@ const Posts = () => {
                 setLoading(false);
             }
         };
-    useEffect(() => {
-        
         fetchData();
     }, [data]);
     useEffect(() => {
