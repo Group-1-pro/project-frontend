@@ -48,13 +48,13 @@ const Home_page = () => {
       <div className="homePageFirstDiv">
 
         <div className="homePageParagraphAndBtnDiv">
-          
-          <p>
+
+          <p className="homeFirstParagraph">
             Explore the World Through Volunteering: Make a Global Impact
-            <br /><br />
-            Welcome to our website,
-            <br />
-            where the spirit of volunteerism transcends borders! Engaging in volunteer work abroad offers a unique and rewarding opportunity to immerse yourself in diverse cultures while making a positive impact on communities worldwide.
+          </p>
+
+          <p className="homeSecondParagraph">
+            Where the spirit of volunteerism transcends borders! Engaging in volunteer work abroad offers a unique and rewarding opportunity to immerse yourself in diverse cultures while making a positive impact on communities worldwide.
             <br />
             Our platform connects you with transformative volunteering experiences in different countries, fostering cross-cultural understanding and global citizenship.
           </p>

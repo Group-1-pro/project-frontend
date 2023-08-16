@@ -72,7 +72,8 @@ const Slider = () => {
 
                 <div className="slider-content">
                     <h3 className='sliderH3'>Empower</h3>
-                    <h3 className='sliderH3'>Connect</h3>
+                    {/* <h3 className='sliderH3'>Connect</h3> */}
+                    <h3 className='sliderH3'></h3>
                     <h3 className='sliderH3'>Thrive</h3>
                 </div>
             </div>
