@@ -31,9 +31,10 @@ ul {
 
 .main-nav a {
     color: #5E0A0A;
-    font-size: .99em;
+    font-size: 105%;    
+    font-weight: bold;
     text-decoration: none;
-}
+    font-family: 'Poppins', sans-serif;}
 
 .main-nav a:hover {
     color: #5CA0D3;
@@ -44,7 +45,7 @@ ul {
 .header {
     padding-top: .5em;
     padding-bottom: .5em;
-    border: 1px solid #5E0A0A;
+    /* border: 1px solid #5E0A0A; */
     background-color: #C8E6F5;
     -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
@@ -109,7 +110,7 @@ ul {
     top: 100%;
     right: 0;
     background-color: #C8E6F5;
-    border: 1px solid #5E0A0A;
+    /* border: 1px solid #5E0A0A; */
     list-style: none;
     padding: 8px 0;
     border-radius: 5px;

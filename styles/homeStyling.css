@@ -31,7 +31,7 @@ body {
 
 
 .homePageMainDiv {
-    margin-top: 4.5%;
+    margin-top: 3.5%;
     /* margin-bottom: 10%; */
 }
 
@@ -101,6 +101,21 @@ body {
 
 .homePageSliderDiv {
     width: 50%;
-    padding-top: 4.5%;
+    padding-top: 5.5%;
     padding-left: 4%;
+}
+
+
+.homeFirstParagraph {
+    font-size: 150%;
+    margin-bottom: 4%;
+    text-align: center; 
+
+}
+
+
+.homeSecondParagraph {
+    font-size: 110%;
+    text-align: center; 
+    /* text-align-last: justify; */
 }

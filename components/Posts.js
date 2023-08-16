@@ -3,8 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faAddressCard, faShareNodes } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '@/contexts/auth';
 import LoginForm from './LoginForm';
-import Loading from './Loading';
-
+import SearchBar from './SearchBar';
 
 
 const Posts = () => {
@@ -13,10 +12,7 @@ const Posts = () => {
     const [loading, setLoading] = useState(true);
     const [selectedPost, setSelectedPost] = useState(null);
     const [favPost, setFavPost] = useState([]);
-    const [showForm, setShowForm] = useState(false);
-    const [logForm, setLogForm] = useState(false);
-
-
+    const [searchQuery, setSearchQuery] = useState('');
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -32,7 +28,6 @@ const Posts = () => {
         };
         fetchData();
     }, []);
-
     useEffect(() => {
         const getFavData = async () => {
             try {
@@ -51,32 +46,21 @@ const Posts = () => {
         };
         getFavData();
     }, [user]);
-
     if (loading) {
-        return <Loading />;
+        return <div>Loading posts...</div>;
     }
-
     if (!data || !Array.isArray(data)) {
         return <div>No posts available</div>;
     }
-
-    const groupedData = [];
-    for (let i = 0; i < data.length; i += 4) {
-        groupedData.push(data.slice(i, i + 4));
-    }
-
     const handleContactPost = (postId) => {
         const selected = data.find((post) => post.id === postId);
         setSelectedPost(selected);
     };
-
     const handleCloseContact = () => {
         setSelectedPost(null);
     };
-
     const handleShare = (event, url) => {
         event.preventDefault();
-
         if (navigator.share) {
             navigator.share({
                 url: url,
@@ -87,13 +71,27 @@ const Posts = () => {
             alert('Copy the following URL:\n' + url);
         }
     };
-
-
-
-
+    const filteredData = data.filter(post =>
+        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.description.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    let post_data = [];
+    if (filteredData.length > 0) {
+        post_data = filteredData;
+    }
+    else if ((searchQuery.length > 0) && (filteredData.length === 0)) {
+        post_data = [];
+    }
+    else if (searchQuery === '') {
+        post_data = data;
+    }
+    const groupedData = [];
+    for (let i = 0; i < post_data.length; i += 4) {
+        groupedData.push(post_data.slice(i, i + 4));
+    }
     const handleAddToFavorites = async (postId) => {
         try {
-
             const response = await fetch(`http://127.0.0.1:8000/wanderhands/favorites/`, {
                 method: 'POST',
                 headers: {
@@ -105,11 +103,8 @@ const Posts = () => {
                     user: user.id,
                 }),
             });
-
             if (response.ok) {
-
                 setFavPost([...favPost, { id: postId }]);
-
             } else {
                 alert('You have already added this post to favorites!');
             }
@@ -117,25 +112,17 @@ const Posts = () => {
             console.error('Error adding post to favorites:', error);
         }
     };
-
     const isPostInFavorites = (postId) => {
         return favPost?.some((post) => post.id === postId);
     };
-    const handleAddOpportunityClick = () => {
-        alert('Please login to add this post to favorites!');
-      };
-
 
     return (
 
         <div className='postMainDiv'>
+            <SearchBar onSearch={setSearchQuery} />
             {groupedData.map((group, index) => (
-
-
-                <div key={index} className="postDiv">
+                <div key={index} className="postDiv" id='posts'>
                     {group.map((post) => (
-
-
                         <div key={post.id} className="postCard">
                             <div className="postImgBox">
                                 <img className="postImg" src={`http://127.0.0.1:8000${post.images[0].image}`} width="100%" alt="" />
@@ -148,7 +135,7 @@ const Posts = () => {
                                         isPostInFavorites(post.id) ? (
                                             <FontAwesomeIcon
                                                 icon={faHeart}
-                                                style={{ color: "#ff0000" }}
+                                                style={{ color: "#FF0000" }}
                                                 className="hover:cursor-pointer"
                                             />
                                         ) : (
@@ -160,10 +147,10 @@ const Posts = () => {
                                         )
                                     ) : (
                                         <FontAwesomeIcon
-                                        icon={faHeart}
-                                        className="hover:cursor-pointer"
-                                        onClick={handleAddOpportunityClick}
-                                    />
+                                            icon={faHeart}
+                                            onClick={() => handleAddToFavorites(post.id)}
+                                            className="hover:cursor-pointer"
+                                        />
                                     )}
                                     <FontAwesomeIcon
                                         icon={faAddressCard}
@@ -175,7 +162,6 @@ const Posts = () => {
                                         onClick={(event) => handleShare(event, `http://127.0.0.1:8000/post/${post.id}`)}
                                         className="hover:cursor-pointer"
                                     />
-
                                 </div>
                                 <p className='postDescription'>
                                     {post.description.split('\n').slice(0, 3).join('\n')}
@@ -187,7 +173,6 @@ const Posts = () => {
                             </div>
                         </div>
                     ))}
-
 
                     {selectedPost && (
                         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
