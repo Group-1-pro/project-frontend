@@ -164,7 +164,7 @@ export default function FavoritesList() {
                                     <div className="post-location">
                                         <div style={{ display: 'flex', alignItems: 'center' }}>
                                             <FontAwesomeIcon icon={faLocationDot} style={{ color: "#520000", fontSize: '18px', marginRight: '10px' }} />
-                                            <h2 style={{ margin: '0', fontSize: '22px' }}>{post.post.location}</h2>
+                                            <h2 style={{ margin: '0', fontSize: '22px' ,color:'#5CA0D3'}}>{post.post.location}</h2>
                                         </div>
                                     </div>
 
@@ -182,7 +182,7 @@ export default function FavoritesList() {
                                         <div className="icon-container">
                                             <FontAwesomeIcon
                                                 icon={faHeart}
-                                                className="hover:cursor-pointer text-red-500"
+                                                className="text-red-500 hover:cursor-pointer"
                                                 style={{ color: "#520000", fontSize: '30px', marginBottom: '10px' }}
                                                 onClick={() => handleDeletePost(post.id)}
                                             />
@@ -192,7 +192,7 @@ export default function FavoritesList() {
                                                 icon={faAddressCard}
                                                 style={{ color: "#520000", fontSize: '30px', marginBottom: '10px' }}
                                                 onClick={() => handleContactPost(post.id)}
-                                                className="hover:cursor-pointer text-blue-500"
+                                                className="text-blue-500 hover:cursor-pointer"
                                             />
                                         </div>
                                         <div className="icon-container">
@@ -204,7 +204,7 @@ export default function FavoritesList() {
                                                         `http://127.0.0.1:8000/post/${post.id}`
                                                     )
                                                 }
-                                                className="hover:cursor-pointer text-green-500"
+                                                className="text-green-500 hover:cursor-pointer"
                                             />
                                         </div>
                                     </div>
@@ -214,16 +214,16 @@ export default function FavoritesList() {
                         ))}
                     </div>
                     {selectedPost && (
-                        <div className="fixed inset-0 flex items-center justify-center z-50 bg-opacity-50 bg-black">
-                            <div className="bg-white rounded-lg shadow-lg p-6 max-w-md">
-                                <h2 className="text-xl font-semibold mb-2">
+                        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+                            <div className="max-w-md p-6 bg-white rounded-lg shadow-lg">
+                                <h2 className="mb-2 text-xl font-semibold">
                                     Contact Information for "{selectedPost.post.title}"
                                 </h2>
                                 <p className="text-gray-700">Email: {selectedPost.post.email}</p>
                                 <p className="text-gray-700">Phone: {selectedPost.post.phone}</p>
                                 <button
                                     onClick={handleCloseContact}
-                                    className="mt-4 px-4 py-2 bg-gray-600 text-white rounded-md"
+                                    className="px-4 py-2 mt-4 text-white bg-gray-600 rounded-md"
                                 >
                                     Close
                                 </button>

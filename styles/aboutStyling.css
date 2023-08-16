@@ -1,17 +1,27 @@
-.aboutParagraph {
+@import url('https://fonts.googleapis.com/css?family=Exo+2:700');
+
+
+
+ .aboutH {
+    color: #C8E6F5;
+    text-align: center;
+    margin-top: 3%;
+    font-family: 'Exo 2', sans-serif;
+    font-size: 3rem; /* Adjust the font size as needed */
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  
+  .aboutParagraph {
     color: #C8E6F5;
     text-align: center;
     padding: 20px;
     margin-top: 3.5%;
-}
-
-
-.aboutH {
-    color: #C8E6F5;
-    text-align: center;
-    margin-top: 3%;
-    margin-bottom: -4%;
-}
+    font-family: OpenSans;
+    max-width: 77%; /* Adjust the max-width as needed */
+    margin: 0 auto; /* Center the paragraph horizontally */
+  }
+  
 
 
 .container1 {
@@ -227,12 +237,12 @@
 
 
 .SaraCard {
-    background: URL("") center center no-repeat;
+    background: URL("../assets/women.png") center center no-repeat;
     background-size: 350px;
 }
 
 .SaraCard:hover {
-    background: URL("") left center no-repeat;
+    background: URL("../assets/women.png") left center no-repeat;
     background-size: 600px;
 }
 
