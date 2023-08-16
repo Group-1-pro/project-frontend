@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
+
 body {
     background-color: #ECF8F9;
 }
@@ -112,13 +114,12 @@ body {
 .homeFirstParagraph {
     font-size: 150%;
     margin-bottom: 4%;
-    text-align: center; 
-
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
-
 .homeSecondParagraph {
-    font-size: 110%;
-    text-align: center; 
-    /* text-align-last: justify; */
+    font-size: 100%;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
 }

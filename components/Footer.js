@@ -21,22 +21,6 @@ export default function Footer() {
                         </p>
 
 
-                        <div className="footerWrapper">
-                            <div className="social-icons">
-                                <a className="social-icon mail" href="mailto:esmailjawabreh@gmail.com" target="_blank" rel="author">
-                                    <i className="fa-sharp fa-solid fa-envelope"></i>
-                                </a>
-
-                                <a className="social-icon instagram" href="https://www.instagram.com/esmail.sudgi/" target="_blank"
-                                    rel="author">
-                                    <i className="fab fa-instagram"></i>
-                                </a>
-
-                                <a className="social-icon github" href="https://github.com/Esmail-Jawabreh" target="_blank" rel="author">
-                                    <i className="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
 
                     </div>
 
@@ -71,17 +55,39 @@ export default function Footer() {
                             <li>
                                 <span><i className="fad fa-phone"></i></span>
                                 <p>
-                                    <a href="tel:+962778503808">+962778503808</a> <br />
+                                    <a href="tel:+962778503808">+962788888888</a> <br />
                                 </p>
                             </li>
                             <li>
                                 <span><i className="fad fa-envelope"></i></span>
                                 <p>
-                                    <a href="esmailjawabreh@gmail.com">Esmailjawabreh@gmail.com</a>
+                                    <a href="esmailjawabreh@gmail.com">WanderHands@gmail.com</a>
                                 </p>
                             </li>
+                                                        <div className="footerWrapper">
+                            <div className="social-icons">
+                                <a className="social-icon mail" href="mailto:esmailjawabreh@gmail.com" target="_blank" rel="author">
+                                    <i className="fa-sharp fa-solid fa-envelope"></i>
+                                </a>
+
+                                <a className="social-icon instagram" href="https://www.instagram.com/esmail.sudgi/" target="_blank"
+                                    rel="author">
+                                    <i className="fab fa-instagram"></i>
+                                </a>
+
+                                <a className="social-icon github" href="https://github.com/Esmail-Jawabreh" target="_blank" rel="author">
+                                    <i className="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+
                         </ul>
                     </div>
+                    <h1 className="headerLogo">
+                        <a  href="/" >
+                            <img src="/lesspading-removebg-preview.png" />
+                        </a>
+                    </h1>
 
                 </div>
 

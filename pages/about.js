@@ -19,15 +19,13 @@ const AboutPage = () => {
 
 
       <main>
-
+        <h1 className='aboutH'>About Us</h1>
         <p className='aboutParagraph'>
-          Welcome to our About page!
-          <br></br>
           We are a dedicated team of passionate full-stack developers, all currently enrolled at the Abdul Aziz Ghurair School of Advanced Computing (ASAC-LTUC) in Amman, Jordan. 
-          <br></br>
           Our journey in the world of technology has been both exciting and transformative. With a shared love for coding and a drive to create innovative solutions, we've come together to form a dynamic and forward-thinking team.
-          <br></br>
-          Our time at ASAC-LTUC has not only sharpened our technical skills but has also nurtured a collaborative spirit that is at the core of our work. As we continue to learn and grow, we're committed to pushing the boundaries of what's possible in the digital realm. Thank you for joining us on this incredible journey!</p>
+          Our time at ASAC-LTUC has not only sharpened our technical skills but has also nurtured a collaborative spirit that is at the core of our work. As we continue to learn and grow, we're committed to pushing the boundaries of what's possible in the digital realm.
+          {/* <br></br> */}
+           Thank you for joining us on this incredible journey!</p>
         <h5 className='aboutH'>Our Team:</h5>
 
         <div className="container1">
