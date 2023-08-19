@@ -154,7 +154,7 @@ export default function FavoritesList() {
                             >
                                 <div className="post-img">
                                     <img
-                                        src={`http://127.0.0.1:8000${post.post.images[0].image}`}
+                                        // src={`http://127.0.0.1:8000${post.post.images[0].image}`}
                                         style={{ width: '100%', height: '200px', objectFit: 'cover' }}
                                         alt=""
                                     />
