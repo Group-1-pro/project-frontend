@@ -14,7 +14,6 @@ const Posts = () => {
     const [favPost, setFavPost] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
 
-
     useEffect(() => {
         const fetchData = async () => {
             try {
