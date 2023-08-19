@@ -64,7 +64,8 @@ export default function Footer() {
                                     <a href="esmailjawabreh@gmail.com">WanderHands@gmail.com</a>
                                 </p>
                             </li>
-                                                        <div className="footerWrapper">
+                        </ul>
+                        <div className="footerWrapper">
                             <div className="social-icons">
                                 <a className="social-icon mail" href="mailto:esmailjawabreh@gmail.com" target="_blank" rel="author">
                                     <i className="fa-sharp fa-solid fa-envelope"></i>
@@ -80,15 +81,15 @@ export default function Footer() {
                                 </a>
                             </div>
                         </div>
-
-                        </ul>
                     </div>
-                    <h1 className="headerLogo">
-                        <a  href="/" >
-                            <img src="/lesspading-removebg-preview.png" />
-                        </a>
-                    </h1>
 
+                    <di>
+                        <h1 className="footerLogo">
+                            <a href="/" >
+                                <img src="/lesspading-removebg-preview.png" />
+                            </a>
+                        </h1>
+                    </di>
                 </div>
 
             </footer>
