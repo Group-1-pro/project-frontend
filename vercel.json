@@ -1,0 +1,12 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "path/to/your/project",
+        "use": "@vercel/node",
+        "config": {
+          "command": "npm install --force"
+        }
+      }
+    ]
+  }  
