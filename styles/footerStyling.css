@@ -174,9 +174,10 @@ footer .footerContainer .quickLink li a:hover {
 .footerWrapper {
 
     height: 3.5vh;
-    margin-right: 18%;
+    /* margin-right: 18%; */
     text-align: center;
-
+    margin-right: 22%;
+    margin-top: 8%;
 }
 
 .footerWrapper,
@@ -262,3 +263,9 @@ footer .footerContainer .quickLink li a:hover {
     transform: translate(0) scale(1.2);
 }
 
+.footerLogo{
+    font-size: 1.45em;
+    margin-top: 16%;
+    margin-left: 18%;
+    padding-left: 5%;
+}
