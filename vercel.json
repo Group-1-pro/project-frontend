@@ -8,5 +8,9 @@
           "command": "npm install --force"
         }
       }
+    ],
+    "rewrites": [
+      { "source": "/(.*)", "destination": "/" }
     ]
-  }  
+
+  }
