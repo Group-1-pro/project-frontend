@@ -152,14 +152,14 @@ const FavoritesList = () => {
                   position: 'relative',
                 }}
               >
-                {/* <div className='post-img'>
+                <div className='post-img'>
                   <Image
                     src={baseUrl+`${post.post.images[0].image}`}
                     width={300}
                     height={200}
                     alt=''
                   />
-                </div> */}
+                </div>
                 <div className='post-info'>
                   <h3>{post.post.title}</h3>
                   <div className='post-location'>

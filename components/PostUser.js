@@ -112,11 +112,11 @@ const PostUser = () => {
                 key={post.id}
                 className='flex items-start p-4 mb-4 space-x-4 border-b'
               >
-                {/* <img
+                <img
                   alt='user'
                   src={`${post.images[0].image}`}
                   style={{ width: '300px', height: '300px', objectFit: 'cover' }}
-                /> */}
+                />
                 <div className='flex-grow '>
                   <Typography
                     variant='h4'
