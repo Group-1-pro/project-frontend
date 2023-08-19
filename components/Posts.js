@@ -123,46 +123,46 @@ const Posts = () => {
         <div className='postMainDiv'>
             <SearchBar onSearch={setSearchQuery} />
             {groupedData.map((group, index) => (
-                <div key={index} className="postDiv" id='posts'>
+                <div key={index} className='postDiv' id='posts'>
                     {group.map((post) => (
-                        <div key={post.id} className="postCard">
-                            <div className="postImgBox">
-                                {/* <img className="postImg" src={`${process.env.NEXT_PUBLIC_API_URL}${post.images[0].image}`} width="100%" alt="" /> */}
+                        <div key={post.id} className='postCard'>
+                            <div className='postImgBox'>
+                                {/* <img className='postImg' src={`${process.env.NEXT_PUBLIC_API_URL}${post.images[0].image}`} width='100%' alt='' /> */}
                             </div>
-                            <div className="postInfo">
+                            <div className='postInfo'>
                                 <h6 className='postHTitle'>{post.title}</h6>
                                 <h6 className='postHLocation'>{post.location}</h6>
-                                <div className="postIcon">
+                                <div className='postIcon'>
                                     {tokens?.access ? (
                                         isPostInFavorites(post.id) ? (
                                             <FontAwesomeIcon
                                                 icon={faHeart}
-                                                style={{ color: "#FF0000" }}
-                                                className="hover:cursor-pointer"
+                                                style={{ color: '#FF0000' }}
+                                                className='hover:cursor-pointer'
                                             />
                                         ) : (
                                             <FontAwesomeIcon
                                                 icon={faHeart}
                                                 onClick={() => handleAddToFavorites(post.id)}
-                                                className="hover:cursor-pointer"
+                                                className='hover:cursor-pointer'
                                             />
                                         )
                                     ) : (
                                         <FontAwesomeIcon
                                             icon={faHeart}
                                             onClick={() => handleAddToFavorites(post.id)}
-                                            className="hover:cursor-pointer"
+                                            className='hover:cursor-pointer'
                                         />
                                     )}
                                     <FontAwesomeIcon
                                         icon={faAddressCard}
                                         onClick={() => handleContactPost(post.id)}
-                                        className="hover:cursor-pointer"
+                                        className='hover:cursor-pointer'
                                     />
                                     <FontAwesomeIcon
                                         icon={faShareNodes}
                                         onClick={(event) => handleShare(event, baseUrl +`/post/${post.id}`)}
-                                        className="hover:cursor-pointer"
+                                        className='hover:cursor-pointer'
                                     />
                                 </div>
                                 <p className='postDescription'>
@@ -177,16 +177,16 @@ const Posts = () => {
                     ))}
 
                     {selectedPost && (
-                        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-                            <div className="max-w-md p-6 bg-white rounded-lg shadow-lg backdrop-filter backdrop-blur-lg">
-                                <h2 className="mb-2 text-xl font-semibold">
-                                    Contact Information for "{selectedPost.title}"
+                        <div className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50'>
+                            <div className='max-w-md p-6 bg-white rounded-lg shadow-lg backdrop-filter backdrop-blur-lg'>
+                                <h2 className='mb-2 text-xl font-semibold'>
+                                    Contact Information for '{selectedPost.title}'
                                 </h2>
-                                <p className="text-gray-700">Email: {selectedPost.email}</p>
-                                <p className="text-gray-700">Phone: {selectedPost.phone}</p>
+                                <p className='text-gray-700'>Email: {selectedPost.email}</p>
+                                <p className='text-gray-700'>Phone: {selectedPost.phone}</p>
                                 <button
                                     onClick={handleCloseContact}
-                                    className="px-4 py-2 mt-4 text-white bg-gray-600 rounded-md"
+                                    className='px-4 py-2 mt-4 text-white bg-gray-600 rounded-md'
                                 >
                                     Close
                                 </button>

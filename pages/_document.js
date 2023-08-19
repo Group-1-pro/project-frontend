@@ -6,18 +6,22 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <link rel="icon" href="logo.png" />
+          <link
+            rel="stylesheet"
+            href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+            integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+            crossOrigin="anonymous"
+          />
         </Head>
         <body>
           <div className="bodyContainer">
             <Main />
             <NextScript />
-            <link
-              rel="stylesheet"
-              href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-              integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+            <script
+              defer
+              src="https://kit.fontawesome.com/28179b0d71.js"
               crossOrigin="anonymous"
-            />
-            <script src="https://kit.fontawesome.com/28179b0d71.js"></script>
+            ></script>
           </div>
         </body>
       </Html>
