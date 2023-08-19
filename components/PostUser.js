@@ -11,7 +11,7 @@ const PostUser = () => {
   const [posts, setPosts] = useState([]);
   const router = useRouter();
   const [editPostId, setEditPostId] = useState(null);
-  const baseUrl = 'http://127.0.0.1:8000/';
+  const baseUrl = 'process.env.NEXT_PUBLIC_API_URL';
 
   const [showEditForm, setShowEditForm] = useState(false);
   const [editedPost, setEditedPost] = useState(null);
@@ -127,7 +127,7 @@ const PostUser = () => {
                   <Typography
                     color="black"
                     className="text-black-600"
-                    
+
                   >
                     {post.description}
                   </Typography>
@@ -143,7 +143,7 @@ const PostUser = () => {
                       borderRadius: '50%',
                     }}
                   >
-                    <FontAwesomeIcon icon={faEdit} style={{ fontSize: '1.5rem', color:'navy' }}/>
+                    <FontAwesomeIcon icon={faEdit} style={{ fontSize: '1.5rem', color: 'navy' }} />
                   </Button>
                   <Button
                     onClick={() => handleViewDetails(post.id)}
@@ -159,7 +159,7 @@ const PostUser = () => {
                   </Button>
                   <Button
                     onClick={() => handleDeletePost(post.id)}
-                    color="secondary" 
+                    color="secondary"
                     size="small"
                     style={{
                       width: '40px',
@@ -168,7 +168,7 @@ const PostUser = () => {
                       color: 'red',
                     }}
                   >
-                    <FontAwesomeIcon icon={faTrash} style={{ fontSize: '1.5rem' , color:'darkred'}} />
+                    <FontAwesomeIcon icon={faTrash} style={{ fontSize: '1.5rem', color: 'darkred' }} />
                   </Button>
                 </div>
 

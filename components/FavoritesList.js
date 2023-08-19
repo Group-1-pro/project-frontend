@@ -8,7 +8,7 @@ export default function FavoritesList() {
     const { tokens, login, user } = useAuth();
     const [fav_posts, favSetPosts] = useState([]);
     const cardContainerRef = useRef(null);
-    const baseUrl = 'http://127.0.0.1:8000/';
+    const baseUrl = 'process.env.NEXT_PUBLIC_API_URL';
 
     const fetchFavPostsData = async () => {
         try {
@@ -164,7 +164,7 @@ export default function FavoritesList() {
                                     <div className="post-location">
                                         <div style={{ display: 'flex', alignItems: 'center' }}>
                                             <FontAwesomeIcon icon={faLocationDot} style={{ color: "#520000", fontSize: '18px', marginRight: '10px' }} />
-                                            <h2 style={{ margin: '0', fontSize: '22px' ,color:'#5CA0D3'}}>{post.post.location}</h2>
+                                            <h2 style={{ margin: '0', fontSize: '22px', color: '#5CA0D3' }}>{post.post.location}</h2>
                                         </div>
                                     </div>
 
@@ -201,7 +201,7 @@ export default function FavoritesList() {
                                                 style={{ color: "#520000", fontSize: '30px', marginBottom: '10px' }}
                                                 onClick={() =>
                                                     handleShare(
-                                                        `http://127.0.0.1:8000/post/${post.id}`
+                                                        `process.env.NEXT_PUBLIC_API_URLpost/${post.id}`
                                                     )
                                                 }
                                                 className="text-green-500 hover:cursor-pointer"

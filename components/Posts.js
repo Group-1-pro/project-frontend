@@ -18,7 +18,7 @@ const Posts = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/wanderhands/post/');
+                const response = await fetch('process.env.NEXT_PUBLIC_API_URLwanderhands/post/');
                 const data = await response.json();
                 setData(data);
                 setLoading(false);
@@ -36,7 +36,7 @@ const Posts = () => {
                 if (!user) {
                     return;
                 }
-                const response = await fetch(`http://127.0.0.1:8000/wanderhands/favorites/user/${user.id}/`);
+                const response = await fetch(`process.env.NEXT_PUBLIC_API_URLwanderhands/favorites/user/${user.id}/`);
                 const favData = await response.json();
                 setFavPost(favData);
                 setLoading(false);
@@ -94,7 +94,7 @@ const Posts = () => {
     }
     const handleAddToFavorites = async (postId) => {
         try {
-            const response = await fetch(`http://127.0.0.1:8000/wanderhands/favorites/`, {
+            const response = await fetch(`process.env.NEXT_PUBLIC_API_URLwanderhands/favorites/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -161,7 +161,7 @@ const Posts = () => {
                                     />
                                     <FontAwesomeIcon
                                         icon={faShareNodes}
-                                        onClick={(event) => handleShare(event, `http://127.0.0.1:8000/post/${post.id}`)}
+                                        onClick={(event) => handleShare(event, `process.env.NEXT_PUBLIC_API_URLpost/${post.id}`)}
                                         className="hover:cursor-pointer"
                                     />
                                 </div>

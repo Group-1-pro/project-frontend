@@ -17,7 +17,7 @@ const EditForm = ({ post, onCancel, onSave }) => {
         const newImages = Array.from(e.target.files);
         setEditedData({ ...editedData, images: newImages });
         const names = newImages.map(image => image.name);
-        setFileNames(names);    
+        setFileNames(names);
     };
 
     const handleSave = async () => {
@@ -33,7 +33,7 @@ const EditForm = ({ post, onCancel, onSave }) => {
                 }
             }
 
-            const response = await fetch(`http://127.0.0.1:8000/wanderhands/post/${post.id}/`, {
+            const response = await fetch(`process.env.NEXT_PUBLIC_API_URLwanderhands/post/${post.id}/`, {
                 method: 'PUT',
                 body: formData,
             });
