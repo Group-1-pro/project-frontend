@@ -7,6 +7,8 @@ import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { faPhoneVolume, faEnvelope, faUser } from '@fortawesome/free-solid-svg-icons';
 import VisaDb from "@/components/Visadb";
 import Loading from "@/components/Loading";
+import Image from 'next/image';
+
 
 const PostDetail = () => {
     const router = useRouter();
@@ -47,7 +49,7 @@ const PostDetail = () => {
             <div className="flex flex-row space-x-4">
                 {data.images.map((imageData, index) => (
                     <div key={index} className="inline-block mt-6">
-                        <img
+                        <Image
                             src={`http://127.0.0.1:8000${imageData.image}`}
                             className="object-cover transition duration-500 ease-in-out transform rounded-lg h-60 w-80 hover:-translate-y-1 hover:scale-110"
                             alt=""
