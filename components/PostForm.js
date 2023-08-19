@@ -46,7 +46,7 @@ export default function PostForm({ setShowForm }) {
                 Authorization: `Bearer ${tokens.access}`,
             },
         };
-        const data = await axios.post("process.env.NEXT_PUBLIC_API_URLwanderhands/post/", formData, config)
+        const data = await axios.post("${process.env.NEXT_PUBLIC_API_URL}/wanderhands/post/", formData, config)
         console.log(data);
         setUploading(false);
 
@@ -408,7 +408,7 @@ export default function PostForm({ setShowForm }) {
                         </svg> */}
                     <div className="flex items-center">
                         <label htmlFor="images" className=" flex flex-col justify-center w-40 h-8 my-8 bg-[#5E0A0A] rounded-sm text-slate-200 hover:text-[#5E0A0A] hover:bg-[#C8E6F5]">
-                            <span className="font-bold p-2 ">Upload Images</span>
+                            <span className="p-2 font-bold ">Upload Images</span>
                             <input
                                 id="images"
                                 type="file"

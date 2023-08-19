@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 
 const AuthContext = createContext();
 
-const baseUrl = 'process.env.NEXT_PUBLIC_API_URL';
+const baseUrl = `${process.env.NEXT_PUBLIC_API_URL}/`;
 const tokenUrl = baseUrl + "api/token/";
 
 export function useAuth() {

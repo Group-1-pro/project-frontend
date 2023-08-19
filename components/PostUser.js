@@ -11,7 +11,7 @@ const PostUser = () => {
   const [posts, setPosts] = useState([]);
   const router = useRouter();
   const [editPostId, setEditPostId] = useState(null);
-  const baseUrl = 'process.env.NEXT_PUBLIC_API_URL';
+  const baseUrl = `${process.env.NEXT_PUBLIC_API_URL}/`;
 
   const [showEditForm, setShowEditForm] = useState(false);
   const [editedPost, setEditedPost] = useState(null);
@@ -109,7 +109,7 @@ const PostUser = () => {
             {posts.map((post) => (
               <div
                 key={post.id}
-                className="mb-4 p-4 border-b flex items-start space-x-4"
+                className="flex items-start p-4 mb-4 space-x-4 border-b"
               >
                 <img
                   alt="user"
@@ -132,7 +132,7 @@ const PostUser = () => {
                     {post.description}
                   </Typography>
                 </div>
-                <div className="mt-2 flex items-center flex-col space-y-2 pt-inherit">
+                <div className="flex flex-col items-center mt-2 space-y-2 pt-inherit">
                   <Button
                     onClick={() => handleEditPost(post)}
                     color="primary" // Change color to "primary" (blue color)

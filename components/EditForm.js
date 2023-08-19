@@ -33,7 +33,7 @@ const EditForm = ({ post, onCancel, onSave }) => {
                 }
             }
 
-            const response = await fetch(`process.env.NEXT_PUBLIC_API_URLwanderhands/post/${post.id}/`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wanderhands/post/${post.id}/`, {
                 method: 'PUT',
                 body: formData,
             });
