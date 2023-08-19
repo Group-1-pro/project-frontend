@@ -237,12 +237,12 @@
 
 
 .SaraCard {
-    background: URL("../assets/women.png") center center no-repeat;
+    background: URL("../assets/sara.jpg") center center no-repeat;
     background-size: 350px;
 }
 
 .SaraCard:hover {
-    background: URL("../assets/women.png") left center no-repeat;
+    background: URL("../assets/sara.jpg") left center no-repeat;
     background-size: 600px;
 }
 
