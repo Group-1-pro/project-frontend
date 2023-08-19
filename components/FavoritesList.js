@@ -8,7 +8,7 @@ export default function FavoritesList() {
     const { tokens, login, user } = useAuth();
     const [fav_posts, favSetPosts] = useState([]);
     const cardContainerRef = useRef(null);
-    const baseUrl = 'process.env.NEXT_PUBLIC_API_URL';
+    const baseUrl = `${process.env.NEXT_PUBLIC_API_URL}/`;
 
     const fetchFavPostsData = async () => {
         try {
@@ -201,7 +201,7 @@ export default function FavoritesList() {
                                                 style={{ color: "#520000", fontSize: '30px', marginBottom: '10px' }}
                                                 onClick={() =>
                                                     handleShare(
-                                                        `process.env.NEXT_PUBLIC_API_URLpost/${post.id}`
+                                                        `${process.env.NEXT_PUBLIC_API_URL}/post/${post.id}`
                                                     )
                                                 }
                                                 className="text-green-500 hover:cursor-pointer"

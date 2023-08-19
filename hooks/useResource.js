@@ -4,7 +4,7 @@ import useSWR from 'swr';
 
 export default function useResource() {
 
-    const apiUrl = "process.env.NEXT_PUBLIC_API_URLwanderhands/post/<int:pk>/";
+    const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/wanderhands/post/<int:pk>/`;
     const { tokens, logout } = useAuth();
     const { data, error, mutate } = useSWR([apiUrl, tokens], fetchResource)
     const [country, setCountry] = useState([]);
