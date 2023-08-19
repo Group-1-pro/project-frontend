@@ -19,7 +19,7 @@ const PostDetail = () => {
         if (id) {
             const fetchData = async () => {
                 try {
-                    const response = await fetch(`http://127.0.0.1:8000/wanderhands/post/${id}`);
+                    const response = await fetch(`process.env.NEXT_PUBLIC_API_URLwanderhands/post/${id}`);
                     const data = await response.json();
                     setData(data);
                     setLoading(false);

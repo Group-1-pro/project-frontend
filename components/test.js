@@ -7,12 +7,12 @@ import Link from 'next/link';
 const Posts = () => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
-    
+
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://127.0.0.1:8000/wanderhands/post/');
+                const response = await fetch('process.env.NEXT_PUBLIC_API_URLwanderhands/post/');
                 const data = await response.json();
                 setData(data);
                 setLoading(false);
@@ -39,7 +39,7 @@ const Posts = () => {
         groupedData.push(data.slice(i, i + 3));
     }
 
-    
+
 
 
     return (
@@ -76,7 +76,7 @@ const Posts = () => {
                                         <p className="text-gray-600">Starting At: {post.start_date}</p>
                                         <p className="text-gray-600">Ending At: {post.end_date}</p>
                                         <p className="text-gray-900 leading-none">Posted by: {post.author_name}</p>
-                                        <Link href={`/post/${post.id}`}className="nav-link">View more</Link>
+                                        <Link href={`/post/${post.id}`} className="nav-link">View more</Link>
                                         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
                                             Add to favourits
                                         </button>
