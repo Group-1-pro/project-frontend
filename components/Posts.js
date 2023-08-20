@@ -13,11 +13,12 @@ const Posts = () => {
     const [selectedPost, setSelectedPost] = useState(null);
     const [favPost, setFavPost] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
+    const baseUrl = `${process.env.NEXT_PUBLIC_API_URL}`;
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wanderhands/post/`);
+                const response = await fetch(baseUrl +`/wanderhands/post/`);
                 const data = await response.json();
                 setData(data);
                 setLoading(false);
@@ -35,7 +36,7 @@ const Posts = () => {
                 if (!user) {
                     return;
                 }
-                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wanderhands/favorites/user/${user.id}/`);
+                const response = await fetch(baseUrl +`/wanderhands/favorites/user/${user.id}/`);
                 const favData = await response.json();
                 setFavPost(favData);
                 setLoading(false);
@@ -93,7 +94,7 @@ const Posts = () => {
     }
     const handleAddToFavorites = async (postId) => {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wanderhands/favorites/`, {
+            const response = await fetch(baseUrl +`/wanderhands/favorites/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -122,48 +123,54 @@ const Posts = () => {
         <div className='postMainDiv'>
             <SearchBar onSearch={setSearchQuery} />
             {groupedData.map((group, index) => (
-                <div key={index} className="postDiv" id='posts'>
+                <div key={index} className='postDiv' id='posts'>
                     {group.map((post) => (
+<<<<<<< HEAD
                         console.log("poooost",post),
                         <div key={post.id} className="postCard">
                             <div className="postImgBox">
                                 <img className="postImg" src={`${process.env.NEXT_PUBLIC_API_URL}${post.images[0].image}`} width="100%" alt="" />
                                 {/* <h1>`${process.env.NEXT_PUBLIC_API_URL}${post.images[0].image}`</h1> */}
+=======
+                        <div key={post.id} className='postCard'>
+                            <div className='postImgBox'>
+                                <img className='postImg' src={`${process.env.NEXT_PUBLIC_API_URL}${post.images[0].image}`} width='100%' alt='' />
+>>>>>>> d6256ecdb470408fd264f277c1ed84931788f65c
                             </div>
-                            <div className="postInfo">
+                            <div className='postInfo'>
                                 <h6 className='postHTitle'>{post.title}</h6>
                                 <h6 className='postHLocation'>{post.location}</h6>
-                                <div className="postIcon">
+                                <div className='postIcon'>
                                     {tokens?.access ? (
                                         isPostInFavorites(post.id) ? (
                                             <FontAwesomeIcon
                                                 icon={faHeart}
-                                                style={{ color: "#FF0000" }}
-                                                className="hover:cursor-pointer"
+                                                style={{ color: '#FF0000' }}
+                                                className='hover:cursor-pointer'
                                             />
                                         ) : (
                                             <FontAwesomeIcon
                                                 icon={faHeart}
                                                 onClick={() => handleAddToFavorites(post.id)}
-                                                className="hover:cursor-pointer"
+                                                className='hover:cursor-pointer'
                                             />
                                         )
                                     ) : (
                                         <FontAwesomeIcon
                                             icon={faHeart}
                                             onClick={() => handleAddToFavorites(post.id)}
-                                            className="hover:cursor-pointer"
+                                            className='hover:cursor-pointer'
                                         />
                                     )}
                                     <FontAwesomeIcon
                                         icon={faAddressCard}
                                         onClick={() => handleContactPost(post.id)}
-                                        className="hover:cursor-pointer"
+                                        className='hover:cursor-pointer'
                                     />
                                     <FontAwesomeIcon
                                         icon={faShareNodes}
-                                        onClick={(event) => handleShare(event, `${process.env.NEXT_PUBLIC_API_URL}/post/${post.id}`)}
-                                        className="hover:cursor-pointer"
+                                        onClick={(event) => handleShare(event, baseUrl +`/post/${post.id}`)}
+                                        className='hover:cursor-pointer'
                                     />
                                 </div>
                                 <p className='postDescription'>
@@ -178,16 +185,16 @@ const Posts = () => {
                     ))}
 
                     {selectedPost && (
-                        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-                            <div className="max-w-md p-6 bg-white rounded-lg shadow-lg backdrop-filter backdrop-blur-lg">
-                                <h2 className="mb-2 text-xl font-semibold">
-                                    Contact Information for "{selectedPost.title}"
+                        <div className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50'>
+                            <div className='max-w-md p-6 bg-white rounded-lg shadow-lg backdrop-filter backdrop-blur-lg'>
+                                <h2 className='mb-2 text-xl font-semibold'>
+                                    Contact Information for '{selectedPost.title}'
                                 </h2>
-                                <p className="text-gray-700">Email: {selectedPost.email}</p>
-                                <p className="text-gray-700">Phone: {selectedPost.phone}</p>
+                                <p className='text-gray-700'>Email: {selectedPost.email}</p>
+                                <p className='text-gray-700'>Phone: {selectedPost.phone}</p>
                                 <button
                                     onClick={handleCloseContact}
-                                    className="px-4 py-2 mt-4 text-white bg-gray-600 rounded-md"
+                                    className='px-4 py-2 mt-4 text-white bg-gray-600 rounded-md'
                                 >
                                     Close
                                 </button>

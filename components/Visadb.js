@@ -1,24 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
+const VisaDb = (destination) => {
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = 'https://visadb.io/embedjs/v1.js';
+        script.async = true;
+        document.body.appendChild(script);
 
-const VisaDb = (distination) => {
-    console.log(distination)
-    console.log(distination.distination.location)
+        return () => {
+            document.body.removeChild(script);
+        };
+    }, []);
 
     return (
         <div>
-            <script src="https://visadb.io/embedjs/v1.js"></script>
-
             <iframe
-                src={`https://visadb.io/visawidget/journey/Jordan/${distination.distination.location}`}
+                src={`https://visadb.io/visawidget/journey/Jordan/${destination.distination.location}`}
                 className="w-full h-[600px] flex items-center justify-center"
                 allow="geolocation; encrypted-media"
                 referrerpolicy="origin"
                 title="VisaDB Widget"
-            >
-            </iframe>
-
-
+            />
         </div>
     );
 }

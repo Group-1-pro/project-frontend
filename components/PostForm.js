@@ -8,6 +8,8 @@ export default function PostForm({ setShowForm }) {
     const [images, setImages] = useState([]);
     const [fileNames, setFileNames] = useState([]); // New state for file names
     const [uploading, setUploading] = useState(false);
+    const baseUrl = `${process.env.NEXT_PUBLIC_API_URL}`;
+
 
     const handleImageChange = (e) => {
         if (e.target.files) {
@@ -46,7 +48,7 @@ export default function PostForm({ setShowForm }) {
                 Authorization: `Bearer ${tokens.access}`,
             },
         };
-        const data = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/wanderhands/post/`, formData, config)
+        const data = await axios.post(baseUrl +`/wanderhands/post/`, formData, config)
         console.log(data);
         setUploading(false);
 

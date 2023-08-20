@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Avatar, Typography, Button } from "@material-ui/core";
+import { Avatar, Typography, Button } from '@material-ui/core';
 import { useAuth } from '@/contexts/auth';
 import EditForm from '@/components/EditForm';
 import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
+import LoginForm from '@/components/LoginForm';
 
 const PostUser = () => {
   const { tokens, login, user } = useAuth();
@@ -102,41 +103,41 @@ const PostUser = () => {
   };
 
   return (
-    <div className="py-24" style={{ paddingTop: '0rem', paddingBottom: '0rem' }}>
+    <div className='py-24' style={{ paddingTop: '0rem', paddingBottom: '0rem' }}>
       {user ? (
-        <section id="timeline">
-          <div className="demo-card-wrapper">
+        <section id='timeline'>
+          <div className='demo-card-wrapper'>
             {posts.map((post) => (
               <div
                 key={post.id}
-                className="flex items-start p-4 mb-4 space-x-4 border-b"
+                className='flex items-start p-4 mb-4 space-x-4 border-b'
               >
                 <img
-                  alt="user"
-                  src={`http://127.0.0.1:8000${post.images[0].image}`}
+                  alt='user'
+                  src={`${post.images[0].image}`}
                   style={{ width: '300px', height: '300px', objectFit: 'cover' }}
                 />
-                <div className="flex-grow ">
+                <div className='flex-grow '>
                   <Typography
-                    variant="h4"
-                    color="textPrimary"
+                    variant='h4'
+                    color='textPrimary'
                     style={{ fontSize: '1.5rem', fontWeight: '800', margin: 'revert' }}
                   >
                     {post.title}
                   </Typography>
                   <Typography
-                    color="black"
-                    className="text-black-600"
+                    color='black'
+                    className='text-black-600'
 
                   >
                     {post.description}
                   </Typography>
                 </div>
-                <div className="flex flex-col items-center mt-2 space-y-2 pt-inherit">
+                <div className='flex flex-col items-center mt-2 space-y-2 pt-inherit'>
                   <Button
                     onClick={() => handleEditPost(post)}
-                    color="primary" // Change color to "primary" (blue color)
-                    size="small"
+                    color='primary' // Change color to 'primary' (blue color)
+                    size='small'
                     style={{
                       width: '40px',
                       height: '40px',
@@ -147,8 +148,8 @@ const PostUser = () => {
                   </Button>
                   <Button
                     onClick={() => handleViewDetails(post.id)}
-                    color="default"
-                    size="small"
+                    color='default'
+                    size='small'
                     style={{
                       width: '40px',
                       height: '40px',
@@ -159,8 +160,8 @@ const PostUser = () => {
                   </Button>
                   <Button
                     onClick={() => handleDeletePost(post.id)}
-                    color="secondary"
-                    size="small"
+                    color='secondary'
+                    size='small'
                     style={{
                       width: '40px',
                       height: '40px',
@@ -183,7 +184,7 @@ const PostUser = () => {
 
       {showEditForm && (
         <div
-          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+          className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'
           style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
         >
           <EditForm
@@ -196,11 +197,6 @@ const PostUser = () => {
       )}
     </div>
   );
-
-
-
-
-
 };
 
 export default PostUser;

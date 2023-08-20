@@ -1,15 +1,10 @@
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Typography,
-  Avatar,
-  Button
-
-} from "@material-tailwind/react";
+import { Card, CardHeader, CardBody, Typography, Avatar, Button } from "@material-tailwind/react";
+import Link from 'next/link';
+import Image from 'next/image';
+import { StarIcon } from "@heroicons/react/solid";
 
 
 export const Blog = () => {
@@ -70,22 +65,18 @@ export const Blog = () => {
     <div>
       <Navbar />
       <div className='blogsMainDiv'>
-
-      <div className="flex flex-col items-center justify-center min-h-screen">
-
-        <main className="grid gap-6 p-8">
-          {cardData.map((card, index) => (
-            <HorizontalCard key={index} {...card} />
-          ))}
-        </main>
-        <Footer />
+        <div className="flex flex-col items-center justify-center min-h-screen">
+          <main className="grid gap-6 p-8">
+            {cardData.map((card, index) => (
+              <HorizontalCard key={index} {...card} />
+            ))}
+          </main>
+        </div>
       </div>
-    </div>
+      <Footer />
     </div>
   );
 };
-
-
 
 export function HorizontalCard({ title, imageSrc, content, name, avatarSrc, rating }) {
   const starIcons = [];
@@ -94,76 +85,67 @@ export function HorizontalCard({ title, imageSrc, content, name, avatarSrc, rati
   }
 
   return (
-      <Card className="w-full max-w-[80rem] flex-row bg-white shadow-lg rounded">
-        <CardHeader
-          shadow={false}
-          floated={false}
-          className="w-2/5 m-0 rounded rounded-r-none shrink-0"
-        >
-          <img
-            src={imageSrc}
-            alt="card-image"
-            className="object-cover w-full h-full rounded"
-          />
-        </CardHeader>
-        <CardBody>
-          <div className="flex flex-col">
-            <div className="flex items-center gap-5 mb-2">
-              <Avatar
-                size="lg"
-                variant="circular"
-                src={avatarSrc}
-                alt={name}
-
-              />
-
-
-
-              <div className="flex flex-col">
-
-                <Typography variant="h5" color="blue-gray">
-                  {name}
-                </Typography>
-                <div className="flex items-center gap-0.5 mb-2">
-                  {starIcons}
-                </div>
+    <Card className="w-full max-w-[80rem] flex-row bg-white shadow-lg rounded">
+      <CardHeader
+        shadow={false}
+        floated={false}
+        className="w-2/5 m-0 rounded rounded-r-none shrink-0"
+      >
+        <Image
+          src={imageSrc}
+          alt="card-image"
+          className="object-cover w-full h-full rounded"
+        />
+      </CardHeader>
+      <CardBody>
+        <div className="flex flex-col">
+          <div className="flex items-center gap-5 mb-2">
+            <Avatar
+              size="lg"
+              variant="circular"
+              src={avatarSrc}
+              alt={name}
+            />
+            <div className="flex flex-col">
+              <Typography variant="h5" color="blue-gray">
+                {name}
+              </Typography>
+              <div className="flex items-center gap-0.5 mb-2">
+                {starIcons}
               </div>
             </div>
-            <Typography variant="h4" color="blue-gray" className="mb-2">
-              {title}
-            </Typography>
-            <Typography color="gray" className="mb-4 text-lg font-normal">
-              {content}
-            </Typography>
-
-            <a href="/about" className="inline-block">
-              <Button variant="text" className="flex items-center gap-2">
-                Learn More
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  className="w-4 h-4"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                  />
-                </svg>
-              </Button>
-
-            </a>
           </div>
-        </CardBody>
-      </Card>
+          <Typography variant="h4" color="blue-gray" className="mb-2">
+            {title}
+          </Typography>
+          <Typography color="gray" className="mb-4 text-lg font-normal">
+            {content}
+          </Typography>
+          <Link href="/about" passHref>
+            <Button as="a" variant="text" className="flex items-center gap-2">
+              Learn More
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+                className="w-4 h-4"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                />
+              </svg>
+            </Button>
+          </Link>
+
+        </div>
+      </CardBody>
+    </Card>
   );
 }
-
-export default Blog;
-
 
 function StarIcon() {
   return (
@@ -182,3 +164,4 @@ function StarIcon() {
   );
 }
 
+export default Blog;
