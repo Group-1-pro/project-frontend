@@ -124,9 +124,11 @@ const Posts = () => {
             {groupedData.map((group, index) => (
                 <div key={index} className="postDiv" id='posts'>
                     {group.map((post) => (
+                        console.log("poooost",post),
                         <div key={post.id} className="postCard">
                             <div className="postImgBox">
-                                <img className="postImg" src={`http://127.0.0.1:8000${post.images[0].image}`} width="100%" alt="" />
+                                <img className="postImg" src={`${process.env.NEXT_PUBLIC_API_URL}${post.images[0].image}`} width="100%" alt="" />
+                                {/* <h1>`${process.env.NEXT_PUBLIC_API_URL}${post.images[0].image}`</h1> */}
                             </div>
                             <div className="postInfo">
                                 <h6 className='postHTitle'>{post.title}</h6>

@@ -154,7 +154,7 @@ export default function FavoritesList() {
                             >
                                 <div className="post-img">
                                     <img
-                                        src={`http://127.0.0.1:8000${post.post.images[0].image}`}
+                                        src={`${process.env.NEXT_PUBLIC_API_URL}${post.post.images[0].image}`}
                                         style={{ width: '100%', height: '200px', objectFit: 'cover' }}
                                         alt=""
                                     />
@@ -217,7 +217,7 @@ export default function FavoritesList() {
                         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                             <div className="max-w-md p-6 bg-white rounded-lg shadow-lg">
                                 <h2 className="mb-2 text-xl font-semibold">
-                                    Contact Information for "{selectedPost.post.title}"
+                                    Contact Information for {selectedPost.post.title}
                                 </h2>
                                 <p className="text-gray-700">Email: {selectedPost.post.email}</p>
                                 <p className="text-gray-700">Phone: {selectedPost.post.phone}</p>
