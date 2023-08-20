@@ -32,7 +32,6 @@ ul {
 .main-nav a {
     color: #5E0A0A;
     font-size: 110%;    
-    /* font-weight: bold; */
     text-decoration: none;
     font-family: 'Poppins', sans-serif;}
 
@@ -45,7 +44,6 @@ ul {
 .header {
     padding-top: .5em;
     padding-bottom: .5em;
-    /* border: 1px solid #5E0A0A; */
     background-color: #C8E6F5;
     -webkit-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.75);
@@ -53,9 +51,6 @@ ul {
 }
 
 
-/* ================================= 
-    Media Queries
-  ==================================== */
 
 
 
@@ -71,11 +66,6 @@ ul {
         flex-direction: column;
         align-items: center;
 
-        /* .header {
-            width: 80%;
-            margin: 0 auto;
-            max-width: 1150px;
-        } */
     }
 
 }
@@ -110,7 +100,6 @@ ul {
     top: 100%;
     right: 0;
     background-color: #C8E6F5;
-    /* border: 1px solid #5E0A0A; */
     list-style: none;
     padding: 8px 0;
     border-radius: 5px;
