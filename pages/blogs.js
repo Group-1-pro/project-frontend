@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 import { Card, CardHeader, CardBody, Typography, Avatar, Button } from "@material-tailwind/react";
 import Link from 'next/link';
 import Image from 'next/image';
-import { StarIcon } from "@heroicons/react/solid";
+// import { StarIcon as HeroiconsStarIcon } from "@heroicons/react/solid"; // Rename imported StarIcon
 
 
 export const Blog = () => {
@@ -95,6 +95,8 @@ export function HorizontalCard({ title, imageSrc, content, name, avatarSrc, rati
           src={imageSrc}
           alt="card-image"
           className="object-cover w-full h-full rounded"
+          width={800}
+          height={700}
         />
       </CardHeader>
       <CardBody>

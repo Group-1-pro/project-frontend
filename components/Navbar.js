@@ -13,7 +13,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     await auth.logout();
-    router.push('/');
+    router.push('/login');
   };
 
   const handleProfileClick = () => {

@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
 import LoginForm from '@/components/LoginForm';
+import Image from 'next/image';
 
 const PostUser = () => {
   const { tokens, login, user } = useAuth();
@@ -112,10 +113,12 @@ const PostUser = () => {
                 key={post.id}
                 className='flex items-start p-4 mb-4 space-x-4 border-b'
               >
-                <img
+                <Image
                   alt='user'
-                  src={`${post.images[0].image}`}
-                  style={{ width: '300px', height: '300px', objectFit: 'cover' }}
+                  src={`${process.env.NEXT_PUBLIC_API_URL}${post.images[0].image}`}
+                  style={{ objectFit: 'cover' }}
+                  width = {500}
+                  height =  {600}
                 />
                 <div className='flex-grow '>
                   <Typography

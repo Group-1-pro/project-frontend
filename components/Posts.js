@@ -4,6 +4,8 @@ import { faHeart, faAddressCard, faShareNodes } from '@fortawesome/free-solid-sv
 import { useAuth } from '@/contexts/auth';
 import LoginForm from './LoginForm';
 import SearchBar from './SearchBar';
+import Image from 'next/image';
+ 
 
 
 const Posts = () => {
@@ -18,7 +20,7 @@ const Posts = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(baseUrl +`/wanderhands/post/`);
+                const response = await fetch(baseUrl + `/wanderhands/post/`);
                 const data = await response.json();
                 setData(data);
                 setLoading(false);
@@ -29,14 +31,14 @@ const Posts = () => {
             }
         };
         fetchData();
-    }, [data]);
+    }, []);
     useEffect(() => {
         const getFavData = async () => {
             try {
                 if (!user) {
                     return;
                 }
-                const response = await fetch(baseUrl +`/wanderhands/favorites/user/${user.id}/`);
+                const response = await fetch(baseUrl + `/wanderhands/favorites/user/${user.id}/`);
                 const favData = await response.json();
                 setFavPost(favData);
                 setLoading(false);
@@ -94,7 +96,7 @@ const Posts = () => {
     }
     const handleAddToFavorites = async (postId) => {
         try {
-            const response = await fetch(baseUrl +`/wanderhands/favorites/`, {
+            const response = await fetch(baseUrl + `/wanderhands/favorites/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -125,17 +127,9 @@ const Posts = () => {
             {groupedData.map((group, index) => (
                 <div key={index} className='postDiv' id='posts'>
                     {group.map((post) => (
-<<<<<<< HEAD
-                        console.log("poooost",post),
-                        <div key={post.id} className="postCard">
-                            <div className="postImgBox">
-                                <img className="postImg" src={`${process.env.NEXT_PUBLIC_API_URL}${post.images[0].image}`} width="100%" alt="" />
-                                {/* <h1>`${process.env.NEXT_PUBLIC_API_URL}${post.images[0].image}`</h1> */}
-=======
                         <div key={post.id} className='postCard'>
                             <div className='postImgBox'>
-                                <img className='postImg' src={`${process.env.NEXT_PUBLIC_API_URL}${post.images[0].image}`} width='100%' alt='' />
->>>>>>> d6256ecdb470408fd264f277c1ed84931788f65c
+                                <Image className='postImg' src={`${process.env.NEXT_PUBLIC_API_URL}${post.images[0].image}`} width={500} height={600} alt='' />
                             </div>
                             <div className='postInfo'>
                                 <h6 className='postHTitle'>{post.title}</h6>
@@ -169,7 +163,7 @@ const Posts = () => {
                                     />
                                     <FontAwesomeIcon
                                         icon={faShareNodes}
-                                        onClick={(event) => handleShare(event, baseUrl +`/post/${post.id}`)}
+                                        onClick={(event) => handleShare(event, baseUrl + `/post/${post.id}`)}
                                         className='hover:cursor-pointer'
                                     />
                                 </div>
@@ -188,7 +182,7 @@ const Posts = () => {
                         <div className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50'>
                             <div className='max-w-md p-6 bg-white rounded-lg shadow-lg backdrop-filter backdrop-blur-lg'>
                                 <h2 className='mb-2 text-xl font-semibold'>
-                                    Contact Information for '{selectedPost.title}'
+                                    Contact Information for {selectedPost.title}
                                 </h2>
                                 <p className='text-gray-700'>Email: {selectedPost.email}</p>
                                 <p className='text-gray-700'>Phone: {selectedPost.phone}</p>
