@@ -154,7 +154,7 @@ const FavoritesList = () => {
               >
                 <div className='post-img'>
                   <Image
-                    src={baseUrl+`${post.post.images[0].image}`}
+                    src={baseUrl+`/${post.post.images[0].image}`}
                     width={300}
                     height={200}
                     alt=''

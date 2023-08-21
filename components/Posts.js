@@ -129,7 +129,7 @@ const Posts = () => {
                     {group.map((post) => (
                         <div key={post.id} className='postCard'>
                             <div className='postImgBox'>
-                                <Image className='postImg' src={`${process.env.NEXT_PUBLIC_API_URL}${post.images[0].image}`} width={500} height={600} alt='' />
+                                <Image className='postImg' src={`${process.env.NEXT_PUBLIC_API_URL}/${post.images[0].image}`} width={500} height={600} alt='' />
                             </div>
                             <div className='postInfo'>
                                 <h6 className='postHTitle'>{post.title}</h6>
