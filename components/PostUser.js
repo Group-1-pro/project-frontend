@@ -115,7 +115,7 @@ const PostUser = () => {
               >
                 <Image
                   alt='user'
-                  src={`${process.env.NEXT_PUBLIC_API_URL}/${post.images[0].image}`}
+                  src={`${process.env.NEXT_PUBLIC_CLOUDINARY_URL}/${post.images[0].image}`}
                   style={{ objectFit: 'cover' }}
                   width = {500}
                   height =  {600}

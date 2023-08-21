@@ -10,7 +10,6 @@ const FavoritesList = () => {
   const [fav_posts, favSetPosts] = useState([]);
   const cardContainerRef = useRef(null);
   const baseUrl = `${process.env.NEXT_PUBLIC_API_URL}/`;
-
   const fetchFavPostsData = async () => {
     try {
       const response = await fetch(baseUrl + `wanderhands/favorites/user/${user.id}`, {
@@ -152,9 +151,10 @@ const FavoritesList = () => {
                   position: 'relative',
                 }}
               >
+                
                 <div className='post-img'>
                   <Image
-                    src={baseUrl+`/${post.post.images[0].image}`}
+                    src={`${process.env.NEXT_PUBLIC_CLOUDINARY_URL}/${post.post.images[0].image}`}
                     width={300}
                     height={200}
                     alt=''

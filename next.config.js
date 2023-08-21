@@ -7,6 +7,7 @@ module.exports = nextConfig
 module.exports = {
   images: {
     domains: [
+      "res.cloudinary.com",
       "127.0.0.1",
       'images.wagwalkingweb.com',
       'www.carelink.org',
