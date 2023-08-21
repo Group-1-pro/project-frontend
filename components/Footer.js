@@ -1,5 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+
 
 export default function Footer() {
     return (
@@ -64,7 +66,7 @@ export default function Footer() {
                     <div>
                         <h1 className="footerLogo">
                             <Link href="/">
-                                <img src="/lesspading-removebg-preview.png" alt="Wander Hands Logo" />
+                                <Image src="/lesspading-removebg-preview.png" alt="Wander Hands Logo" width={200} height={100}/>
                             </Link>
 
                         </h1>

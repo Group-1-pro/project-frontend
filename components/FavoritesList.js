@@ -31,7 +31,7 @@ const FavoritesList = () => {
 
   useEffect(() => {
     fetchFavPostsData();
-  }, []);
+  }, [fetchFavPostsData]); // Include fetchFavPostsData in the dependency array
 
   const [selectedPost, setSelectedPost] = useState(null);
 
@@ -139,7 +139,7 @@ const FavoritesList = () => {
             {fav_posts.map((post) => (
               <div
                 key={post.id}
-                className='post-card'
+                className='post-card' // Ensure that post-card class is defined in your CSS
                 style={{
                   minWidth: '300px',
                   maxWidth: '300px',
@@ -152,9 +152,9 @@ const FavoritesList = () => {
                   position: 'relative',
                 }}
               >
-                <div className='post-img'>
+                <div className='post-img'> {/* Ensure that post-img class is defined in your CSS */}
                   <Image
-                    src={baseUrl+`${post.post.images[0].image}`}
+                    src={`${baseUrl}${post.post.images[0].image}`}
                     width={300}
                     height={200}
                     alt=''
@@ -269,4 +269,3 @@ const FavoritesList = () => {
 };
 
 export default FavoritesList;
-
