@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/auth';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 const SignUpPage = () => {
   const auth = useAuth();
@@ -28,10 +29,11 @@ const SignUpPage = () => {
   return (
     <div className='md:flex md:h-screen'>
       <div className='flex items-center justify-center py-10 md:w-1/2'>
-        {/* Your logo elements and styling can go here */}
-        <a href='/' >
-          <img src='/lesspading-removebg-preview.png' />
-        </a>
+        <Link href='/' passHref>
+          
+            <Image src='/lesspading-removebg-preview.png' width={400} height={300} alt='Wander Hands Logo' />
+        
+        </Link>
       </div>
       <div className='flex items-center justify-center py-10 md:w-1/2'>
         <form className='w-full max-w-md p-6 bg-white rounded-lg shadow'>
@@ -55,7 +57,6 @@ const SignUpPage = () => {
                 border: 'none',
                 width: '-webkit-fill-available',
                 borderRadius: '0.5rem',
-
               }} />
           </div>
           <div className='flex items-center px-3 py-2 mb-4 border-2 rounded-2xl'>
@@ -74,7 +75,6 @@ const SignUpPage = () => {
                 border: 'none',
                 width: '-webkit-fill-available',
                 borderRadius: '0.5rem',
-
               }} />
           </div>
           <div className='flex items-center px-3 py-2 border-2 rounded-2xl'>
@@ -93,7 +93,6 @@ const SignUpPage = () => {
                 border: 'none',
                 width: '-webkit-fill-available',
                 borderRadius: '0.5rem',
-
               }} />
           </div>
           <button
