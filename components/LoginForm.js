@@ -35,7 +35,10 @@ export default function LoginForm({ onSubmit }) {
         {/* Your logo elements and styling can go here */}
         <Link href='/'>
 
-          <Image src='/lesspading-removebg-preview.png' alt='Wander Hands Logo' />
+          <Image src='/lesspading-removebg-preview.png'
+            width={400}
+            height={300}
+            alt='Wander Hands Logo' />
         </Link>
       </div>
       <div className='flex items-center justify-center py-10 md:w-1/2'>
