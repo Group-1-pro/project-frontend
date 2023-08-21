@@ -33,7 +33,10 @@ const Navbar = () => {
       <header className='header'>
         <h1 className='headerLogo'>
           <Link className='headerTitle' href='/' >
-            <Image src='/lesspading-removebg-preview.png' className='headerImgLogo' width={350} height={200}/>
+            <Image src='/lesspading-removebg-preview.png' className='headerImgLogo'
+              alt='Logo' // Add alt prop with meaningful text
+              width={350}
+              height={200} />
           </Link>
         </h1>
         <ul className='main-nav'>
