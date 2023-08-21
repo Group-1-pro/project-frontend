@@ -39,7 +39,7 @@ const PostUser = () => {
 
     useEffect(() => {
         fetchPostsData();
-    }, []);
+    }, [fetchPostsData]);
 
     const handleDeletePost = async (postId) => {
         try {
