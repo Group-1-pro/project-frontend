@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '@/contexts/auth';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+
 
 
 const Navbar = () => {
@@ -28,49 +30,49 @@ const Navbar = () => {
 
   return (
     <div>
-      <header className="header">
-        <h1 className="headerLogo">
-          <a className="headerTitle" href="/" >
-            <img src="/lesspading-removebg-preview.png" className="headerImgLogo" />
-          </a>
+      <header className='header'>
+        <h1 className='headerLogo'>
+          <Link className='headerTitle' href='/' >
+            <img src='/lesspading-removebg-preview.png' className='headerImgLogo' />
+          </Link>
         </h1>
-        <ul className="main-nav">
-          <li><a href="/">Home</a></li>
-          <li><a href="/blogs">Blogs</a></li>
-          <li><a href="/about">About</a></li>
+        <ul className='main-nav'>
+          <li><Link href='/'>Home</Link></li>
+          <li><Link href='/blogs'>Blogs</Link></li>
+          <li><Link href='/about'>About</Link></li>
 
           {auth.user ? (
-            <li className="profile-dropdown">
-              <a href="#" onClick={handleDropdownToggle} className="profile-link">
+            <li className='profile-dropdown'>
+              <Link href='#' onClick={handleDropdownToggle} className='profile-link'>
                 {auth.user.username} {showDropdown ? '▲' : '▼'}
-              </a>
+              </Link>
               {showDropdown && (
-                <ul className="dropdown-menu">
+                <ul className='dropdown-menu'>
                   <li>
-                    <a href="/profile" onClick={handleProfileClick}>
+                    <Link href='/profile' onClick={handleProfileClick}>
                       Profile
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#" onClick={handleLogout}>
+                    <Link href='#' onClick={handleLogout}>
                       Logout
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               )}
             </li>
           ) : (
-            <li className="auth-dropdown">
-              <a href="#" onClick={handleAuthDropdownToggle} className="profile-link">
+            <li className='auth-dropdown'>
+              <Link href='#' onClick={handleAuthDropdownToggle} className='profile-link'>
                 Account {showAuthDropdown ? '▲' : '▼'}
-              </a>
+              </Link>
               {showAuthDropdown && (
-                <ul className="dropdown-menu">
+                <ul className='dropdown-menu'>
                   <li>
-                    <a href="/login">Login</a>
+                    <Link href='/login'>Login</Link>
                   </li>
                   <li>
-                    <a href="/signup">Sign Up</a>
+                    <Link href='/signup'>Sign Up</Link>
                   </li>
                 </ul>
               )}

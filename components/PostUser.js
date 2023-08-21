@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Avatar, Typography, Button } from "@material-ui/core";
 import { useAuth } from '@/contexts/auth';
 import EditForm from '@/components/EditForm';
 import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faEye, faTrash } from '@fortawesome/free-solid-svg-icons';
+import LoginForm from '@/components/LoginForm';
+import Image from 'next/image';
 
 const PostUser = () => {
   const { tokens, login, user } = useAuth();
   const [posts, setPosts] = useState([]);
   const router = useRouter();
   const [editPostId, setEditPostId] = useState(null);
-  const baseUrl = 'http://127.0.0.1:8000/';
+  const baseUrl = `${process.env.NEXT_PUBLIC_API_URL}/`;
 
   const [showEditForm, setShowEditForm] = useState(false);
   const [editedPost, setEditedPost] = useState(null);
@@ -102,77 +103,51 @@ const PostUser = () => {
   };
 
   return (
-    <div className="py-24" style={{ paddingTop: '0rem', paddingBottom: '0rem' }}>
+    <div className='py-24' style={{ paddingTop: '0rem', paddingBottom: '0rem' }}>
       {user ? (
-        <section id="timeline">
-          <div className="demo-card-wrapper">
+        <section id='timeline'>
+          <div className='demo-card-wrapper'>
             {posts.map((post) => (
               <div
                 key={post.id}
-                className="mb-4 p-4 border-b flex items-start space-x-4"
+                className='flex items-start p-4 mb-4 space-x-4 border-b'
               >
-                <img
-                  alt="user"
-                  src={`http://127.0.0.1:8000${post.images[0].image}`}
-                  style={{ width: '300px', height: '300px', objectFit: 'cover' }}
+                <Image
+                  alt='user'
+                  width= {1000}  
+                  height= {600}
+                  src={`${post.images[0].image}`}
+                  style={{  objectFit: 'cover' }}
                 />
-                <div className="flex-grow ">
-                  <Typography
-                    variant="h4"
-                    color="textPrimary"
+                <div className='flex-grow '>
+                  <h4
+                    className='text-primary'
                     style={{ fontSize: '1.5rem', fontWeight: '800', margin: 'revert' }}
                   >
                     {post.title}
-                  </Typography>
-                  <Typography
-                    color="black"
-                    className="text-black-600"
-                    
-                  >
-                    {post.description}
-                  </Typography>
+                  </h4>
+                  <p className='text-black-600'>{post.description}</p>
                 </div>
-                <div className="mt-2 flex items-center flex-col space-y-2 pt-inherit">
-                  <Button
+                <div className='flex flex-col items-center mt-2 space-y-2 pt-inherit'>
+                  <button
                     onClick={() => handleEditPost(post)}
-                    color="primary" // Change color to "primary" (blue color)
-                    size="small"
-                    style={{
-                      width: '40px',
-                      height: '40px',
-                      borderRadius: '50%',
-                    }}
+                    className='btn-primary'
                   >
-                    <FontAwesomeIcon icon={faEdit} style={{ fontSize: '1.5rem', color:'navy' }}/>
-                  </Button>
-                  <Button
+                    <FontAwesomeIcon icon={faEdit} style={{ fontSize: '1.5rem', color: 'navy' }} />
+                  </button>
+                  <button
                     onClick={() => handleViewDetails(post.id)}
-                    color="default"
-                    size="small"
-                    style={{
-                      width: '40px',
-                      height: '40px',
-                      borderRadius: '50%',
-                    }}
+                    className='btn-default'
                   >
                     <FontAwesomeIcon icon={faEye} style={{ fontSize: '1.5rem' }} />
-                  </Button>
-                  <Button
+                  </button>
+                  <button
                     onClick={() => handleDeletePost(post.id)}
-                    color="secondary" 
-                    size="small"
-                    style={{
-                      width: '40px',
-                      height: '40px',
-                      borderRadius: '50%',
-                      color: 'red',
-                    }}
+                    className='btn-secondary'
                   >
-                    <FontAwesomeIcon icon={faTrash} style={{ fontSize: '1.5rem' , color:'darkred'}} />
-                  </Button>
+                    <FontAwesomeIcon icon={faTrash} style={{ fontSize: '1.5rem', color: 'darkred' }} />
+                  </button>
                 </div>
-
-
               </div>
             ))}
           </div>
@@ -183,7 +158,7 @@ const PostUser = () => {
 
       {showEditForm && (
         <div
-          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+          className='fixed inset-0 flex items-center justify-center bg-black bg-opacity-50'
           style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
         >
           <EditForm
@@ -196,11 +171,6 @@ const PostUser = () => {
       )}
     </div>
   );
-
-
-
-
-
 };
 
 export default PostUser;

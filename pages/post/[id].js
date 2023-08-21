@@ -7,6 +7,8 @@ import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { faPhoneVolume, faEnvelope, faUser } from '@fortawesome/free-solid-svg-icons';
 import VisaDb from "@/components/Visadb";
 import Loading from "@/components/Loading";
+import Image from 'next/image';
+
 
 const PostDetail = () => {
     const router = useRouter();
@@ -19,7 +21,7 @@ const PostDetail = () => {
         if (id) {
             const fetchData = async () => {
                 try {
-                    const response = await fetch(`http://127.0.0.1:8000/wanderhands/post/${id}`);
+                    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wanderhands/post/${id}`);
                     const data = await response.json();
                     setData(data);
                     setLoading(false);
@@ -47,9 +49,9 @@ const PostDetail = () => {
             <div className="flex flex-row space-x-4">
                 {data.images.map((imageData, index) => (
                     <div key={index} className="inline-block mt-6">
-                        <img
+                        <Image
                             src={`http://127.0.0.1:8000${imageData.image}`}
-                            className="h-60 w-80 object-cover transition duration-500 ease-in-out transform rounded-lg hover:-translate-y-1 hover:scale-110"
+                            className="object-cover transition duration-500 ease-in-out transform rounded-lg h-60 w-80 hover:-translate-y-1 hover:scale-110"
                             alt=""
                         />
                     </div>
@@ -84,13 +86,13 @@ const PostDetail = () => {
                     <div className="flex flex-wrap ml-40">
                         <div className="w-full mb-10 shrink-0 grow-0 basis-auto md:mb-0 md:w-6/12 md:px-3 lg:px-6">
                             <h2 className="mb-6 text-2xl font-bold">Contact us</h2>
-                            <p className="mb-2 text-black dark:text-neutral-300 font-bold">
+                            <p className="mb-2 font-bold text-black dark:text-neutral-300">
                                 <FontAwesomeIcon icon={faLocationDot} /> {data.location}
                             </p>
-                            <p className="mb-2 text-black dark:text-neutral-300 font-bold">
+                            <p className="mb-2 font-bold text-black dark:text-neutral-300">
                                 <FontAwesomeIcon icon={faPhoneVolume} /> {data.phone}
                             </p>
-                            <p className="mb-2 text-black dark:text-neutral-300 font-bold">
+                            <p className="mb-2 font-bold text-black dark:text-neutral-300">
                                 <FontAwesomeIcon icon={faEnvelope} />  {data.email}
                             </p>
                             <p class="mb-2 text-black dark:text-neutral-300 font-bold">

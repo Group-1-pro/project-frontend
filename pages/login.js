@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useAuth } from '@/contexts/auth';
-import Cookies from 'js-cookie'; // Import the Cookies library
+import Cookies from 'js-cookie';
 import LoginForm from '@/components/LoginForm';
 import Footer from '@/components/Footer';
 
@@ -18,7 +18,7 @@ const LoginPage = () => {
     if (auth.tokens) {
       router.push('/');
     }
-  }, [auth.tokens]);
+  }, [auth.tokens, router]); // Include 'router' in the dependency array
 
   const handleLogin = async (formData) => {
     try {
@@ -35,7 +35,6 @@ const LoginPage = () => {
       <LoginForm onSubmit={handleLogin} />
       <Footer />
     </>
-
   );
 };
 

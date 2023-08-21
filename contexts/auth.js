@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 
 const AuthContext = createContext();
 
-const baseUrl = 'http://127.0.0.1:8000/';
+const baseUrl = `${process.env.NEXT_PUBLIC_API_URL}/`;
 const tokenUrl = baseUrl + "api/token/";
 
 export function useAuth() {
@@ -35,9 +35,9 @@ export function AuthProvider(props) {
                 username: decodedAccess.username,
                 email: decodedAccess.email,
                 id: decodedAccess.user_id,
-                
+
             };
-            
+
             setState(prevState => ({ ...prevState, user }));
         }
     }, [state.tokens]);

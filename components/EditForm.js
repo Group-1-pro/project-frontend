@@ -10,12 +10,14 @@ const EditForm = ({ post, onCancel, onSave }) => {
         start_date: post.start_date,
         end_date: post.end_date,
         description: post.description,
-        images: [],
+        images: null,
     });
 
     const handleImageChange = (e) => {
         const newImages = Array.from(e.target.files);
         setEditedData({ ...editedData, images: newImages });
+        const names = newImages.map(image => image.name);
+        setFileNames(names);
     };
 
     const handleSave = async () => {
@@ -31,7 +33,7 @@ const EditForm = ({ post, onCancel, onSave }) => {
                 }
             }
 
-            const response = await fetch(`http://127.0.0.1:8000/wanderhands/post/${post.id}/`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/wanderhands/post/${post.id}/`, {
                 method: 'PUT',
                 body: formData,
             });
@@ -48,7 +50,7 @@ const EditForm = ({ post, onCancel, onSave }) => {
     };
 
     return (
-        <form onSubmit={handleSave} className='flex flex-col items-center justify-center w-1/2 p-8  bg-white rounded-lg text-orange-600 border-orange'>
+        <form onSubmit={handleSave} className='flex flex-col items-center justify-center w-1/2 p-8 text-orange-600 bg-white rounded-lg border-orange'>
             <h1 className='flex justify-start w-full font-bold text-[#7E1717]'> Edit Form </h1>
             <div className='grid w-full grid-cols-1 gap-4 sm:grid-cols-2'>
                 <div className='flex flex-col order'>
@@ -410,7 +412,7 @@ const EditForm = ({ post, onCancel, onSave }) => {
                         </svg> */}
                     <div className="flex items-center">
                         <label htmlFor="images" className=" flex flex-col justify-center w-40 h-8 my-8 bg-[#5E0A0A] rounded-sm text-slate-200 hover:text-[#5E0A0A] hover:bg-[#C8E6F5]">
-                            <span className="font-bold p-2 ">Upload Images</span>
+                            <span className="p-2 font-bold ">Upload Images</span>
                             <input
                                 id="images"
                                 type="file"
@@ -432,12 +434,12 @@ const EditForm = ({ post, onCancel, onSave }) => {
                 </div>
                 {/* </div> */}
             </div>
-            <div className='mt-4 flex justify-between'>
+            <div className='flex justify-between mt-4'>
 
                 <button onClick={onCancel} className="px-3 py-2 text-white bg-[#7E1717] rounded-md">
                     Close
                 </button>
-                <button onClick={handleSave} className="px-3 py-2 text-white rounded-md bg-blue-500">
+                <button onClick={handleSave} className="px-3 py-2 text-white bg-blue-500 rounded-md">
                     Save
                 </button>
 

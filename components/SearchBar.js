@@ -38,7 +38,7 @@ const SearchBar = ({ onSearch }) => {
               className="absolute inset-y-0 right-0 flex items-center pr-2 cursor-pointer"
               onClick={scrollToPosts}
             >
-              <FaSearch className="text-gray-400" /> {/* Search icon */}
+              <FaSearch className="text-black-400" /> {/* Search icon */}
             </div>
           </div>
         </div>
