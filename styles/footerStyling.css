@@ -57,7 +57,7 @@ footer .footerContainer .sec .sci {
     margin-top: 20px;
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (50px) [4];
+    -ms-grid-columns: (50px) 4;
     grid-template-columns: repeat(4, 50px);
     grid-gap: 10px;
 }
@@ -154,7 +154,7 @@ footer .footerContainer .quickLink li a:hover {
     }
 
     footer .footerContainer {
-        -ms-grid-columns: (1fr) [2];
+        -ms-grid-columns: (1fr) 2;
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -165,7 +165,7 @@ footer .footerContainer .quickLink li a:hover {
 
 @media (max-width: 768px) {
     footer .footerContainer {
-        -ms-grid-columns: (1fr) [1];
+        -ms-grid-columns: (1fr) 1;
         grid-template-columns: repeat(1, 1fr);
     }
 }
