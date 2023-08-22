@@ -11,7 +11,7 @@ const FavoritesList = () => {
   const cardContainerRef = useRef(null);
   const baseUrl = `${process.env.NEXT_PUBLIC_API_URL}/`;
 
-  const fetchFavPostsData = useCallback(async () => {
+  const fetchFavPostsData = async () => {
     try {
       const response = await fetch(baseUrl + `wanderhands/favorites/user/${user.id}`, {
         headers: {
@@ -27,12 +27,11 @@ const FavoritesList = () => {
     } catch (error) {
       console.error('Error fetching favorite posts data:', error);
     }
-  }, [user.id, tokens?.access]);
+  };
 
   useEffect(() => {
-
-    
-  }, []);
+    fetchFavPostsData();
+  }, [fetchFavPostsData]);
 
   const [selectedPost, setSelectedPost] = useState(null);
 
