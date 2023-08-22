@@ -5,16 +5,7 @@ body {
 }
 
 
-/* .bodyContainer {
-    background-image: url('../assets2/compass-travel-hand-focus-sucrs3gyylhk9xi6.webp');
-    background-size: cover;
-    background-position: center;
-    height: 305vh;
 
-} */
-
-
-/* scrollbar */
 ::-webkit-scrollbar {
     width: 15px;
 
@@ -62,7 +53,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 3%;
-    padding-top: 5;
+    padding-top: 5%;
     padding-right: 18%;
     margin-top: 11%;
 }
