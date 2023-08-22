@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useAuth } from '../contexts/auth';
 import LoginForm from '@/components/LoginForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,7 +11,7 @@ const FavoritesList = () => {
   const cardContainerRef = useRef(null);
   const baseUrl = `${process.env.NEXT_PUBLIC_API_URL}/`;
 
-  const fetchFavPostsData = useCallback(async () => {
+  const fetchFavPostsData = async () => {
     try {
       const response = await fetch(baseUrl + `wanderhands/favorites/user/${user.id}`, {
         headers: {
@@ -27,7 +27,7 @@ const FavoritesList = () => {
     } catch (error) {
       console.error('Error fetching favorite posts data:', error);
     }
-  }, [user.id, tokens?.access]);
+  };
 
   useEffect(() => {
     fetchFavPostsData();
