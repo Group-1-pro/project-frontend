@@ -1,13 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Exo+2:700');
 
-
-
  .aboutH {
     color: #C8E6F5;
     text-align: center;
     margin-top: 3%;
     font-family: 'Exo 2', sans-serif;
-    font-size: 3rem; /* Adjust the font size as needed */
+    font-size: 3rem; 
     font-weight: 900;
     text-transform: uppercase;
   }
@@ -18,8 +16,8 @@
     padding: 20px;
     margin-top: 3.5%;
     font-family: OpenSans;
-    max-width: 77%; /* Adjust the max-width as needed */
-    margin: 0 auto; /* Center the paragraph horizontally */
+    max-width: 77%; 
+    margin: 0 auto; 
   }
   
 
@@ -58,7 +56,7 @@
     width: 300px;
     background: #808080;
     border-radius: 10px;
-    transition: background 0.8s;
+    transition:  0.8s;
     overflow: hidden;
     background: #000;
     box-shadow: 0 70px 63px -60px #000;
@@ -123,7 +121,6 @@
     color: #fff;
 }
 
-/*******************************************************************************************/
 
 
 .EsmailCard {
@@ -145,7 +142,6 @@
 }
 
 
-/*******************************************************************************************/
 
 
 .ShareefCard {
@@ -167,7 +163,6 @@
 }
 
 
-/*******************************************************************************************/
 
 
 .SaifCard {
@@ -189,7 +184,6 @@
 }
 
 
-/*******************************************************************************************/
 
 
 .ShahinCard {
@@ -211,7 +205,6 @@
 }
 
 
-/*******************************************************************************************/
 
 
 .TalaCard {
@@ -233,7 +226,6 @@
 }
 
 
-/*******************************************************************************************/
 
 
 .SaraCard {
