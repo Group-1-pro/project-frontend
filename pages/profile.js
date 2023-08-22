@@ -4,7 +4,6 @@ import FavoritesList from '@/components/FavoritesList';
 import PostUser from '@/components/PostUser';
 import { useAuth } from 'contexts/auth.js';
 import LoginForm from '@/components/LoginForm';
-import { Typography, Divider, Fab } from '@material-ui/core';
 import Footer from '@/components/Footer';
 
 export default function FavoritesPage() {
@@ -53,40 +52,16 @@ export default function FavoritesPage() {
       <Navbar />
       <div className="relative mx-[21px]" style={{ padding: '2rem 0' }}>
         <div>
-          <div style={{ display: 'flex', position: 'relative', backgroundColor: '#fff', boxShadow: '0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15)', padding: '0.75rem' }}>
+          <div className="tab-container">
             <span
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '54px',
-                width: '200px',
-                fontSize: '1.25rem',
-                fontWeight: 500,
-                cursor: 'pointer',
-                transition: 'color 0.15s ease-in',
-                color: activeTab === 'myPosts' ? '#185ee0' : 'inherit',
-                borderBottom: activeTab === 'myPosts' ? '3px solid #185ee0' : 'none',
-              }}
               onClick={() => handleTabClick('myPosts')}
+              className={`tab ${activeTab === 'myPosts' ? 'active' : ''}`}
             >
               My Posts
             </span>
             <span
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '54px',
-                width: '200px',
-                fontSize: '1.25rem',
-                fontWeight: 500,
-                cursor: 'pointer',
-                transition: 'color 0.15s ease-in',
-                color: activeTab === 'myFavorites' ? '#185ee0' : 'inherit',
-                borderBottom: activeTab === 'myFavorites' ? '3px solid #185ee0' : 'none',
-              }}
               onClick={() => handleTabClick('myFavorites')}
+              className={`tab ${activeTab === 'myFavorites' ? 'active' : ''}`}
             >
               My Favorites
             </span>
@@ -97,33 +72,26 @@ export default function FavoritesPage() {
       {loginChecked ? (
         user ? (
           <main>
-          <div className="section mx-[21px] bg-white" ref={postUserRef} style={{ boxShadow: '0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15)' }}>
-            <Typography variant="h4" color="textPrimary" gutterBottom className="section-title" style={{ fontWeight: 'bold', color: 'darkred', textDecorationColor: 'darkred' }}>
-              My Posts
-            </Typography>
-            <Divider className="divider" />
-            <PostUser />
-          </div>
-        
-          <div className="section mx-[21px] bg-white" ref={favoritesListRef} style={{ boxShadow: '0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15)' }}>
-            <Typography variant="h4" color="textPrimary" gutterBottom className="section-title" style={{ fontWeight: 'bold', color: 'darkred', textDecorationColor: 'darkred' }}>
-              Favorites
-            </Typography>
-            <Divider className="divider" />
-            <div>
-              <FavoritesList />
+            <div className="section mx-[21px] bg-white" ref={postUserRef}>
+              <h4 className="section-title">My Posts</h4>
+              <div className="divider" />
+              <PostUser />
             </div>
-          </div>
-        </main>
-        
+
+            <div className="section mx-[21px] bg-white" ref={favoritesListRef}>
+              <h4 className="section-title">Favorites</h4>
+              <div className="divider" />
+              <div>
+                <FavoritesList />
+              </div>
+            </div>
+          </main>
         ) : (
           <LoginForm onSubmit={handleSubmitLoginForm} />
         )
       ) : null}
       {showScrollButton && (
-        <Fab
-          color="default"
-          size="small"
+        <button
           className="scroll-up-button"
           onClick={handleScrollUp}
           style={{
@@ -134,7 +102,7 @@ export default function FavoritesPage() {
           }}
         >
           ↑
-        </Fab>
+        </button>
       )}
       <Footer />
     </>

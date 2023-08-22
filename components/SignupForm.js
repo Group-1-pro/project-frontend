@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/auth';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 const SignUpPage = () => {
   const auth = useAuth();
@@ -28,16 +29,17 @@ const SignUpPage = () => {
   return (
     <div className='md:flex md:h-screen'>
       <div className='flex items-center justify-center py-10 md:w-1/2'>
-        {/* Your logo elements and styling can go here */}
-        <a href='/' >
-          <img src='/lesspading-removebg-preview.png' />
-        </a>
+        <Link href='/' passHref>
+          <a>
+            <Image src='/lesspading-removebg-preview.png' width={400} height={300} alt='Wander Hands Logo' />
+          </a>
+        </Link>
       </div>
       <div className='flex items-center justify-center py-10 md:w-1/2'>
         <form className='w-full max-w-md p-6 bg-white rounded-lg shadow'>
           <h1 className='mb-1 text-2xl font-bold text-[#7E1717]'>Sign Up</h1>
           <p className='text-sm font-normal text-gray-600 mb-7'>
-            It's quick and easy.
+            It&apos;s quick and easy.
           </p>
           <div className='flex items-center px-3 py-2 mb-4 border-2 rounded-2xl'>
             <svg xmlns='http://www.w3.org/2000/svg' className='w-5 h-5 text-gray-400' viewBox='0 0 20 20'
@@ -55,7 +57,6 @@ const SignUpPage = () => {
                 border: 'none',
                 width: '-webkit-fill-available',
                 borderRadius: '0.5rem',
-
               }} />
           </div>
           <div className='flex items-center px-3 py-2 mb-4 border-2 rounded-2xl'>
@@ -74,7 +75,6 @@ const SignUpPage = () => {
                 border: 'none',
                 width: '-webkit-fill-available',
                 borderRadius: '0.5rem',
-
               }} />
           </div>
           <div className='flex items-center px-3 py-2 border-2 rounded-2xl'>
@@ -93,7 +93,6 @@ const SignUpPage = () => {
                 border: 'none',
                 width: '-webkit-fill-available',
                 borderRadius: '0.5rem',
-
               }} />
           </div>
           <button

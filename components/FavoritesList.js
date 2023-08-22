@@ -30,7 +30,7 @@ const FavoritesList = () => {
 
   useEffect(() => {
     fetchFavPostsData();
-  }, []);
+  }, [fetchFavPostsData]);
 
   const [selectedPost, setSelectedPost] = useState(null);
 
@@ -243,7 +243,7 @@ const FavoritesList = () => {
             <div className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50'>
               <div className='max-w-md p-6 bg-white rounded-lg shadow-lg'>
                 <h2 className='mb-2 text-xl font-semibold'>
-                  Contact Information for {selectedPost.post.title}
+                  Contact Information for &apos;{selectedPost.post.title}&apos;
                 </h2>
                 <p className='text-gray-700'>
                   Email: {selectedPost.post.email}
@@ -269,4 +269,3 @@ const FavoritesList = () => {
 };
 
 export default FavoritesList;
-

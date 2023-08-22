@@ -4,7 +4,6 @@ import Footer from '@/components/Footer';
 import { Card, CardHeader, CardBody, Typography, Avatar, Button } from "@material-tailwind/react";
 import Link from 'next/link';
 import Image from 'next/image';
-// import { StarIcon as HeroiconsStarIcon } from "@heroicons/react/solid"; // Rename imported StarIcon
 
 
 export const Blog = () => {

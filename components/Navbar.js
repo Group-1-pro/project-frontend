@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '@/contexts/auth';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-
+import Image from 'next/image';
 
 
 const Navbar = () => {
@@ -33,7 +33,10 @@ const Navbar = () => {
       <header className='header'>
         <h1 className='headerLogo'>
           <Link className='headerTitle' href='/' >
-            <img src='/lesspading-removebg-preview.png' className='headerImgLogo' />
+            <Image src='/lesspading-removebg-preview.png' className='headerImgLogo'
+              alt='Logo' // Add alt prop with meaningful text
+              width={350}
+              height={200} />
           </Link>
         </h1>
         <ul className='main-nav'>

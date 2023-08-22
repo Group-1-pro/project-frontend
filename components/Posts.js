@@ -2,11 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faAddressCard, faShareNodes } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '@/contexts/auth';
-import LoginForm from './LoginForm';
 import SearchBar from './SearchBar';
 import Image from 'next/image';
- 
-
 
 const Posts = () => {
     const { user, tokens, login } = useAuth();
@@ -31,7 +28,8 @@ const Posts = () => {
             }
         };
         fetchData();
-    }, []);
+    }, [baseUrl]); // Add baseUrl to the dependency array
+
     useEffect(() => {
         const getFavData = async () => {
             try {
@@ -49,20 +47,25 @@ const Posts = () => {
             }
         };
         getFavData();
-    }, [user]);
+    }, [user, baseUrl]);
+
     if (loading) {
         return <div>Loading posts...</div>;
     }
+
     if (!data || !Array.isArray(data)) {
         return <div>No posts available</div>;
     }
+
     const handleContactPost = (postId) => {
         const selected = data.find((post) => post.id === postId);
         setSelectedPost(selected);
     };
+
     const handleCloseContact = () => {
         setSelectedPost(null);
     };
+
     const handleShare = (event, url) => {
         event.preventDefault();
         if (navigator.share) {
@@ -75,25 +78,29 @@ const Posts = () => {
             alert('Copy the following URL:\n' + url);
         }
     };
+
     const filteredData = data.filter(post =>
         post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.description.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
     let post_data = [];
+
     if (filteredData.length > 0) {
         post_data = filteredData;
-    }
-    else if ((searchQuery.length > 0) && (filteredData.length === 0)) {
+    } else if ((searchQuery.length > 0) && (filteredData.length === 0)) {
         post_data = [];
-    }
-    else if (searchQuery === '') {
+    } else if (searchQuery === '') {
         post_data = data;
     }
+
     const groupedData = [];
+
     for (let i = 0; i < post_data.length; i += 4) {
         groupedData.push(post_data.slice(i, i + 4));
     }
+
     const handleAddToFavorites = async (postId) => {
         try {
             const response = await fetch(baseUrl + `/wanderhands/favorites/`, {
@@ -107,6 +114,7 @@ const Posts = () => {
                     user: user.id,
                 }),
             });
+
             if (response.ok) {
                 setFavPost([...favPost, { id: postId }]);
             } else {
@@ -116,24 +124,27 @@ const Posts = () => {
             console.error('Error adding post to favorites:', error);
         }
     };
+
     const isPostInFavorites = (postId) => {
         return favPost?.some((post) => post.id === postId);
     };
 
     return (
-
         <div className='postMainDiv'>
             <SearchBar onSearch={setSearchQuery} />
+
             {groupedData.map((group, index) => (
                 <div key={index} className='postDiv' id='posts'>
                     {group.map((post) => (
                         <div key={post.id} className='postCard'>
                             <div className='postImgBox'>
-                                <Image className='postImg' src={`${process.env.NEXT_PUBLIC_CLOUDINARY_URL}/${post.images[0].image}`} width={500} height={600} alt='' />
+                                <Image className='postImg' src={`${process.env.NEXT_PUBLIC_CLOUDINARY_URL}/${post.images[0].image}`} width={400} height={300} alt='' />
                             </div>
+
                             <div className='postInfo'>
                                 <h6 className='postHTitle'>{post.title}</h6>
                                 <h6 className='postHLocation'>{post.location}</h6>
+
                                 <div className='postIcon'>
                                     {tokens?.access ? (
                                         isPostInFavorites(post.id) ? (
@@ -156,23 +167,28 @@ const Posts = () => {
                                             className='hover:cursor-pointer'
                                         />
                                     )}
+
                                     <FontAwesomeIcon
                                         icon={faAddressCard}
                                         onClick={() => handleContactPost(post.id)}
                                         className='hover:cursor-pointer'
                                     />
+
                                     <FontAwesomeIcon
                                         icon={faShareNodes}
                                         onClick={(event) => handleShare(event, baseUrl + `/post/${post.id}`)}
                                         className='hover:cursor-pointer'
                                     />
                                 </div>
+
                                 <p className='postDescription'>
                                     {post.description.split('\n').slice(0, 3).join('\n')}
                                 </p>
+
                                 <p className='postParagraph'>Posted by: {post.author_name}</p>
                                 <p className='postParagraph'>Starting At: {post.start_date}</p>
                                 <p className='postParagraph'>Ending At: {post.end_date}</p>
+
                                 <a className='postBtn' href={`/post/${post.id}`}>View more</a>
                             </div>
                         </div>
@@ -186,6 +202,7 @@ const Posts = () => {
                                 </h2>
                                 <p className='text-gray-700'>Email: {selectedPost.email}</p>
                                 <p className='text-gray-700'>Phone: {selectedPost.phone}</p>
+
                                 <button
                                     onClick={handleCloseContact}
                                     className='px-4 py-2 mt-4 text-white bg-gray-600 rounded-md'
