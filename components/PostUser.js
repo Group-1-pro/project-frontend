@@ -17,29 +17,28 @@ const PostUser = () => {
     const [showEditForm, setShowEditForm] = useState(false);
     const [editedPost, setEditedPost] = useState(null);
 
-    useEffect(() => {
-        const fetchPostsData = async () => {
-            try {
-                const response = await fetch(baseUrl + `wanderhands/post/user/${user.id}`, {
-                    headers: {
-                        Authorization: `Bearer ${tokens?.access}`,
-                    },
-                });
+    const fetchPostsData = async () => {
+        try {
+            const response = await fetch(baseUrl + `wanderhands/post/user/${user.id}`, {
+                headers: {
+                    Authorization: `Bearer ${tokens?.access}`,
+                },
+            });
 
-                if (response.ok) {
-                    const data = await response.json();
-                    setPosts(data);
-                    console.log(data);
-                } else {
-                    console.error('Failed to fetch posts data:', response.status);
-                }
-            } catch (error) {
-                console.error('Error fetching posts data:', error);
+            if (response.ok) {
+                const data = await response.json();
+                setPosts(data);
+                console.log(data);
+            } else {
+                console.error('Failed to fetch posts data:', response.status);
             }
-        };
+        } catch (error) {
+            console.error('Error fetching posts data:', error);
+        }
+    };
 
-        fetchPostsData();
-    }, [user, tokens?.access]);
+    useEffect(() => {
+    }, []);
 
     const handleDeletePost = async (postId) => {
         try {
