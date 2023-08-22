@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { useAuth } from '../contexts/auth';
 import LoginForm from '@/components/LoginForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
