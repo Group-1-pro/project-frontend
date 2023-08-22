@@ -48,7 +48,7 @@ export default function PostForm({ setShowForm }) {
                 Authorization: `Bearer ${tokens.access}`,
             },
         };
-        const data = await axios.post(baseUrl +`/wanderhands/post/`, formData, config)
+        const data = await axios.post(baseUrl + `/wanderhands/post/`, formData, config)
         console.log(data);
         setUploading(false);
 
@@ -405,7 +405,7 @@ export default function PostForm({ setShowForm }) {
 
                 {/* <div className="flex items-center justify-center w-full h-40 px-6 pt-5 pb-6 mt-1 border-2 border-red-900 border-dashed rounded-sm-md h"> */}
                 <div className="w-full text-center">
-                    {/* <svg className="w-20 h-20 mx-auto text-red-300 " stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                    {/* <svg className="w-20 h-20 mx-auto text-red-300 " stroke="currentColor" fill="none" viewBox="0 0 48 48"  ="true">
                             <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg> */}
                     <div className="flex items-center">

@@ -5,7 +5,6 @@ body {
 }
 
 
-
 ::-webkit-scrollbar {
     width: 15px;
 
@@ -26,7 +25,6 @@ body {
     background-size: cover;
     background-position: center;
     height: 400vh;
-    /* background-color: #b0d3db; */
 
 }
 

@@ -115,9 +115,9 @@ const PostUser = () => {
                             >
                                 <Image
                                     alt='user'
-                                    width={1000}
-                                    height={600}
-                                    src={`${post.images[0].image}`}
+                                    width={400}
+                                    height={200}
+                                    src={`${process.env.NEXT_PUBLIC_CLOUDINARY_URL}/${post.images[0].image}`}
                                     style={{ objectFit: 'cover' }}
                                 />
                                 <div className='flex-grow '>

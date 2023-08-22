@@ -26,9 +26,9 @@ const AboutPage = () => {
             <div className='border'>
               <h2 className='cardName'>Esmail Jawabreh</h2>
               <div className='icons'>
-                <a className='link' href='https://www.linkedin.com/in/esmail-jawabreh-80624a250/'><i className='fa fa-linkedin' aria-hidden='true'></i></a>
-                <a className='link' href='https://www.instagram.com/esmail.sudgi/'><i className='fa fa-instagram' aria-hidden='true'></i></a>
-                <a className='link' href='https://github.com/Esmail-Jawabreh'><i className='fa fa-github' aria-hidden='true'></i></a>
+                <a className='link' href='https://www.linkedin.com/in/esmail-jawabreh-80624a250/'><i className='fa fa-linkedin' aria-hidden='false'></i></a>
+                <a className='link' href='https://www.instagram.com/esmail.sudgi/'><i className='fa fa-instagram' aria-hidden='false'></i></a>
+                <a className='link' href='https://github.com/Esmail-Jawabreh'><i className='fa fa-github' aria-hidden='false'></i></a>
               </div>
             </div>
           </div>
@@ -38,9 +38,9 @@ const AboutPage = () => {
             <div className='border'>
               <h2 className='cardName'>Mohammed Shareef</h2>
               <div className='icons'>
-                <a className='link' href='https://www.linkedin.com/in/mshnas9/'><i className='fa fa-linkedin' aria-hidden='true'></i></a>
-                <a className='link' href=''><i className='fa fa-instagram' aria-hidden='true'></i></a>
-                <a className='link' href='https://github.com/mshnas9'><i className='fa fa-github' aria-hidden='true'></i></a>
+                <a className='link' href='https://www.linkedin.com/in/mshnas9/'><i className='fa fa-linkedin' aria-hidden='false'></i></a>
+                <a className='link' href=''><i className='fa fa-instagram' aria-hidden='false'></i></a>
+                <a className='link' href='https://github.com/mshnas9'><i className='fa fa-github' aria-hidden='false'></i></a>
               </div>
             </div>
           </div>
@@ -50,9 +50,9 @@ const AboutPage = () => {
             <div className='border'>
               <h2 className='cardName'>Saif Obeidat</h2>
               <div className='icons'>
-                <a className='link' href='https://www.linkedin.com/in/saif-obeidat-282730231/'><i className='fa fa-linkedin' aria-hidden='true'></i></a>
-                <a className='link' href=''><i className='fa fa-instagram' aria-hidden='true'></i></a>
-                <a className='link' href='https://github.com/saifobe'><i className='fa fa-github' aria-hidden='true'></i></a>
+                <a className='link' href='https://www.linkedin.com/in/saif-obeidat-282730231/'><i className='fa fa-linkedin' aria-hidden='false'></i></a>
+                <a className='link' href=''><i className='fa fa-instagram' aria-hidden='false'></i></a>
+                <a className='link' href='https://github.com/saifobe'><i className='fa fa-github' aria-hidden='false'></i></a>
               </div>
             </div>
           </div>
@@ -69,9 +69,9 @@ const AboutPage = () => {
             <div className='border'>
               <h2 className='cardName'>Mohammed Shahin</h2>
               <div className='icons'>
-                <a className='link' href='https://www.linkedin.com/in/mohammad-shahin-982875225/'><i className='fa fa-linkedin' aria-hidden='true'></i></a>
-                <a className='link' href=''><i className='fa fa-instagram' aria-hidden='true'></i></a>
-                <a className='link' href='https://github.com/Mohammad-Shahin23'><i className='fa fa-github' aria-hidden='true'></i></a>
+                <a className='link' href='https://www.linkedin.com/in/mohammad-shahin-982875225/'><i className='fa fa-linkedin' aria-hidden='false'></i></a>
+                <a className='link' href=''><i className='fa fa-instagram' aria-hidden='false'></i></a>
+                <a className='link' href='https://github.com/Mohammad-Shahin23'><i className='fa fa-github' aria-hidden='false'></i></a>
               </div>
             </div>
           </div>
@@ -81,9 +81,9 @@ const AboutPage = () => {
             <div className='border'>
               <h2 className='cardName'>Tala Asfan</h2>
               <div className='icons'>
-                <a className='link' href='https://www.linkedin.com/in/tala-asfan-b827ab17b/'><i className='fa fa-linkedin' aria-hidden='true'></i></a>
-                <a className='link' href=''><i className='fa fa-instagram' aria-hidden='true'></i></a>
-                <a className='link' href='https://github.com/asfantala'><i className='fa fa-github' aria-hidden='true'></i></a>
+                <a className='link' href='https://www.linkedin.com/in/tala-asfan-b827ab17b/'><i className='fa fa-linkedin' aria-hidden='false'></i></a>
+                <a className='link' href=''><i className='fa fa-instagram' aria-hidden='false'></i></a>
+                <a className='link' href='https://github.com/asfantala'><i className='fa fa-github' aria-hidden='false'></i></a>
               </div>
             </div>
           </div>
@@ -93,9 +93,9 @@ const AboutPage = () => {
             <div className='border'>
               <h2 className='cardName'>Sara Alkateeb</h2>
               <div className='icons'>
-                <a className='link' href='https://www.linkedin.com/in/sara-alkhateeb-564273235/'><i className='fa fa-linkedin' aria-hidden='true'></i></a>
-                <a className='link' href=''><i className='fa fa-instagram' aria-hidden='true'></i></a>
-                <a className='link' href='https://github.com/Sara-Alkhateeb'><i className='fa fa-github' aria-hidden='true'></i></a>
+                <a className='link' href='https://www.linkedin.com/in/sara-alkhateeb-564273235/'><i className='fa fa-linkedin' aria-hidden='false'></i></a>
+                <a className='link' href=''><i className='fa fa-instagram' aria-hidden='false'></i></a>
+                <a className='link' href='https://github.com/Sara-Alkhateeb'><i className='fa fa-github' aria-hidden='false'></i></a>
               </div>
             </div>
           </div>

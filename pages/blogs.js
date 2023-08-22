@@ -94,6 +94,8 @@ export function HorizontalCard({ title, imageSrc, content, name, avatarSrc, rati
           src={imageSrc}
           alt="card-image"
           className="object-cover w-full h-full rounded"
+          width={800}
+          height={700}
         />
       </CardHeader>
       <CardBody>

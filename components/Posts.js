@@ -17,7 +17,7 @@ const Posts = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(baseUrl +`/wanderhands/post/`);
+                const response = await fetch(baseUrl + `/wanderhands/post/`);
                 const data = await response.json();
                 setData(data);
                 setLoading(false);
@@ -36,7 +36,7 @@ const Posts = () => {
                 if (!user) {
                     return;
                 }
-                const response = await fetch(baseUrl +`/wanderhands/favorites/user/${user.id}/`);
+                const response = await fetch(baseUrl + `/wanderhands/favorites/user/${user.id}/`);
                 const favData = await response.json();
                 setFavPost(favData);
                 setLoading(false);
@@ -103,7 +103,7 @@ const Posts = () => {
 
     const handleAddToFavorites = async (postId) => {
         try {
-            const response = await fetch(baseUrl +`/wanderhands/favorites/`, {
+            const response = await fetch(baseUrl + `/wanderhands/favorites/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -138,13 +138,7 @@ const Posts = () => {
                     {group.map((post) => (
                         <div key={post.id} className='postCard'>
                             <div className='postImgBox'>
-                                <Image
-                                    className='postImg'
-                                    src={`${process.env.NEXT_PUBLIC_API_URL}${post.images[0].image}`}
-                                    width={400}
-                                    height={300}
-                                    alt=''
-                                />
+                                <Image className='postImg' src={`${process.env.NEXT_PUBLIC_CLOUDINARY_URL}/${post.images[0].image}`} width={400} height={300} alt='' />
                             </div>
 
                             <div className='postInfo'>
@@ -182,7 +176,7 @@ const Posts = () => {
 
                                     <FontAwesomeIcon
                                         icon={faShareNodes}
-                                        onClick={(event) => handleShare(event, baseUrl +`/post/${post.id}`)}
+                                        onClick={(event) => handleShare(event, baseUrl + `/post/${post.id}`)}
                                         className='hover:cursor-pointer'
                                     />
                                 </div>

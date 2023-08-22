@@ -50,9 +50,11 @@ const PostDetail = () => {
                 {data.images.map((imageData, index) => (
                     <div key={index} className="inline-block mt-6">
                         <Image
-                            src={`http://127.0.0.1:8000${imageData.image}`}
+                            src={`${process.env.NEXT_PUBLIC_CLOUDINARY_URL}/${imageData.image}`}
                             className="object-cover transition duration-500 ease-in-out transform rounded-lg h-60 w-80 hover:-translate-y-1 hover:scale-110"
                             alt=""
+                            width={800} // Set to original or desired width
+                            height={600} // Set to original or desired height
                         />
                     </div>
                 ))}
