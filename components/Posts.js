@@ -28,7 +28,7 @@ const Posts = () => {
             }
         };
         fetchData();
-    }, []);
+    }, [baseUrl]); // Add baseUrl to the dependency array
 
     useEffect(() => {
         const getFavData = async () => {
@@ -47,7 +47,7 @@ const Posts = () => {
             }
         };
         getFavData();
-    }, [user]);
+    }, [user, baseUrl]);
 
     if (loading) {
         return <div>Loading posts...</div>;
@@ -204,7 +204,7 @@ const Posts = () => {
                         <div className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50'>
                             <div className='max-w-md p-6 bg-white rounded-lg shadow-lg backdrop-filter backdrop-blur-lg'>
                                 <h2 className='mb-2 text-xl font-semibold'>
-                                    Contact Information for '{selectedPost.title}'
+                                    Contact Information for {selectedPost.title}
                                 </h2>
                                 <p className='text-gray-700'>Email: {selectedPost.email}</p>
                                 <p className='text-gray-700'>Phone: {selectedPost.phone}</p>
